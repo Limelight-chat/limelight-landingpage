@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --radius-lg: var(--radius);
+}
+
+/* --- Dark Mode (Primary Brand Theme) --- */
+.dark {
+  --background: #171616;
+  --foreground: #ffffff;
+
+  /* Main brand CTA - base color for glow buttons */
+  --primary: #ff8e2b;
+  --primary-foreground: #000000;
+
+  --accent: #ff7bca;
+  --accent-foreground: #000000;
+
+  --muted: #2a2a2a;
+  --muted-foreground: #b5b5b5;
+}
+
+/* --- Base Global Styles --- */
+@layer base {
+  * {
+    @apply border-transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Shadcn default button override */
+:root,
+.dark {
+  /* Soft inner glow for primary buttons */
+  --btn-primary-bg: linear-gradient(to bottom right, #ff8e2b, #ff7a00);
+  --btn-primary-shadow: inset 0 0 12px rgba(255, 142, 43, 0.28);
+}
+
+@layer components {
+  /* Override shadcn default button (variant="default") */
+  .btn,
+  button[data-variant="default"] {
+    background: var(--btn-primary-bg) !important;
+    color: var(--primary-foreground) !important;
+    box-shadow: var(--btn-primary-shadow) !important;
+    @apply rounded-lg font-medium transition-all;
+  }
+
+  .btn:hover,
+  button[data-variant="default"]:hover {
+    box-shadow: inset 0 0 16px rgba(255, 142, 43, 0.38),
+                0 0 4px rgba(255, 142, 43, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn:active,
+  button[data-variant="default"]:active {
+    box-shadow: inset 0 0 10px rgba(255, 142, 43, 0.5);
+    transform: translateY(0);
+  }
+}

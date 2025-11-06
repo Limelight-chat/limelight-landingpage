@@ -102,12 +102,7 @@ const items = cards.map((card, index) => (
         </div>
 
         <div
-          className="
-            absolute left-1/2 -translate-x-1/2
-            w-full max-w-xl px-4 text-center
-            bottom-[calc(50%+84px)] md:bottom-[calc(50%+146px)]
-            flex flex-col items-center gap-4
-          "
+          className=" absolute left-1/2 -translate-x-1/2 w-full max-w-xl px-4 text-center bottom-[calc(50%+84px)] md:bottom-[calc(50%+146px)] flex flex-col items-center gap-4"
         >
           <h1 className="text-4xl md:text-5xl leading-tight">
             Search engine for your business data.
@@ -259,8 +254,7 @@ const items = cards.map((card, index) => (
         <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col items-center">
           
           {/* Big Title */}
-          <h1 className="font-bold text-center bg-linear-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent tracking-tight
-            text-[clamp(3rem,12vw,12rem)] leading-none">
+          <h1 className="font-bold text-center bg-linear-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent tracking-tight text-[clamp(3rem,12vw,12rem)] leading-none">
             LIMELIGHT
           </h1>
 

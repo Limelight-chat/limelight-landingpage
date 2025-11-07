@@ -75,3 +75,13 @@
     transform: translateY(0);
   }
 }
+
+::selection {
+  background-color: rgba(19, 83, 242, 0.6);
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: rgba(19, 83, 242, 0.6);
+  color: #fff;
+}

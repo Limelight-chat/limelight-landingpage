@@ -93,7 +93,7 @@ const Navbar5 = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  href="#"
+                  href="/pricing"
                   className={navigationMenuTriggerStyle()}
                 >
                   Pricing
@@ -124,7 +124,7 @@ const Navbar5 = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  href="#"
+                  href="/contact"
                   className={navigationMenuTriggerStyle()}
                 >
                   Contact Us

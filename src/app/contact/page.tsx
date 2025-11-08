@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact-form";
+import { DisableScrollDesktop } from "@/components/disable-scroll-desktop";
 
 export const metadata: Metadata = {
   title: "Contact Us — Limelight",
@@ -10,6 +11,8 @@ export default function Contact() {
   const accent = "#FF8E2B";
 
   return (
+    <>
+      <DisableScrollDesktop />
     <div
       className="min-h-screen w-full"
       style={{ background: "#171616" }}
@@ -67,5 +70,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   );
 }

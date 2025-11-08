@@ -62,7 +62,7 @@ export default function Pricing() {
 
   return (
     <div
-      className="min-h-screen w-full flex justify-center"
+      className="min-h-screen w-full flex justify-center "
       style={{ background: "#171616" }}
     >
       <div

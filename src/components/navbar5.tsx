@@ -34,12 +34,12 @@ import {
 const Navbar5 = () => {
   const features = [
     {
-      title: "Dashboard",
+      title: "Blog",
       description: "Overview of your activity",
       href: "#",
     },
     {
-      title: "Analytics",
+      title: "Guides",
       description: "Track your performance",
       href: "#",
     },

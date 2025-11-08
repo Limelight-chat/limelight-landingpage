@@ -28,9 +28,7 @@ export default function ContactForm() {
   }>({ type: null, message: "" });
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -46,12 +44,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
-    // Validate required fields
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.message.trim()
-    ) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setSubmitStatus({
         type: "error",
         message: "Please fill in all required fields.",
@@ -61,18 +54,14 @@ export default function ContactForm() {
     }
 
     try {
-      // EmailJS configuration
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error(
-          "EmailJS configuration is missing. Please check your environment variables.",
-        );
+        throw new Error("EmailJS configuration is missing.");
       }
 
-      // Template parameters - matching exactly what works in EmailJS test
       const templateParams = {
         subject: formData.subject || "General Inquiry",
         from_name: formData.name,
@@ -85,11 +74,9 @@ export default function ContactForm() {
 
       setSubmitStatus({
         type: "success",
-        message:
-          "🎉 Message sent successfully! Thank you for contacting us. We'll get back to you within 24 hours.",
+        message: "🎉 Message sent! We'll get back to you within 24 hours.",
       });
 
-      // Reset form after a short delay to let user see the success message
       setTimeout(() => {
         setFormData({
           name: "",
@@ -102,10 +89,7 @@ export default function ContactForm() {
     } catch (error) {
       setSubmitStatus({
         type: "error",
-        message:
-          error instanceof Error
-            ? error.message
-            : "Sorry, there was an error sending your message. Please try again later.",
+        message: error instanceof Error ? error.message : "Something went wrong. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -113,8 +97,10 @@ export default function ContactForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} method="POST" action="#" className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6">
+
+      {/* Row 1: Name + Email */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2">
             Full Name *
@@ -126,7 +112,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="Your full name"
           />
         </div>
@@ -142,11 +128,14 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="your.email@example.com"
           />
         </div>
+      </div>
 
+      {/* Row 2: Company + Subject */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label htmlFor="company" className="block text-sm font-medium mb-2">
             Company (Optional)
@@ -157,7 +146,7 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="Your company name"
           />
         </div>
@@ -166,86 +155,55 @@ export default function ContactForm() {
           <label htmlFor="subject" className="block text-sm font-medium mb-2">
             Subject
           </label>
-          <select
+          <input
+            type="text"
             id="subject"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
-          >
-            <option value="">Select a subject</option>
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Sales Question">Sales Question</option>
-            <option value="Technical Support">Technical Support</option>
-            <option value="Partnership">Partnership</option>
-            <option value="Other">Other</option>
-          </select>
+            className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="What's this about?"
+          />
         </div>
+      </div>
 
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium mb-2">
-            Message *
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF8E2B] focus:border-transparent bg-background resize-vertical"
-            placeholder="Tell us how we can help you..."
-          ></textarea>
-        </div>
+      {/* Message */}
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium mb-2">
+          Message *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          value={formData.message}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-vertical"
+          placeholder="Tell us how we can help you..."
+        ></textarea>
+      </div>
 
-        {/* Status Messages */}
-        {submitStatus.type && (
-          <div
-            className={`p-4 rounded-md transition-all duration-300 ${
-              submitStatus.type === "success"
-                ? "bg-green-50 text-green-800 border border-green-200 shadow-md"
-                : "bg-red-50 text-red-800 border border-red-200"
-            }`}
-          >
-            <div className="flex items-center space-x-2">
-              {submitStatus.type === "success" ? (
-                <svg
-                  className="w-5 h-5 text-green-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="w-5 h-5 text-red-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              )}
-              <span className="font-medium">{submitStatus.message}</span>
-            </div>
-          </div>
-        )}
-
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+      {/* Status Message */}
+      {submitStatus.type && (
+        <div
+          className={`p-4 rounded-md ${
+            submitStatus.type === "success"
+              ? "bg-green-50 text-green-800 border border-green-200"
+              : "bg-red-50 text-red-800 border border-red-200"
+          }`}
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </Button>
-      </form>
-    </div>
+          {submitStatus.message}
+        </div>
+      )}
+
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full bg-primary hover:bg-primary/90"
+      >
+        {isSubmitting ? "Sending..." : "Send Message"}
+      </Button>
+    </form>
   );
 }

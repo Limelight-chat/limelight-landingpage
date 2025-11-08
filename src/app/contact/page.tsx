@@ -61,14 +61,6 @@ export default function Contact() {
             className="rounded-2xl border border-white/10 p-6 sm:p-8"
             style={{ background: "rgba(255, 255, 255, 0.03)" }}
           >
-            <div className="mb-6 text-[20px] font-medium text-white flex items-center gap-2">
-              <span style={{ color: accent }}>●</span> Contact Us
-            </div>
-
-            <div className="text-[13px] text-white/70 mb-8 leading-relaxed">
-              Fill out the form and our team will get back to you shortly.
-            </div>
-
             {/* Your existing form component will inherit the new styling container */}
             <ContactForm />
           </div>

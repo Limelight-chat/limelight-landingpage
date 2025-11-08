@@ -11,6 +11,7 @@ import { Integration } from "@/components/integration";
 import { Faq } from "@/components/faq";
 import UseCaseSwitcher from "@/components/UseCaseSwitcher";
 import ParallaxEffect from "@/components/parallaxeffect";
+import VideoEmbed from "@/components/VideoEmbed";
 
 
 
@@ -123,7 +124,9 @@ const items = cards.map((card, index) => (
             <Badge className=" text-sm">See it in action</Badge>
           </div>
           {/* Video Section  */}
-          <div className=" w-full h-[580px] bg-gray-500 rounded-4xl my-12"></div>
+          <div className=" rounded-4xl my-12">
+            <VideoEmbed videoId="dQw4w9WgXcQ" />
+          </div>
 
           <div className=" text-center py-12">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-8">

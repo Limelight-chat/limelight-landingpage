@@ -62,26 +62,31 @@ export default function Pricing() {
 
   return (
     <div
-      className="min-h-screen w-full"
-      style={{
-        background: "#171616",
-      }}
+      className="min-h-screen w-full flex justify-center"
+      style={{ background: "#171616" }}
     >
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
-        <div className="mb-6 text-xs tracking-[0.2em] text-white/60 uppercase">
+      <div
+        className="
+          mx-auto w-full max-w-[1200px]
+          px-4 sm:px-6 lg:px-8
+          py-6 sm:py-8 lg:py-6
+          flex flex-col justify-center
+        "
+      >
+        {/* Label */}
+        <div className="mb-4 text-xs tracking-[0.2em] text-white/60 uppercase">
           <span style={{ color: accent }}>●</span> Plans
         </div>
 
-
-        <h1 className="text-[40px] sm:text-[48px] leading-[1.1] font-semibold text-white">
+        <h1 className="text-[32px] sm:text-[44px] lg:text-[42px] leading-[1.1] font-semibold text-white">
           Pricing Plans
         </h1>
-        <p className="mt-3 text-[13px] sm:text-sm text-white/60 max-w-[720px]">
+        <p className="mt-2 text-[12px] sm:text-sm text-white/60 max-w-[620px]">
           Tailored pricing for teams of every size, from startups to enterprises.
         </p>
 
         {/* Cards */}
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 md:gap-5 lg:gap-6 md:grid-cols-3">
           {plans.map((plan, idx) => (
             <div
               key={plan.name}
@@ -94,53 +99,47 @@ export default function Pricing() {
               ].join(" ")}
               style={{ ["--accent" as any]: accent }}
             >
-
-              <div className="absolute left-3 top-3 text-[10px] tracking-[0.25em] text-white/60 uppercase select-none">
+              <div className="absolute left-3 top-3 text-[9px] tracking-[0.25em] text-white/60 uppercase select-none">
                 {String(idx + 1).padStart(2, "0")}{" "}
                 <span className="text-white/70">{plan.name}</span>
               </div>
 
-              {/* Card body */}
-              <div className="p-5 sm:p-6 lg:p-7">
+              <div className="p-5 sm:p-5 lg:p-6">
                 {/* Plan header */}
-                <div className="pt-4 pb-5">
+                <div className="pt-4 pb-4">
                   <div className="flex items-baseline gap-2">
-                    <div className="text-[28px] sm:text-[32px] font-semibold text-white">
+                    <div className="text-[24px] sm:text-[28px] lg:text-[26px] font-semibold text-white">
                       {plan.name}
                     </div>
                   </div>
-                  <div className="mt-2 flex items-end gap-1">
-                    <div className="text-[28px] sm:text-[32px] font-semibold text-white">
+                  <div className="mt-1 flex items-end gap-1">
+                    <div className="text-[26px] sm:text-[30px] lg:text-[28px] font-semibold text-white">
                       {plan.price}
                     </div>
-                    <div className="text-xs sm:text-sm text-white/60">
+                    <div className="text-[10px] sm:text-xs text-white/50">
                       {plan.period}
                     </div>
                   </div>
-                  <p className="mt-3 text-[13px] text-white/60">
+                  <p className="mt-2 text-[12px] text-white/60">
                     {plan.description}
                   </p>
                 </div>
 
-                {/* dotted divider */}
-                <div className="my-3 border-t border-dotted border-white/15" />
+                <div className="my-2 border-t border-dotted border-white/15" />
 
-                {/* Feature groups (single group to mirror screenshot spacing) */}
-                <div className="space-y-4 text-[13px]">
-                  {/* Section title mimic */}
-                  <div className="text-white/70 tracking-[0.18em] uppercase text-[11px]">
+                <div className="space-y-3 text-[12px] sm:text-[13px]">
+                  <div className="text-white/70 tracking-[0.18em] uppercase text-[10px]">
                     Core features
                   </div>
 
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {plan.features.map((f, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-3 text-white/80 leading-relaxed"
+                        className="flex items-start gap-2 text-white/80 leading-relaxed"
                       >
-                        {/* check icon */}
                         <svg
-                          className="mt-[2px] h-4 w-4 shrink-0"
+                          className="mt-[1px] h-3.5 w-3.5 shrink-0"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                           aria-hidden="true"
@@ -158,29 +157,23 @@ export default function Pricing() {
                   </ul>
                 </div>
 
+                <div className="my-3 border-t border-dotted border-white/15" />
 
-                <div className="my-5 border-t border-dotted border-white/15" />
-
-                {/* CTA */}
                 <div className="pt-1">
                   <Button
                     className={[
-                      "w-full h-9 rounded-full",
-                      "justify-center gap-2",
-                      "text-[13px] font-medium",
+                      "w-full h-8 sm:h-9 rounded-full",
+                      "text-[12px] sm:text-[13px] font-medium",
                       "bg-accent hover:bg-accent/90 text-black",
-                      "transition-colors",
                     ].join(" ")}
                     style={{ ["--accent" as any]: accent }}
                   >
-                    {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
-                    <span aria-hidden>→</span>
+                    {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"} →
                   </Button>
-
 
                   {plan.popular && (
                     <div
-                      className="mt-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] tracking-wide uppercase"
+                      className="mt-2 inline-flex items-center rounded-full px-2.5 py-1 text-[9px] tracking-wide uppercase"
                       style={{
                         background: "rgba(255, 142, 43, 0.12)",
                         color: accent,
@@ -196,15 +189,11 @@ export default function Pricing() {
           ))}
         </div>
 
-        <div className="mt-8 sm:mt-10 lg:mt-12 rounded-xl border border-white/10 bg-[rgba(255,255,255,0.02)] p-5 sm:p-6">
-          <div className="text-[13px] text-white/70">
-            All plans include a 14-day free trial. No credit card required. Need
-            a custom solution?{" "}
-            <a
-              href="/contact"
-              className="underline decoration-1 underline-offset-4"
-              style={{ color: accent }}
-            >
+        {/* Footer bar - shrunk for no scroll */}
+        <div className="mt-4 lg:mt-6 rounded-lg border border-white/10 bg-[rgba(255,255,255,0.02)] p-3">
+          <div className="text-[11px] sm:text-[12px] text-white/70">
+            14-day free trial. No credit card required.{" "}
+            <a href="/contact" className="underline underline-offset-4" style={{ color: accent }}>
               Contact us
             </a>
             .

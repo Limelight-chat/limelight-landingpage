@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Syne } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 import { Navbar5 } from "@/components/navbar5";
 import Footer from "@/components/footer";
@@ -30,6 +31,7 @@ export default function RootLayout({
         <Navbar5 />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

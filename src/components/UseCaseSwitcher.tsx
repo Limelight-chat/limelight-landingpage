@@ -9,17 +9,17 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 const data = {
   legal: {
     image: demoImg,
-    quote: "Our legal drafting is now 5–10x faster with Ragie’s RAG integration.",
+    quote: "Our legal drafting is now 5–10x faster with Limelight's RAG integration.",
     author: "Sampei Omichi, Founder & CEO, Ellis",
   },
   ecommerce: {
     image: demoImg,
-    quote: "Ragie reduced our support workload by 60% in the first month.",
+    quote: "Limelight reduced our support workload by 60% in the first month.",
     author: "Sarah Lee, COO, ShopFlow",
   },
   retail: {
     image: demoImg,
-    quote: "Ragie reduced our support workload by 60% in the first month.",
+    quote: "Limelight reduced our support workload by 60% in the first month.",
     author: "Sarah Lee, COO, ShopFlow",
   },
 };

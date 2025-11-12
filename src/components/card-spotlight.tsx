@@ -48,16 +48,15 @@ const CardSpotlightDemo = ({ title, content, imageSrc, blobColor = 'bg-orange-40
         <Card className='bg-[#202020] group-hover:bg-[#202020]/90 h-full w-full border-none transition-all duration-300 ease-in-out group-hover:backdrop-blur-[20px] flex flex-col'>
           {/* Image Section */}
           {imageSrc && (
-            <div className="flex-1 flex items-center justify-center p-4 overflow-hidden">
-              <Image
-                src={imageSrc}
-                alt={title}
-                width={120}
-                height={120}
-                className="object-contain max-w-full max-h-full"
-              />
-            </div>
-          )}
+          <div className="relative h-[65%] -mx-2">
+            <Image
+              src={imageSrc}
+              alt={title}
+              fill
+              className="object-contain w-full h-full scale-125"
+            />
+          </div>
+        )}
 
           {/* Title + Content at bottom-left */}
           <CardContent className="shrink-0 mt-auto p-4">

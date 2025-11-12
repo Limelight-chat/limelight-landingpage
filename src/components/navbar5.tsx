@@ -81,11 +81,11 @@ const Navbar5 = () => {
               Limelight
             </span>
               </Link>
-            <NavigationMenu className="hidden lg:block absolute left-1/2 -translate-x-1/2">
+            <NavigationMenu className="hidden lg:block absolute left-1/2 -translate-x-1/2" suppressHydrationWarning>
               <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink
-                  href="#"
+                  href="/product"
                   className={navigationMenuTriggerStyle()}
                 >
                   Product

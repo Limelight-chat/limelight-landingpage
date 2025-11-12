@@ -103,7 +103,7 @@ const Integration = ({
   return (
     <section className="py-4">
       <div className="container">
-        <h1 className="mb-8 text-left text-3xl font-semibold bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
+        <h1 className="mb-8 text-left text-3xl font-semibold bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent">
           {title}
         </h1>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">

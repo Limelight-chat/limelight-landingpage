@@ -2,8 +2,13 @@ import Image from "next/image";
 import ScrollVelocity from "@/components/ScrollVelocity";
 import StickyScrollPast from "@/components/ui/sticky-scroll-past";
 
+import gradient from "@/assets/gradient.svg"
 import cpu from "@/assets/cpu.svg";
 import refimg from '@/assets/ref-image.png'
+import step1 from '@/assets/product/step1.svg'
+import step2 from '@/assets/product/step2.svg'
+import step3 from '@/assets/product/step3.svg'
+import step4 from '@/assets/product/step4.svg'
 import { Badge } from "@/components/ui/badge";
 import { MultiStepLoader } from "@/components/ui/multi-step-loader";
 
@@ -19,19 +24,16 @@ export default function Product() {
 
       const phase = [
         {
-          heading: "Capture",
-          subheading: "We capture your knowledge instantly.",
-          image: "/steps/step1.png",
+          image: step1.src,
         },
         {
-          heading: "Understand",
-          subheading: "Our AI understands your context deeply.",
-          image: "/steps/step2.png",
+          image: step2.src,
         },
         {
-          heading: "Remember",
-          subheading: "We store your knowledge like an extension of your brain.",
-          image: "/steps/step3.png",
+          image: step3.src,
+        },
+        {
+          image: step4.src,
         },
       ];
 
@@ -74,8 +76,12 @@ export default function Product() {
             </div>
         </section>
 
-        
-        <StickyScrollPast steps={phase} className=" text-white" />
+
+        <section className="w-full">
+            <div className="max-w-5xl mx-auto px-6">
+                <StickyScrollPast steps={phase} className="text-white" />
+            </div>
+        </section>
         {/* Features */}
         <section className="w-full pt-24">
             <div className="max-w-5xl mx-auto px-6">

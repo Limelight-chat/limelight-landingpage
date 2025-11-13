@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
 
 type Step = {
-  heading: string;
+  heading?: string;
   subheading?: string;
   image: string;
   alt?: string;
@@ -36,11 +36,11 @@ export default function StickyScrollPast({
 
           {/* LEFT — Static Content */}
           <div className="flex flex-col items-start justify-center px-10">
-            <h2 className="text-4xl md:text-6xl font-semibold leading-tight">
-              How it works
+            <h2 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight">
+              From scattered knowledge to instant clarity.
             </h2>
-            <p className="mt-4 max-w-md text-lg text-white/80">
-              A smooth, guided walkthrough of our product in action.
+            <p className="mt-4 max-w-md text-lg text-white/80 leading-tight tracking-tight">
+              Limelight unifies your tools, conversations, and documents into one intelligent workspace  so your team can search, understand, and act in seconds.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function StickyScrollPast({
                 <motion.img
                   key={i}
                   src={step.image}
-                  alt={step.alt ?? step.heading}
+                  alt={step.alt ?? step.heading ?? `Step ${i + 1}`}
                   style={{ opacity, scale }}
                   className="absolute h-[70%] w-auto object-contain"
                   draggable={false}

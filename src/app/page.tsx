@@ -7,7 +7,10 @@ import card4 from "@/assets/cards/card 4.svg";
 import card5 from "@/assets/cards/card 5.svg";
 import card6 from "@/assets/cards/card 6.svg";
 import card7 from "@/assets/cards/card 7.svg";
-import test from "@/assets/Rectangle 115 (2).png"
+
+import business from "@/assets/business.svg"
+import founder from "@/assets/founder.svg"
+import teams from "@/assets/teams.svg"
 
 // Animation images for sticky scroll
 import imgOneFirst from "@/assets/animation/imgone-first.svg";
@@ -236,17 +239,17 @@ const items = cards.map((card, index) => (
             <CardSpotlight
               title="For Business Owners"
               content="Limelight finds numbers, reports, and insights buried across your tools in seconds."
-              imageSrc={test}
+              imageSrc={business}
             />
             <CardSpotlight
               title="For Founders"
               content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
-              imageSrc={test}
+              imageSrc={founder}
             />
             <CardSpotlight
               title="For Teams"
               content="Work smarter together. Find answers and context instantly, across every app you use every day."
-              imageSrc={test}
+              imageSrc={teams}
             />
           </div>
         </div>

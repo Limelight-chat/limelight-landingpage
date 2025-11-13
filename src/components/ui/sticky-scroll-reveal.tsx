@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { cn } from "@/lib/utils";
 import { StaticImageData } from "next/image";
+import Prism from "@/components/Prism";
 
 type Slide = {
   title: string;
@@ -177,7 +178,7 @@ export default function StickyCrossfadeWithEmojis({
                 const [jitter, setJitter] = React.useState({ x: 0, y: 0 });
                 const [rotation, setRotation] = React.useState(
                   emoji.angle ?? 0
-                );
+                ); 
 
                 useAnimationFrame(() => {
                   if (emoji.anger) {
@@ -242,11 +243,26 @@ export default function StickyCrossfadeWithEmojis({
               style={{ opacity: introOpacity }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center space-y-4"
             >
+              {/* Prism Background */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <Prism
+                  animationType="3drotate"
+                  timeScale={0.5}
+                  height={3.5}
+                  baseWidth={5.5}
+                  scale={3.6}
+                  hueShift={-0.24}
+                  colorFrequency={1.5}
+                  noise={0}
+                  glow={1}
+                />
+              </div>
+
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-bold text-white"
+                className="text-3xl sm:text-4xl md:text-5xl text-white relative z-10"
               >
                 Introducing
               </motion.h2>
@@ -255,7 +271,7 @@ export default function StickyCrossfadeWithEmojis({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 1 }}
-                className="text-5xl sm:text-6xl md:text-9xl font-extrabold bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] text-transparent bg-clip-text tracking-wide"
+                className="text-5xl sm:text-6xl md:text-9xl bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] text-transparent bg-clip-text tracking-wide relative z-10"
               >
                 LIMELIGHT
               </motion.h1>
@@ -264,7 +280,7 @@ export default function StickyCrossfadeWithEmojis({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className="text-lg sm:text-xl text-white"
+                className="text-lg sm:text-xl text-white relative z-10"
               >
                 AI search engine for your data
               </motion.p>

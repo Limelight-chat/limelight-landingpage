@@ -193,7 +193,7 @@ const items = cards.map((card, index) => (
                   { src: imgTwoFourth, position: "left" },
                 ],
                 emojis: [
-                  { src: angryEmoji, alt: "angry", x: -400, y: -150, size: 250, anger: true, angle: -42  },
+                  { src: angryEmoji, alt: "angry", x: -400, y: -150,  size: 250, anger: true, angle: -42  },
                   { src: angryEmoji, alt: "angry", x: 400, y: -300, size: 170, anger: true, angle: 10  },
                   { src: angryEmoji, alt: "angry", x: -400, y: 250, size: 190, anger: true, angle: -11  },
                   { src: angryEmoji, alt: "angry", x: 400, y: 250, size: 270, anger: true, angle: 30 },

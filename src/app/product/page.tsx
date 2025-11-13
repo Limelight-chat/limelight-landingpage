@@ -15,12 +15,14 @@ import { MultiStepLoader } from "@/components/ui/multi-step-loader";
 export default function Product() {
 
     const steps = [
-        { text: "Buying a condo" },
-        { text: "Travelling in a flight" },
-        { text: "Meeting Tyler Durden" },
-        { text: "He makes soap" },
-        { text: "Project Mayhem?" },
-      ];
+    { text: "Connecting data sources" },
+    { text: "Ingesting raw text and metadata" },
+    { text: "Cleaning, parsing, and chunking" },
+    { text: "Generating vector embeddings" },
+    { text: "Storing in a secure vector database" },
+    { text: "Retrieving context in milliseconds" },
+    { text: "Answering with precision and memory" },
+    ];
 
       const phase = [
         {
@@ -182,36 +184,23 @@ export default function Product() {
                 </div>
 
                     {/* Right: First Paragraph */}
-                    <p className="text-lg leading-relaxed text-center md:text-left">
-                        Limelight makes business knowledge instantly searchable for fast-moving teams. 
-                        No more digging through files, chats, and drives. Limelight makes business knowledge instantly searchable for fast-moving teams. 
-                        No more digging through files, chats, and drives.
+                    <p className="text-lg text-center md:text-left">
+                        Limelight integrates seamlessly with your existing tools, drives, and business applications connecting data from emails, chats, documents, and project systems through secure APIs. Once connected, it begins the ingestion process, streaming both structured and unstructured data into a unified pipeline. Advanced preprocessing automatically cleans, parses, and chunks long-form text while preserving semantic context preparing it for embedding and vectorization.
                     </p>
                 </div>
 
                 {/* Remaining Paragraphs - Full Width */}
-                <div className="space-y-4 max-w-3xl mx-auto text-center">
+                <div className="text-lg space-y-4 max-w-3xl mx-auto text-center">
                     <p>
-                        Limelight makes business knowledge instantly searchable for fast-moving teams. 
-                        No more digging through files, chats, and drives.
+                        Every piece of information that enters Limelight is transformed into high-dimensional vector embeddings, representing the meaning and relationships behind your content. These embeddings are indexed in a secure vector database, optimized for millisecond-level retrieval. This architecture enables Limelight to perform semantic search and contextual matching, far beyond traditional keyword systems ensuring accurate and context-aware results, even across diverse data sources.
                     </p>
                     <p>
-                        Limelight makes business knowledge instantly searchable for fast-moving teams. 
-                        No more digging through files, chats, and drives.
+                        When a user asks a question, Limelight’s retrieval-augmented generation (RAG) layer springs into action. It retrieves the most relevant embeddings, reassembles context, and passes it to the AI reasoning engine, which generates precise, data-grounded responses. The result is a system that doesn’t just recall information it understands it, enabling fast, reliable insights across enterprise-scale knowledge networks. Limelight turns your company’s scattered data into an intelligent, searchable memory that grows smarter with every query.
                     </p>
                 </div>
 
                 </div>
-            </section>
-
-            <section>
-                <div>
-
-                </div>
-                <div>
-
-                </div>
-            </section>
+            </section> 
     </div>
   );
 }

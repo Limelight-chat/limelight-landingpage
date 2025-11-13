@@ -179,6 +179,35 @@ export default function StickyCrossfadeWithEmojis({
                 const [rotation, setRotation] = React.useState(
                   emoji.angle ?? 0
                 ); 
+                const [responsiveX, setResponsiveX] = React.useState(emoji.x ?? 0);
+                const [responsiveSize, setResponsiveSize] = React.useState(emoji.size ?? 60);
+
+                React.useEffect(() => {
+                  const updateResponsiveValues = () => {
+                    const width = window.innerWidth;
+                    const baseX = emoji.x ?? 0;
+                    const baseSize = emoji.size ?? 60;
+                    
+                    // Scale down x position and size for smaller screens
+                    if (width < 640) { // sm breakpoint
+                      setResponsiveX(baseX * 0.25); // 25% of original position
+                      setResponsiveSize(baseSize * 0.8); // 40% of original size
+                    } else if (width < 768) { // md breakpoint
+                      setResponsiveX(baseX * 0.4); // 40% of original position
+                      setResponsiveSize(baseSize * 0.5); // 50% of original size
+                    } else if (width < 1024) { // lg breakpoint
+                      setResponsiveX(baseX * 0.6); // 60% of original position
+                      setResponsiveSize(baseSize * 0.7); // 70% of original size
+                    } else {
+                      setResponsiveX(baseX);
+                      setResponsiveSize(baseSize);
+                    }
+                  };
+
+                  updateResponsiveValues();
+                  window.addEventListener('resize', updateResponsiveValues);
+                  return () => window.removeEventListener('resize', updateResponsiveValues);
+                }, [emoji.x, emoji.size]);
 
                 useAnimationFrame(() => {
                   if (emoji.anger) {
@@ -211,12 +240,12 @@ export default function StickyCrossfadeWithEmojis({
                       opacity: opacityEmoji,
                       scale: scaleEmoji,
                       y: yEmoji,
-                      x: (emoji.x ?? 0) + jitter.x,
+                      x: responsiveX + jitter.x,
                       translateY: jitter.y,
                       rotate: rotation,
                       position: "absolute",
-                      width: emoji.size ?? 60,
-                      height: emoji.size ?? 60,
+                      width: responsiveSize,
+                      height: responsiveSize,
                     }}
                     draggable={false}
                   />
@@ -271,7 +300,7 @@ export default function StickyCrossfadeWithEmojis({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 1 }}
-                className="text-5xl sm:text-6xl md:text-9xl bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] text-transparent bg-clip-text tracking-wide relative z-10"
+                className="text-6xl sm:text-7xl md:text-9xl bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] text-transparent bg-clip-text tracking-wide relative z-10"
               >
                 LIMELIGHT
               </motion.h1>

@@ -6,23 +6,27 @@ import { cn } from "@/lib/utils";
 
 type Direction = "TOP" | "LEFT" | "BOTTOM" | "RIGHT";
 
-export function HoverBorderGradient({
-  children,
-  containerClassName,
-  className,
-  as: Tag = "button",
-  duration = 1,
-  clockwise = true,
-  ...props
-}: React.PropsWithChildren<
-  {
-    as?: React.ElementType;
-    containerClassName?: string;
-    className?: string;
-    duration?: number;
-    clockwise?: boolean;
-  } & React.HTMLAttributes<HTMLElement>
->) {
+type HoverBorderGradientProps<T extends React.ElementType = "button"> = {
+  as?: T;
+  containerClassName?: string;
+  className?: string;
+  duration?: number;
+  clockwise?: boolean;
+  children?: React.ReactNode;
+} & Omit<React.ComponentPropsWithoutRef<T>, "children">;
+
+export function HoverBorderGradient<T extends React.ElementType = "button">(
+  props: HoverBorderGradientProps<T>
+) {
+  const {
+    children,
+    containerClassName,
+    className,
+    as: Tag = "button",
+    duration = 1,
+    clockwise = true,
+    ...rest
+  } = props as HoverBorderGradientProps<T> & Record<string, unknown>;
   const [hovered, setHovered] = useState<boolean>(false);
   const [direction, setDirection] = useState<Direction>("TOP");
 
@@ -56,16 +60,15 @@ export function HoverBorderGradient({
     }
   }, [hovered]);
   return (
+    // `Tag` is a generic element type — use `as any` to satisfy JSX typing for dynamic tags
     <Tag
-      onMouseEnter={(event: React.MouseEvent<HTMLDivElement>) => {
-        setHovered(true);
-      }}
+      onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(
         "relative flex rounded-full border  content-center bg-[#171616]/20 hover:bg-[#171616]/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
         containerClassName
       )}
-      {...props}
+      {...(rest as any)}
     >
       <div
         className={cn(

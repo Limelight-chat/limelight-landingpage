@@ -151,12 +151,7 @@ const items = cards.map((card, index) => (
         >
         <div className="flex flex-col items-center text-center px-6">
           {/* Main Headline */}
-          <h1
-            className="font-light tracking-tight leading-[1.05]
-                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
-                 bg-linear-to-b from-[#6f6f6f] to-white
-                 bg-clip-text text-transparent"
-          >
+          <h1 className="font-light tracking-tight leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
             The future <br />
             of business is <br />
 

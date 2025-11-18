@@ -142,58 +142,64 @@ const items = cards.map((card, index) => (
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden -z-10">
         <WavyBackground
-          colors={["#E67820", "#ED3658"]}
-          speed="fast"
-          backgroundFill="#171616"
-          blur={25}
-        >
-        <div className="flex flex-col items-center text-center px-6">
-          {/* Main Headline */}
-          <h1 className="font-light tracking-tight leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
-            The future <br />
-            of business is <br />
+            colors={["#E67820", "#ED3658"]}
+            speed="fast"
+            backgroundFill="#171616"
+            blur={25}
+          >
+        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10">
+          
+          <div className="flex flex-col items-center text-center px-6">
+            {/* Main Headline */}
+            <h1 className="font-light tracking-tight leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
+              The future <br />
+              of business is <br />
 
-            {/* Human + AI Row */}
-            <span className="inline-flex items-center gap-3 mt-2">
-              <Image
-                src={fingerprint}
-                alt="fingerprint"
-                width={80}
-                height={80}
-                className="inline-block opacity-90"
-              />
-              <span className="text-white">human</span>
-              <span className="text-white">+</span>
-              <Image
-                src={aiIcon}
-                alt="ai"
-                width={80}
-                height={80}
-                className="inline-block opacity-90"
-              />
-              <span className="text-white">AI</span>
-            </span>
-          </h1>
+              {/* Human + AI Row */}
+              <span className="inline-flex items-center gap-3 mt-2">
+                <Image
+                  src={fingerprint}
+                  alt="fingerprint"
+                  width={80}
+                  height={80}
+                  className="inline-block opacity-90"
+                />
+                <span className="text-white">human</span>
+                <span className="text-white">+</span>
+                <Image
+                  src={aiIcon}
+                  alt="ai"
+                  width={80}
+                  height={80}
+                  className="inline-block opacity-90"
+                />
+                <span className="text-white">AI</span>
+              </span>
+            </h1>
 
-          {/* Subtext */}
-          <p className="text-white/60 text-lg md:text-xl mt-8 max-w-2xl">
-            Limelight is <span className="text-white">an AI search engine</span> for your business data. <br />
-            Instant, accurate answers from your company’s files, documents, and knowledge.
-          </p>
+            {/* Subtext */}
+            <p className="text-white/60 text-lg md:text-xl mt-8 max-w-2xl">
+              Limelight is <span className="text-white">an AI search engine</span> for your business data. <br />
+              Instant, accurate answers from your company’s files, documents, and knowledge.
+            </p>
 
-          {/* Button */}
-          <div className="mt-10">
-            <HoverBorderGradient
-                containerClassName="rounded-2xl"
-                as="button"
-                className=" backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer "
-              >
-                <span>Try Limelight</span>
-              </HoverBorderGradient>
+            {/* Button */}
+            <section className=" z-10">
+              <div className="mt-10">
+              <HoverBorderGradient
+                  containerClassName="rounded-2xl"
+                  as="button"
+                  className=" backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
+                >
+                  <span>Try Limelight</span>
+                </HoverBorderGradient>
+            </div>
+            </section>
+            
           </div>
-        </div>
+        </section>
         </WavyBackground>
       </section>
 

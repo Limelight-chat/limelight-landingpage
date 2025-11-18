@@ -39,8 +39,11 @@ import relievedEmoji from "@/assets/animation/icons/relieved.png"
 import waveEmoji from "@/assets/animation/icons/wave.png"
 
 
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import backgroundimg from "@/assets/bg-main-a.png";
+import fingerprint from "@/assets/fingerprint.svg";
+import aiIcon from "@/assets/ai.svg";
 import { Badge } from "@/components/ui/badge";
 import CardSpotlight from "@/components/card-spotlight";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
@@ -50,6 +53,8 @@ import UseCaseSwitcher from "@/components/UseCaseSwitcher";
 import ParallaxEffect from "@/components/parallaxeffect";
 import VideoEmbed from "@/components/VideoEmbed";
 import StickyScrollReveal from "@/components/ui/sticky-scroll-reveal";
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 
 
@@ -137,33 +142,65 @@ const items = cards.map((card, index) => (
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative h-screen w-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${backgroundimg.src})` }}
-      >
-
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Button
-            variant="default"
-            className="px-8 py-6 text-base"
-          >
-            Try Limelight
-          </Button>
-        </div>
-
-        <div
-          className=" absolute left-1/2 -translate-x-1/2 w-full max-w-xl px-4 text-center bottom-[calc(50%+84px)] md:bottom-[calc(50%+146px)] flex flex-col items-center gap-4"
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <WavyBackground
+          colors={["#E67820", "#ED3658"]}
+          speed="fast"
+          backgroundFill="#171616"
+          blur={25}
         >
-          <h1 className="text-4xl md:text-5xl leading-tight">
-            Search engine for your business data.
+        <div className="flex flex-col items-center text-center px-6">
+          {/* Main Headline */}
+          <h1
+            className="font-light tracking-tight leading-[1.05]
+                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
+                 bg-linear-to-b from-[#6f6f6f] to-white
+                 bg-clip-text text-transparent"
+          >
+            The future <br />
+            of business is <br />
+
+            {/* Human + AI Row */}
+            <span className="inline-flex items-center gap-3 mt-2">
+              <Image
+                src={fingerprint}
+                alt="fingerprint"
+                width={80}
+                height={80}
+                className="inline-block opacity-90"
+              />
+              <span className="text-white">human</span>
+              <span className="text-white">+</span>
+              <Image
+                src={aiIcon}
+                alt="ai"
+                width={80}
+                height={80}
+                className="inline-block opacity-90"
+              />
+              <span className="text-white">AI</span>
+            </span>
           </h1>
 
-          <p className="text-lg md:text-xl max-w-[400px] -mt-2">
-            Instant, accurate answers from your company's files, documents, and knowledge on web or phone.
+          {/* Subtext */}
+          <p className="text-white/60 text-lg md:text-xl mt-8 max-w-2xl">
+            Limelight is <span className="text-white">an AI search engine</span> for your business data. <br />
+            Instant, accurate answers from your company’s files, documents, and knowledge.
           </p>
-        </div>
-      </section>
 
+          {/* Button */}
+          <div className="mt-10">
+            <HoverBorderGradient
+                containerClassName="rounded-2xl"
+                as="button"
+                className=" backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer "
+              >
+                <span>Try Limelight</span>
+              </HoverBorderGradient>
+          </div>
+        </div>
+        </WavyBackground>
+      </section>
 
       {/* After Hero Section */}
       <StickyScrollReveal

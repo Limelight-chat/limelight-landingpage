@@ -3,7 +3,7 @@ import ScrollVelocity from "@/components/ScrollVelocity";
 import StickyScrollPast from "@/components/ui/sticky-scroll-past";
 
 import gradient from "@/assets/gradient.svg"
-import cpu from "@/assets/cpu.svg";
+import cpu from "@/assets/cpu.png";
 import refimg from '@/assets/ref-image.png'
 import step1 from '@/assets/product/step1.svg'
 import step2 from '@/assets/product/step2.svg'

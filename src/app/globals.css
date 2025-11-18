@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -15,6 +17,22 @@
   --color-muted-foreground: var(--muted-foreground);
 
   --radius-lg: var(--radius);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-sidebar-border: var(--sidebar-border);
+
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --color-sidebar-accent: var(--sidebar-accent);
+
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+
+  --color-sidebar-primary: var(--sidebar-primary);
+
+  --color-sidebar-foreground: var(--sidebar-foreground);
+
+  --color-sidebar: var(--sidebar);
 }
 
 /* --- Dark Mode (Primary Brand Theme) --- */
@@ -26,11 +44,19 @@
   --primary: #ff8e2b;
   --primary-foreground: #000000;
 
-  --accent: #ff7bca;
+  --accent: #ff8e2b;
   --accent-foreground: #000000;
 
   --muted: #2a2a2a;
   --muted-foreground: #b5b5b5;
+  --sidebar: #171616;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ff8e2b;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #ff8e2b;
 }
 
 /* --- Base Global Styles --- */
@@ -85,3 +111,35 @@
   background-color: rgba(19, 83, 242, 0.6);
   color: #fff;
 }
+
+html:not(.dark) {
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+/* Textarea scrollbar: make track/background transparent while keeping a visible thumb */
+[data-slot="input-group-control"] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.14) transparent;
+}
+
+/* WebKit (Chrome, Safari) */
+[data-slot="input-group-control"]::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+[data-slot="input-group-control"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+[data-slot="input-group-control"]::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  border: none;
+}
+

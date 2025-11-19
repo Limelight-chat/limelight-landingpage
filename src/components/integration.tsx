@@ -80,7 +80,7 @@ const DATA = [
     id: 7,
     icons: ["notion"],
     title: "Notion",
-    description: "Search and analyze your Drive files with context intact.",
+    description: "Search and analyze your Notion pages with full context preserved.",
   },
   {
     id: 9,

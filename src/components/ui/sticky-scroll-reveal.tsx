@@ -11,6 +11,64 @@ import { cn } from "@/lib/utils";
 import { StaticImageData } from "next/image";
 import Prism from "@/components/Prism";
 
+function PrismResponsive() {
+  const [dimensions, setDimensions] = React.useState({
+    height: 3.5,
+    baseWidth: 5.5,
+    scale: 3.6,
+  });
+
+  React.useEffect(() => {
+    const updateDimensions = () => {
+      const width = window.innerWidth;
+      
+      if (width < 640) { // sm breakpoint
+        setDimensions({
+          height: 2.5,
+          baseWidth: 3.5,
+          scale: 2.2,
+        });
+      } else if (width < 768) { // md breakpoint
+        setDimensions({
+          height: 3.0,
+          baseWidth: 4.5,
+          scale: 2.8,
+        });
+      } else if (width < 1024) { // lg breakpoint
+        setDimensions({
+          height: 3.2,
+          baseWidth: 5.0,
+          scale: 3.2,
+        });
+      } else {
+        setDimensions({
+          height: 3.5,
+          baseWidth: 5.5,
+          scale: 3.6,
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  return (
+    <Prism
+      animationType="3drotate"
+      timeScale={0.5}
+      height={dimensions.height}
+      baseWidth={dimensions.baseWidth}
+      scale={dimensions.scale}
+      hueShift={-0.24}
+      colorFrequency={1.5}
+      noise={0}
+      glow={1}
+    />
+  );
+}
+
 type Slide = {
   title: string;
   description?: string;
@@ -274,17 +332,7 @@ export default function StickyCrossfadeWithEmojis({
             >
               {/* Prism Background */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <Prism
-                  animationType="3drotate"
-                  timeScale={0.5}
-                  height={3.5}
-                  baseWidth={5.5}
-                  scale={3.6}
-                  hueShift={-0.24}
-                  colorFrequency={1.5}
-                  noise={0}
-                  glow={1}
-                />
+                <PrismResponsive />
               </div>
 
               <motion.h2

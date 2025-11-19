@@ -123,23 +123,4 @@ html:not(.dark) {
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
-/* Textarea scrollbar: make track/background transparent while keeping a visible thumb */
-[data-slot="input-group-control"] {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.14) transparent;
-}
-
-/* WebKit (Chrome, Safari) */
-[data-slot="input-group-control"]::-webkit-scrollbar {
-  width: 10px;
-  height: 8px;
-}
-[data-slot="input-group-control"]::-webkit-scrollbar-track {
-  background: transparent;
-}
-[data-slot="input-group-control"]::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,0.12);
-  border-radius: 999px;
-  border: none;
-}
 

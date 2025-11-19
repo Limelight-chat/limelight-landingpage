@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from "motion/react";
 import card1 from "@/assets/cards/card 1.jpg";
 import card2 from "@/assets/cards/card 2.jpg";
 import card3 from "@/assets/cards/card 3.jpg";
@@ -38,6 +39,7 @@ import coolEmoji from "@/assets/animation/icons/cool.png"
 import relievedEmoji from "@/assets/animation/icons/relieved.png"
 import waveEmoji from "@/assets/animation/icons/wave.png"
 
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -147,23 +149,24 @@ const items = cards.map((card, index) => (
             speed="fast"
             backgroundFill="#171616"
             blur={25}
+            className="flex items-center justify-center"
           >
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10">
+        <div className="relative w-full h-full flex items-center justify-center z-10 -mt-12 sm:-mt-8 md:mt-0">
           
-          <div className="flex flex-col items-center text-center px-6">
+          <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6 w-full max-w-7xl mx-auto">
             {/* Main Headline */}
-            <h1 className="font-light tracking-tight leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
+            <h1 className="font-light tracking-tight leading-[1.05] text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
               The future <br />
               of business is <br />
 
               {/* Human + AI Row */}
-              <span className="inline-flex items-center gap-3 mt-2">
+              <span className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 mt-2 sm:mt-3">
                 <Image
                   src={fingerprint}
                   alt="fingerprint"
                   width={80}
                   height={80}
-                  className="inline-block opacity-90"
+                  className="inline-block opacity-90 w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
                 />
                 <span className="text-white">human</span>
                 <span className="text-white">+</span>
@@ -172,35 +175,33 @@ const items = cards.map((card, index) => (
                   alt="ai"
                   width={80}
                   height={80}
-                  className="inline-block opacity-90"
+                  className="inline-block opacity-90 w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
                 />
                 <span className="text-white">AI</span>
               </span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-white/60 text-lg md:text-xl mt-8 max-w-2xl">
-              Limelight is <span className="text-white">an AI search engine</span> for your business data. <br />
+            <p className="text-white/60 text-base sm:text-lg md:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl px-2">
+              Limelight is <span className="text-white">an AI search engine</span> for your business data. <br className="hidden sm:block" />
               Instant, accurate answers from your company’s files, documents, and knowledge.
             </p>
 
             {/* Button */}
-            <section className=" z-10">
-              <div className="mt-10">
-                <Link href="/pricing">
-                  <HoverBorderGradient
-                    containerClassName="rounded-2xl"
-                    as="button"
-                    className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
-                  >
-                    <span>Try Limelight</span>
-                  </HoverBorderGradient>
-                </Link>
-              </div>
-            </section>
+            <div className="mt-8 sm:mt-10 flex justify-center w-full">
+              <Link href="/pricing">
+                <HoverBorderGradient
+                  containerClassName="rounded-2xl"
+                  as="button"
+                  className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
+                >
+                  <span>Try Limelight</span>
+                </HoverBorderGradient>
+              </Link>
+            </div>
             
           </div>
-        </section>
+        </div>
         </WavyBackground>
       </section>
 
@@ -259,7 +260,13 @@ const items = cards.map((card, index) => (
       <section className=" z-10 py-12">
     
         <div className="max-w-5xl mx-auto px-6">
-          <div className=" text-center py-12">
+          <motion.div 
+            className=" text-center py-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-8">
               <div className="lg:w-1/2">
                 <h1 className="text-4xl lg:text-6xl text-left bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent">
@@ -272,24 +279,38 @@ const items = cards.map((card, index) => (
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <CardSpotlight
-              title="For Business Owners"
-              content="Limelight finds numbers, reports, and insights buried across your tools in seconds."
-              imageSrc={business}
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <CardSpotlight
+                title="For Business Owners"
+                content="Limelight finds numbers, reports, and insights buried across your tools in seconds."
+                imageSrc={business}
+              />
+            </motion.div>
             <CardSpotlight
               title="For Founders"
               content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
               imageSrc={founder}
             />
-            <CardSpotlight
-              title="For Teams"
-              content="Work smarter together. Find answers and context instantly, across every app you use every day."
-              imageSrc={teams}
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <CardSpotlight
+                title="For Teams"
+                content="Work smarter together. Find answers and context instantly, across every app you use every day."
+                imageSrc={teams}
+              />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -303,11 +324,23 @@ const items = cards.map((card, index) => (
       <section className=" z-10 py-12 bg-background">
         
         <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+          >
             <Badge className=" text-sm">Features</Badge>
-          </div>
+          </motion.div>
 
-          <div className=" text-center py-12">
+          <motion.div 
+            className=" text-center py-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-8">
               <div className="lg:w-1/2">
                 <h1 className="text-4xl lg:text-6xl text-left bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent">
@@ -320,25 +353,42 @@ const items = cards.map((card, index) => (
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Carousel Cards */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
           <Carousel items={items} />
-        </div>
+        </motion.div>
       </section>
 
       {/* see how it works section here */}
       <section className=" z-10 py-12">
         <div>
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+          >
               <Badge className=" text-sm">See it in action</Badge>
-          </div>
+          </motion.div>
 
-          <div className=" rounded-4xl my-12">
+          <motion.div 
+            className=" rounded-4xl my-12"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
             <VideoEmbed videoId="bd0msvYyQ6Y" />
-          </div>
+          </motion.div>
 
           {/* text which wont leak + image */}
           <div className="max-w-5xl mx-auto px-6">
@@ -351,36 +401,74 @@ const items = cards.map((card, index) => (
       {/* Supported databases */}
       <section className=" z-10 py-12">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+          >
               <Badge className=" text-sm">Supported databases</Badge>
-          </div>
-
-          <Integration />
+          </motion.div>
+         
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Integration />
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials */}
       <section className=" z-10 py-12">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+          >
               <Badge className=" text-sm">Client Testimonials</Badge>
-          </div>
-          <div className="text-center py-12">
+          </motion.div>
+          <motion.div 
+            className="text-center py-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <h1 className="text-4xl lg:text-6xl text-left bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent max-w-xl">
               Built for real-world applications
             </h1>
             <UseCaseSwitcher />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FQA */}
       <section className=" z-10 py-12">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+          >
               <Badge className=" text-sm">Questions? Answers</Badge>
-          </div>
-          <Faq />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Faq />
+          </motion.div>
         </div>
       </section>
 

@@ -100,27 +100,12 @@ const Navbar5 = () => {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[600px] grid-cols-2 p-3 bg-[#1D1C1C] rounded-md">
-                    {features.map((feature, index) => (
-                      <NavigationMenuLink
-                        href={feature.href}
-                        key={index}
-                        className="hover:bg-muted/70 rounded-md p-3 transition-colors"
-                      >
-                        <div key={feature.title}>
-                          <p className="text-foreground mb-1 font-semibold">
-                            {feature.title}
-                          </p>
-                          <p className="text-muted-foreground text-sm">
-                            {feature.description}
-                          </p>
-                        </div>
-                      </NavigationMenuLink>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
+                <NavigationMenuLink
+                  href="/blog"
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Blog
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
@@ -160,42 +145,18 @@ const Navbar5 = () => {
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col p-4">
-                <Accordion type="single" collapsible className="mb-2 mt-4">
-                  <AccordionItem value="solutions" className="border-none">
-                    <AccordionTrigger className="text-base hover:no-underline">
-                      Features
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="grid md:grid-cols-2">
-                        {features.map((feature, index) => (
-                          <a
-                            href={feature.href}
-                            key={index}
-                            className="hover:bg-muted/70 rounded-md p-3 transition-colors"
-                          >
-                            <div key={feature.title}>
-                              <p className="text-foreground mb-1 font-semibold">
-                                {feature.title}
-                              </p>
-                              <p className="text-muted-foreground text-sm">
-                                {feature.description}
-                              </p>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
                 <div className="flex flex-col gap-6">
-                  <a href="#" className="font-medium">
-                    Templates
+                  <a href="/product" className="font-medium">
+                    Product
                   </a>
-                  <a href="#" className="font-medium">
+                  <a href="/pricing" className="font-medium">
+                    Pricing
+                  </a>
+                  <a href="/blog" className="font-medium">
                     Blog
                   </a>
-                  <a href="#" className="font-medium">
-                    Pricing
+                  <a href="/contact" className="font-medium">
+                    Contact Us
                   </a>
                 </div>
                 <div className="mt-6 flex flex-col gap-4">

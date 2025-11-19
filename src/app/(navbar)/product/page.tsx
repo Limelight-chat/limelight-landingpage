@@ -1,4 +1,6 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
 import ScrollVelocity from "@/components/ScrollVelocity";
 import StickyScrollPast from "@/components/ui/sticky-scroll-past";
 
@@ -11,6 +13,11 @@ import step3 from '@/assets/product/step3.svg'
 import step4 from '@/assets/product/step4.svg'
 import { Badge } from "@/components/ui/badge";
 import { MultiStepLoader } from "@/components/ui/multi-step-loader";
+
+export const metadata: Metadata = {
+  title: "Product — Limelight",
+  description: "AI Search engine for your business data, built using RAG.",
+};
 
 export default function Product() {
 
@@ -65,7 +72,7 @@ export default function Product() {
             sm:w-[180px]
             md:w-[200px]
             lg:w-[230px]
-            xl:w-[300px]
+            xl:w-[320px]
             h-auto"
         />
         </div>

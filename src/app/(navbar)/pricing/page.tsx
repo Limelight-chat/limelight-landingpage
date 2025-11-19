@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Pricing",
-  description: "Choose the perfect plan for your needs",
+  title: "Pricing — Limelight",
+  description: "Simple and transparent pricing for the Limelight workspace.",
 };
 
 type Plan = {

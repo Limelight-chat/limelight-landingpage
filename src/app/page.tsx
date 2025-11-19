@@ -1,16 +1,16 @@
 'use client'
 
-import card1 from "@/assets/cards/card 1.svg";
-import card2 from "@/assets/cards/card 2.svg";
-import card3 from "@/assets/cards/card 3.svg";
-import card4 from "@/assets/cards/card 4.svg";
-import card5 from "@/assets/cards/card 5.svg";
-import card6 from "@/assets/cards/card 6.svg";
-import card7 from "@/assets/cards/card 7.svg";
+import card1 from "@/assets/cards/card 1.jpg";
+import card2 from "@/assets/cards/card 2.jpg";
+import card3 from "@/assets/cards/card 3.jpg";
+import card4 from "@/assets/cards/card 4.jpg";
+import card5 from "@/assets/cards/card 5.jpg";
+import card6 from "@/assets/cards/card 6.jpg";
+import card7 from "@/assets/cards/card 7.jpg";
 
-import business from "@/assets/business.svg"
-import founder from "@/assets/founder.svg"
-import teams from "@/assets/teams.svg"
+import business from "@/assets/spotlight/business.png"
+import founder from "@/assets/spotlight/founder.png"
+import teams from "@/assets/spotlight/team.png"
 
 // Animation images for sticky scroll
 import imgOneFirst from "@/assets/animation/imgone-first.svg";
@@ -55,8 +55,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import StickyScrollReveal from "@/components/ui/sticky-scroll-reveal";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-
-
+import Link from "next/link";
 
 
 export default function Home() {
@@ -142,7 +141,7 @@ const items = cards.map((card, index) => (
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden -z-10">
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <WavyBackground
             colors={["#E67820", "#ED3658"]}
             speed="fast"
@@ -188,14 +187,16 @@ const items = cards.map((card, index) => (
             {/* Button */}
             <section className=" z-10">
               <div className="mt-10">
-              <HoverBorderGradient
-                  containerClassName="rounded-2xl"
-                  as="button"
-                  className=" backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
-                >
-                  <span>Try Limelight</span>
-                </HoverBorderGradient>
-            </div>
+                <Link href="/pricing">
+                  <HoverBorderGradient
+                    containerClassName="rounded-2xl"
+                    as="button"
+                    className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
+                  >
+                    <span>Try Limelight</span>
+                  </HoverBorderGradient>
+                </Link>
+              </div>
             </section>
             
           </div>

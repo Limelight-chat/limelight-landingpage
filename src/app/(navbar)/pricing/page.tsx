@@ -1,4 +1,3 @@
-// src/app/(navbar)/pricing/page.tsx
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 

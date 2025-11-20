@@ -92,9 +92,15 @@ type Slide = {
 export default function StickyCrossfadeWithEmojis({
   slides,
   className,
+  revealSection,
 }: {
   slides: Slide[];
   className?: string;
+  revealSection?: {
+    preTitle?: string;
+    title: string;
+    subtitle?: string;
+  };
 }) {
   const ref = React.useRef<HTMLElement | null>(null);
 
@@ -104,8 +110,6 @@ export default function StickyCrossfadeWithEmojis({
   });
 
   const gapRatio = 0.05;
-
-  // ➕ NEW: Add one extra section height for the "Introducing" part
   const totalSlides = slides.length;
   const totalSections = totalSlides + 1; // last one is reveal section
 
@@ -335,14 +339,16 @@ export default function StickyCrossfadeWithEmojis({
                 <PrismResponsive />
               </div>
 
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-3xl sm:text-4xl md:text-5xl text-white relative z-10"
-              >
-                Introducing
-              </motion.h2>
+              {revealSection?.preTitle && (
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
+                  className="text-3xl sm:text-4xl md:text-5xl text-white relative z-10"
+                >
+                  {revealSection.preTitle}
+                </motion.h2>
+              )}
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -350,17 +356,19 @@ export default function StickyCrossfadeWithEmojis({
                 transition={{ delay: 0.6, duration: 1 }}
                 className="text-6xl sm:text-7xl md:text-9xl bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] text-transparent bg-clip-text tracking-wide relative z-10"
               >
-                LIMELIGHT
+                {revealSection?.title || "LIMELIGHT"}
               </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-                className="text-lg sm:text-xl text-white relative z-10"
-              >
-                AI search engine for your data
-              </motion.p>
+              {revealSection?.subtitle && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                  className="text-lg sm:text-xl text-white relative z-10"
+                >
+                  {revealSection.subtitle}
+                </motion.p>
+              )}
             </motion.div>
           );
         })()}

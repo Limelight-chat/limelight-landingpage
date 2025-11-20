@@ -29,21 +29,17 @@ import imgThreeThird from "@/assets/animation/imgthree-third.svg";
 import imgThreeFourth from "@/assets/animation/imgthree-fourth.svg";
 
 // Emojis, Logos
-import gmailIcon from "../assets/icons/gmail.png";
-import slackIcon from "../assets/icons/slack.png";
-import notionIcon from "../assets/icons/notion.png";
-import whatsappIcon from "../assets/icons/whatsapp.png";
+import gmailIcon from "@/assets/icons/gmail.png";
+import slackIcon from "@/assets/icons/slack.png";
+import notionIcon from "@/assets/icons/notion.png";
+import whatsappIcon from "@/assets/icons/whatsapp.png";
 import angryEmoji from "@/assets/animation/icons/angry.png"
 import meditateEmoji from "@/assets/animation/icons/meditation.png"
 import coolEmoji from "@/assets/animation/icons/cool.png"
 import relievedEmoji from "@/assets/animation/icons/relieved.png"
 import waveEmoji from "@/assets/animation/icons/wave.png"
 
-import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
-
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import backgroundimg from "@/assets/bg-main-a.png";
 import fingerprint from "@/assets/fingerprint.svg";
 import aiIcon from "@/assets/ai.svg";
 import { Badge } from "@/components/ui/badge";
@@ -255,6 +251,11 @@ const items = cards.map((card, index) => (
                 ],
             },
             ]}
+            revealSection={{
+                preTitle: "Introducing",
+                title: "LIMELIGHT",
+                subtitle: "AI search engine for your data"
+            }}
         />
 
       <section className=" z-10 py-12">
@@ -294,11 +295,18 @@ const items = cards.map((card, index) => (
                 imageSrc={business}
               />
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
             <CardSpotlight
               title="For Founders"
               content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
               imageSrc={founder}
             />
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}

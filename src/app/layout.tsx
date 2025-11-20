@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { Navbar5 } from "@/components/navbar5";
 import Footer from "@/components/footer";
 
+import { RootProvider } from 'fumadocs-ui/provider/next';
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -76,16 +78,15 @@ export const metadata = {
 };
 
 
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${inter.variable} ${syne.variable} antialiased`}>
-        <Navbar5 />
-        {children}
-        <Footer />
+        <RootProvider>
+          {children}
+        </RootProvider>
         <Analytics />
       </body>
     </html>

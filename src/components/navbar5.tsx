@@ -91,6 +91,15 @@ const Navbar5 = () => {
 
               <NavigationMenuItem>
                 <NavigationMenuLink
+                  href="/docs/getting-started"
+                  className={navigationMenuTriggerStyle()}
+                >
+                  Docs
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
                   href="/contact"
                   className={navigationMenuTriggerStyle()}
                 >

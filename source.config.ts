@@ -1,8 +1,12 @@
 import { defineDocs, defineConfig, defineCollections, frontmatterSchema } from 'fumadocs-mdx/config';
 import { z } from 'zod';
 
-export const docs = defineDocs({
-  dir: 'content/docs',
+export const helpbook = defineDocs({
+  dir: 'content/docs/helpbook',
+});
+
+export const developer = defineDocs({
+  dir: 'content/docs/developer',
 });
 
 export const blogPosts = defineCollections({

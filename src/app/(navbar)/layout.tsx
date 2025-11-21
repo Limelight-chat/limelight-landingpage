@@ -9,7 +9,7 @@ export default function NavbarLayout({
   return (
     <>
       <Navbar5 />
-      {children}
+        {children}
       <Footer />
     </>
   );

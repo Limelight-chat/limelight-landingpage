@@ -8,6 +8,7 @@ const create = browser<typeof Config, import("fumadocs-mdx/runtime/types").Inter
 }>();
 const browserCollections = {
   blogPosts: create.doc("blogPosts", {"getting-started.mdx": () => import("../content/blog/getting-started.mdx?collection=blogPosts"), }),
-  docs: create.doc("docs", {"getting-started.mdx": () => import("../content/docs/getting-started.mdx?collection=docs"), "test-doc.mdx": () => import("../content/docs/test-doc.mdx?collection=docs"), }),
+  developer: create.doc("developer", {"getting-started.mdx": () => import("../content/docs/developer/getting-started.mdx?collection=developer"), "index.mdx": () => import("../content/docs/developer/index.mdx?collection=developer"), "test-doc.mdx": () => import("../content/docs/developer/test-doc.mdx?collection=developer"), }),
+  helpbook: create.doc("helpbook", {"getting-started.mdx": () => import("../content/docs/helpbook/getting-started.mdx?collection=helpbook"), "index.mdx": () => import("../content/docs/helpbook/index.mdx?collection=helpbook"), }),
 };
 export default browserCollections;

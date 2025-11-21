@@ -48,11 +48,11 @@ import { Integration } from "@/components/integration";
 import { Faq } from "@/components/faq";
 import UseCaseSwitcher from "@/components/UseCaseSwitcher";
 import ParallaxEffect from "@/components/parallaxeffect";
-import VideoEmbed from "@/components/VideoEmbed";
 import StickyScrollReveal from "@/components/ui/sticky-scroll-reveal";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Link from "next/link";
+import VideoPlayer from "@/components/ui/video-player";
 
 
 export default function Consumer() {
@@ -394,7 +394,7 @@ const items = cards.map((card, index) => (
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <VideoEmbed videoId="bd0msvYyQ6Y" />
+            <VideoPlayer src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4" />
           </motion.div>
 
           {/* text which wont leak + image */}

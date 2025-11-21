@@ -36,6 +36,12 @@
   --color-sidebar-foreground: var(--sidebar-foreground);
 
   --color-sidebar: var(--sidebar);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius: 0.5rem;
 }
 
 /* --- Dark Mode (Primary Brand Theme) --- */
@@ -60,6 +66,11 @@
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #2a2a2a;
   --sidebar-ring: #ff8e2b;
+
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: #ff8e2b;
+  --radius: 0.5rem;
 }
 
 /* --- Base Global Styles --- */
@@ -124,6 +135,19 @@ html:not(.dark) {
   --sidebar-accent-foreground: hsl(240 5.9% 10%);
   --sidebar-border: hsl(220 13% 91%);
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+  --border: hsl(220 13% 91%);
+  --input: hsl(220 13% 91%);
+  --ring: hsl(217.2 91.2% 59.8%);
+  --radius: 0.5rem;
 }
 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 

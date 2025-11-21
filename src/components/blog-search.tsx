@@ -14,6 +14,7 @@ export function BlogSearch() {
         shadow-lg shadow-black/5
         hover:shadow-xl
         transition-all rounded-xl px-4 py-2
+        cursor-pointer
     "
     />
         </div>

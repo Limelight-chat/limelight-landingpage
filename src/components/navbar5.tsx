@@ -154,6 +154,9 @@ const Navbar5 = () => {
                   <a href="/blog" className="font-medium">
                     Blog
                   </a>
+                  <a href="/docs" className="font-medium">
+                    Docs
+                  </a>
                   <a href="/contact" className="font-medium">
                     Contact Us
                   </a>

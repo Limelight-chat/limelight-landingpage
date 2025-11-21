@@ -21,8 +21,14 @@ export const source = loader({
   baseUrl: '/docs',
   source: {
     files: [
-      ...helpbook.toFumadocsSource().files,
-      ...developer.toFumadocsSource().files,
+      ...helpbook.toFumadocsSource().files.map((f) => ({
+        ...f,
+        path: `helpbook/${f.path}`,
+      })),
+      ...developer.toFumadocsSource().files.map((f) => ({
+        ...f,
+        path: `developer/${f.path}`,
+      })),
     ],
   },
 });

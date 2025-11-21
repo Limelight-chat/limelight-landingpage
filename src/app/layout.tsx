@@ -4,7 +4,7 @@ import { Syne } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
-import { RootProvider } from 'fumadocs-ui/provider/next';
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,7 +46,7 @@ export const metadata = {
     siteName: "Limelight",
     images: [
       {
-        url: "public/logo.png", 
+        url: "public/logo.png",
         width: 1200,
         height: 630,
         alt: "Limelight – AI Search Engine"
@@ -81,9 +81,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${inter.variable} ${syne.variable} antialiased`}>
-        <RootProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
-        </RootProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

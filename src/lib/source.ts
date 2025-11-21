@@ -15,4 +15,14 @@ export const developerSource = loader({
 export const blog = loader({
   baseUrl: '/blog',
   source: toFumadocsSource(blogPosts, []),
-})
+});
+
+export const source = loader({
+  baseUrl: '/docs',
+  source: {
+    files: [
+      ...helpbook.toFumadocsSource().files,
+      ...developer.toFumadocsSource().files,
+    ],
+  },
+});

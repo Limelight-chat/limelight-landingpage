@@ -4,9 +4,6 @@ import { Syne } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
-import { Navbar5 } from "@/components/navbar5";
-import Footer from "@/components/footer";
-
 import { RootProvider } from 'fumadocs-ui/provider/next';
 
 const inter = Inter({

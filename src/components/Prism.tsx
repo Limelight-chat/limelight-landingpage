@@ -17,6 +17,8 @@ type PrismProps = {
   bloom?: number;
   suspendWhenOffscreen?: boolean;
   timeScale?: number;
+  temporalAccumulation?: boolean;
+  temporalInterval?: number;
 };
 
 const Prism: React.FC<PrismProps> = ({
@@ -34,7 +36,9 @@ const Prism: React.FC<PrismProps> = ({
   inertia = 0.05,
   bloom = 1,
   suspendWhenOffscreen = false,
-  timeScale = 0.5
+  timeScale = 0.5,
+  temporalAccumulation = false,
+  temporalInterval = 2
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -80,6 +84,48 @@ const Prism: React.FC<PrismProps> = ({
       display: 'block'
     } as Partial<CSSStyleDeclaration>);
     container.appendChild(gl.canvas);
+
+    // Temporal accumulation setup
+    let prevFrameTexture: WebGLTexture | null = null;
+    let framebuffer: WebGLFramebuffer | null = null;
+    let blendProgram: Program | null = null;
+    let blendMesh: Mesh | null = null;
+    
+    if (temporalAccumulation) {
+      prevFrameTexture = gl.createTexture();
+      framebuffer = gl.createFramebuffer();
+      
+      const blendVertex = /* glsl */ `
+        attribute vec2 position;
+        varying vec2 vUv;
+        void main() {
+          vUv = position * 0.5 + 0.5;
+          gl_Position = vec4(position, 0.0, 1.0);
+        }
+      `;
+      
+      const blendFragment = /* glsl */ `
+        precision highp float;
+        uniform sampler2D uPrevFrame;
+        uniform float uBlendFactor;
+        varying vec2 vUv;
+        void main() {
+          vec4 prev = texture2D(uPrevFrame, vUv);
+          gl_FragColor = prev * uBlendFactor;
+        }
+      `;
+      
+      blendProgram = new Program(gl, {
+        vertex: blendVertex,
+        fragment: blendFragment,
+        uniforms: {
+          uPrevFrame: { value: prevFrameTexture },
+          uBlendFactor: { value: 0.85 }
+        }
+      });
+      
+      blendMesh = new Mesh(gl, { geometry: new Triangle(gl), program: blendProgram });
+    }
 
     const vertex = /* glsl */ `
       attribute vec2 position;
@@ -248,6 +294,9 @@ const Prism: React.FC<PrismProps> = ({
       offsetPxBuf[0] = offX * dpr;
       offsetPxBuf[1] = offY * dpr;
       program.uniforms.uPxScale.value = 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE);
+      if (temporalAccumulation) {
+        updatePrevFrameTexture();
+      }
     };
     const ro = new ResizeObserver(resize);
     ro.observe(container);
@@ -288,6 +337,7 @@ const Prism: React.FC<PrismProps> = ({
     const NOISE_IS_ZERO = NOISE < 1e-6;
     let raf = 0;
     const t0 = performance.now();
+    let frameCount = 0;
     const startRAF = () => {
       if (raf) return;
       raf = requestAnimationFrame(render);
@@ -296,6 +346,27 @@ const Prism: React.FC<PrismProps> = ({
       if (!raf) return;
       cancelAnimationFrame(raf);
       raf = 0;
+    };
+    
+    const updatePrevFrameTexture = () => {
+      if (!prevFrameTexture) return;
+      gl.bindTexture(gl.TEXTURE_2D, prevFrameTexture);
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGBA,
+        gl.drawingBufferWidth,
+        gl.drawingBufferHeight,
+        0,
+        gl.RGBA,
+        gl.UNSIGNED_BYTE,
+        null
+      );
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.bindTexture(gl.TEXTURE_2D, null);
     };
 
     const rnd = () => Math.random();
@@ -392,7 +463,37 @@ const Prism: React.FC<PrismProps> = ({
         if (TS < 1e-6) continueRAF = false;
       }
 
-      renderer.render({ scene: mesh });
+      // Temporal accumulation logic
+      if (temporalAccumulation && prevFrameTexture && framebuffer && blendMesh) {
+        const shouldRenderFull = frameCount % temporalInterval === 0;
+        
+        if (shouldRenderFull) {
+          // Render full-quality raymarched frame
+          renderer.render({ scene: mesh });
+          
+          // Copy current frame to texture for next reuse
+          gl.bindTexture(gl.TEXTURE_2D, prevFrameTexture);
+          gl.copyTexImage2D(
+            gl.TEXTURE_2D,
+            0,
+            gl.RGBA,
+            0,
+            0,
+            gl.drawingBufferWidth,
+            gl.drawingBufferHeight,
+            0
+          );
+          gl.bindTexture(gl.TEXTURE_2D, null);
+        } else {
+          // Reuse previous frame with slight blur
+          renderer.render({ scene: blendMesh });
+        }
+        frameCount++;
+      } else {
+        // Standard rendering without temporal accumulation
+        renderer.render({ scene: mesh });
+      }
+
       if (continueRAF) {
         raf = requestAnimationFrame(render);
       } else {
@@ -430,6 +531,10 @@ const Prism: React.FC<PrismProps> = ({
         if (io) io.disconnect();
         delete (container as PrismContainer).__prismIO;
       }
+      if (temporalAccumulation) {
+        if (prevFrameTexture) gl.deleteTexture(prevFrameTexture);
+        if (framebuffer) gl.deleteFramebuffer(framebuffer);
+      }
       if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
     };
   }, [
@@ -448,7 +553,9 @@ const Prism: React.FC<PrismProps> = ({
     hoverStrength,
     inertia,
     bloom,
-    suspendWhenOffscreen
+    suspendWhenOffscreen,
+    temporalAccumulation,
+    temporalInterval
   ]);
 
   return <div className="w-full h-full relative" ref={containerRef} />;

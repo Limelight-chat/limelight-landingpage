@@ -395,7 +395,9 @@ const items = cards.map((card, index) => (
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <VideoPlayer src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4" />
+            <VideoPlayer 
+              src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4?q_auto,f_auto"
+            />
           </motion.div>
 
           {/* text which wont leak + image */}

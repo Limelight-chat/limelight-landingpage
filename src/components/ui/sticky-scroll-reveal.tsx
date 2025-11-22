@@ -21,7 +21,7 @@ function PrismResponsive() {
   React.useEffect(() => {
     const updateDimensions = () => {
       const width = window.innerWidth;
-      
+
       if (width < 640) { // sm breakpoint
         setDimensions({
           height: 2.5,
@@ -171,8 +171,8 @@ export default function StickyCrossfadeWithEmojis({
                     img.position === "left"
                       ? -60
                       : img.position === "right"
-                      ? 60
-                      : 0;
+                        ? 60
+                        : 0;
 
                   const x = useTransform(
                     scrollYProgress,
@@ -197,8 +197,8 @@ export default function StickyCrossfadeWithEmojis({
                     img.position === "left"
                       ? "self-start ml-3 sm:ml-6 md:ml-12 lg:ml-16"
                       : img.position === "right"
-                      ? "self-end mr-3 sm:mr-6 md:mr-12 lg:mr-16"
-                      : "self-center";
+                        ? "self-end mr-3 sm:mr-6 md:mr-12 lg:mr-16"
+                        : "self-center";
 
                   return (
                     <motion.img
@@ -240,7 +240,7 @@ export default function StickyCrossfadeWithEmojis({
                 const [jitter, setJitter] = React.useState({ x: 0, y: 0 });
                 const [rotation, setRotation] = React.useState(
                   emoji.angle ?? 0
-                ); 
+                );
                 const [responsiveX, setResponsiveX] = React.useState(emoji.x ?? 0);
                 const [responsiveSize, setResponsiveSize] = React.useState(emoji.size ?? 60);
 
@@ -249,7 +249,7 @@ export default function StickyCrossfadeWithEmojis({
                     const width = window.innerWidth;
                     const baseX = emoji.x ?? 0;
                     const baseSize = emoji.size ?? 60;
-                    
+
                     // Scale down x position and size for smaller screens
                     if (width < 640) { // sm breakpoint
                       setResponsiveX(baseX * 0.25); // 25% of original position

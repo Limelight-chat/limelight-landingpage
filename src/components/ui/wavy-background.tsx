@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
 
 export const WavyBackground = ({
@@ -87,7 +87,7 @@ export const WavyBackground = ({
     "#22d3ee",
   ];
   const drawWave = (n: number) => {
-    const { ctx, w, h, nt } = contextRef.current;
+    const { ctx, w, h } = contextRef.current;
     if (!ctx) return;
     
     contextRef.current.nt += getSpeed();

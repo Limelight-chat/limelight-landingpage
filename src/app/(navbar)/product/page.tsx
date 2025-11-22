@@ -13,8 +13,6 @@ import step3 from '@/assets/product/step3.svg'
 import step4 from '@/assets/product/step4.svg'
 import { Badge } from "@/components/ui/badge";
 import { MultiStepLoader } from "@/components/ui/multi-step-loader";
-import CardFeature from "@/components/card-feature";
-
 
 import business from "@/assets/spotlight/business.png"
 import founder from "@/assets/spotlight/founder.png"

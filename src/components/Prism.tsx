@@ -19,6 +19,9 @@ type PrismProps = {
   timeScale?: number;
   temporalAccumulation?: boolean;
   temporalInterval?: number;
+  steps?: number;
+  resolution?: number;
+  targetFPS?: number;
 };
 
 const Prism: React.FC<PrismProps> = ({
@@ -38,7 +41,10 @@ const Prism: React.FC<PrismProps> = ({
   suspendWhenOffscreen = false,
   timeScale = 0.5,
   temporalAccumulation = false,
-  temporalInterval = 2
+  temporalInterval = 2,
+  steps = 50,
+  resolution = 0.75,
+  targetFPS = 30
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -65,7 +71,7 @@ const Prism: React.FC<PrismProps> = ({
     const HOVSTR = Math.max(0, hoverStrength || 1);
     const INERT = Math.max(0, Math.min(1, inertia || 0.12));
 
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const dpr = Math.min(2, window.devicePixelRatio || 1) * Math.max(0.1, Math.min(1, resolution));
     const renderer = new Renderer({
       dpr,
       alpha: transparent,
@@ -158,6 +164,7 @@ const Prism: React.FC<PrismProps> = ({
       uniform float uMinAxis;
       uniform float uPxScale;
       uniform float uTimeScale;
+      uniform int uSteps;
 
       vec4 tanh4(vec4 x){
         vec4 e2x = exp(2.0*x);
@@ -221,8 +228,9 @@ const Prism: React.FC<PrismProps> = ({
           wob = mat2(c0, c1, c2, c0);
         }
 
-        const int STEPS = 100;
-        for (int i = 0; i < STEPS; i++) {
+        const int MAX_STEPS = 100;
+        for (int i = 0; i < MAX_STEPS; i++) {
+          if (i >= uSteps) break;
           p = vec3(f, z);
           p.xz = p.xz * wob;
           p = uRot * p;
@@ -280,7 +288,8 @@ const Prism: React.FC<PrismProps> = ({
         uPxScale: {
           value: 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE)
         },
-        uTimeScale: { value: TS }
+        uTimeScale: { value: TS },
+        uSteps: { value: Math.max(1, Math.min(100, Math.floor(steps))) }
       }
     });
     const mesh = new Mesh(gl, { geometry, program });
@@ -338,6 +347,8 @@ const Prism: React.FC<PrismProps> = ({
     let raf = 0;
     const t0 = performance.now();
     let frameCount = 0;
+    let lastFrameTime = 0;
+    const frameInterval = 1000 / Math.max(1, targetFPS);
     const startRAF = () => {
       if (raf) return;
       raf = requestAnimationFrame(render);
@@ -419,6 +430,13 @@ const Prism: React.FC<PrismProps> = ({
     }
 
     const render = (t: number) => {
+      // Frame rate limiting
+      if (t - lastFrameTime < frameInterval) {
+        raf = requestAnimationFrame(render);
+        return;
+      }
+      lastFrameTime = t;
+
       const time = (t - t0) * 0.001;
       program.uniforms.iTime.value = time;
 
@@ -555,7 +573,10 @@ const Prism: React.FC<PrismProps> = ({
     bloom,
     suspendWhenOffscreen,
     temporalAccumulation,
-    temporalInterval
+    temporalInterval,
+    steps,
+    resolution,
+    targetFPS
   ]);
 
   return <div className="w-full h-full relative" ref={containerRef} />;

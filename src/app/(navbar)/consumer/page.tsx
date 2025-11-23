@@ -53,7 +53,7 @@ import { WavyBackground } from "@/components/ui/wavy-background";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Link from "next/link";
 import SupportedUser from "@/components/supported-user";
-import SpaceSwitch from "@/components/space-switch";
+import SpaceSwitch from "@/components/macbook-switch";
 
 
 export default function Consumer() {
@@ -310,9 +310,12 @@ export default function Consumer() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="text-center max-w-3xl mx-auto px-6 pt-8 z-20">
-              <h1 className="text-5xl md:text-6xl font-bold">
-                Life, Uncluttered. Unforgettable.
+              <h1 className="text-3xl md:text-4xl font-bold">
+                Built for every version of you
               </h1>
+              <h2 className="pt-4 text-white/70 text-lg md:text-lg lg:text-xl">
+                Stop switching between apps. Limelight connects your emails, files, and chats into one intelligent, searchable timeline.
+              </h2>
             </div>
           </motion.div>
 

@@ -47,15 +47,32 @@ const icons = [
 
 export default function SupportedUser() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-    
+    if (!mounted || !containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted || !isInView) return;
+
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
@@ -65,26 +82,26 @@ export default function SupportedUser() {
 
     const animate = () => {
       scrollPosition += scrollSpeed;
-      
+
       if (scrollPosition >= iconWidth * icons.length) {
         scrollPosition = 0;
       }
-      
+
       scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
       requestAnimationFrame(animate);
     };
 
     const animationId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationId);
-  }, [mounted]);
+  }, [mounted, isInView]);
 
   const duplicatedIcons = [...icons, ...icons];
 
   return (
-    <div className="relative w-full overflow-hidden py-8 sm:py-12 md:py-16">
+    <div ref={containerRef} className="relative w-full overflow-hidden py-8 sm:py-12 md:py-16">
       <div className="relative w-full">
-        <div 
-          className="relative w-full" 
+        <div
+          className="relative w-full"
           style={{ aspectRatio: "16/3" }}
         >
           <Image
@@ -95,13 +112,13 @@ export default function SupportedUser() {
             priority
           />
         </div>
-        
+
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full overflow-hidden">
-            
+
             <div className="absolute inset-0 flex items-center">
-              <div 
-                ref={scrollRef} 
+              <div
+                ref={scrollRef}
                 className="flex gap-4 sm:gap-6 md:gap-8 items-center"
                 suppressHydrationWarning
               >

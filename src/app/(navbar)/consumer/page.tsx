@@ -292,17 +292,17 @@ export default function Consumer() {
         }}
       />
 
-      <section className="z-10 py-12 font-manrope">
+      <section className="z-10 py-20 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
-          
+
 
           <SpaceSwitch />
         </div>
       </section>
 
-      <section className="z-10 py-12 font-manrope">
+      <section className="z-10 py-20 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center py-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -338,11 +338,11 @@ export default function Consumer() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-            <CardSpotlight
-              title="For Founders"
-              content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
-              imageSrc={founder}
-            />
+              <CardSpotlight
+                title="For Founders"
+                content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
+                imageSrc={founder}
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -362,7 +362,7 @@ export default function Consumer() {
 
 
       {/* Features */}
-      <section className="z-10 py-12 bg-background font-manrope">
+      <section className="z-10 py-20 bg-background font-manrope">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             className="text-center"
@@ -394,10 +394,10 @@ export default function Consumer() {
       </section>
 
       {/* see how it works section here */}
-      
-      
+
+
       {/* Supported databases */}
-      <section className="z-10 py-12 font-manrope">
+      <section className="z-10 py-20 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             className="text-center"
@@ -417,17 +417,17 @@ export default function Consumer() {
           </motion.div>
         </div>
         <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <SupportedUser />
-          </motion.div>
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <SupportedUser />
+        </motion.div>
       </section>
 
       {/* FQA */}
-      <section className="z-10 py-12 font-manrope">
+      <section className="z-10 py-20 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             className="text-center"

@@ -42,6 +42,8 @@
   --color-ring: var(--ring);
 
   --radius: 0.5rem;
+
+  --font-manrope: var(--font-manrope);
 }
 
 /* --- Dark Mode (Primary Brand Theme) --- */

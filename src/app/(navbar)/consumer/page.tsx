@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import card1 from "@/assets/cards/card 1.jpg";
 import card2 from "@/assets/cards/card 2.jpg";
@@ -43,18 +44,16 @@ import aiIcon from "@/assets/ai.svg";
 import brainIcon from "@/assets/brain.svg";
 import { Badge } from "@/components/ui/badge";
 import CardSpotlight from "@/components/card-spotlight";
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { Carousel, Card } from "@/components/ui/consumer-card";
 import { Integration } from "@/components/integration";
 import { Faq } from "@/components/faq";
-import UseCaseSwitcher from "@/components/UseCaseSwitcher";
 
 import StickyScrollReveal from "@/components/ui/sticky-scroll-reveal";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Link from "next/link";
-import VideoPlayer from "@/components/ui/video-player";
-import { IconCloud } from "@/components/ui/interactive-icon-cloud";
-import { CpuArchitecture } from "@/components/ui/cpu-architecture";
+import SupportedUser from "@/components/supported-user";
+import SpaceSwitch from "@/components/space-switch";
 
 
 export default function Consumer() {
@@ -62,7 +61,7 @@ export default function Consumer() {
   const cards = [
     {
       category: "Integrations",
-      title: "Connect all your knowledge sources",
+      title: "Connect all your knowledge sources ",
       src: card1.src,
       content: (
         <p>
@@ -131,6 +130,7 @@ export default function Consumer() {
       ),
     },
   ];
+
 
   const slugs = [
     "typescript",
@@ -292,19 +292,26 @@ export default function Consumer() {
         }}
       />
 
-      <section className=" z-10 py-12">
-
+      <section className="z-10 py-12 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div
-            className=" text-center py-12"
+          
+
+          <SpaceSwitch />
+        </div>
+      </section>
+
+      <section className="z-10 py-12 font-manrope">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div 
+            className="text-center py-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="text-center max-w-3xl mx-auto px-6 pb-8 z-20">
+            <div className="text-center max-w-3xl mx-auto px-6 pt-8 z-20">
               <h1 className="text-5xl md:text-6xl font-bold">
-                Your AI That Remembers Everything <span className=" text-[#ff8e2b]">[Limelight]</span>
+                Life, Uncluttered. Unforgettable.
               </h1>
             </div>
           </motion.div>
@@ -317,8 +324,8 @@ export default function Consumer() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <CardSpotlight
-                title="Search"
-                content="Limelight searches your files, screenshots, emails, and notes to surface exactly what you need."
+                title="For Business Owners"
+                content="Limelight finds numbers, reports, and insights buried across your tools in seconds."
                 imageSrc={business}
               />
             </motion.div>
@@ -328,11 +335,11 @@ export default function Consumer() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <CardSpotlight
-                title="Connect"
-                content="Limelight links your documents, ideas, and references into a clean, intelligent map."
-                imageSrc={founder}
-              />
+            <CardSpotlight
+              title="For Founders"
+              content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
+              imageSrc={founder}
+            />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -341,8 +348,8 @@ export default function Consumer() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <CardSpotlight
-                title="Unify"
-                content="Limelight unifies your apps, files, chats, and notes into one intelligence layer you can access instantly."
+                title="For Teams"
+                content="Work smarter together. Find answers and context instantly, across every app you use every day."
                 imageSrc={teams}
               />
             </motion.div>
@@ -350,22 +357,9 @@ export default function Consumer() {
         </div>
       </section>
 
-      <section className=" z-10 py-32 lg:py-42 bg-background">
-        <IconCloud iconSlugs={slugs} />
-        <div className="text-center max-w-3xl mx-auto px-6 pt-8 z-20">
-          <h1 className="text-5xl md:text-6xl font-bold">
-            Integrate your entire workspace.
-          </h1>
-          <p className="pt-4 text-white">
-            Connect your apps to unify, organize, and instantly access everything.
-          </p>
-        </div>
-      </section>
-
 
       {/* Features */}
-      <section className=" z-10 py-12 bg-background">
-
+      <section className="z-10 py-12 bg-background font-manrope">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             className="text-center"
@@ -374,27 +368,13 @@ export default function Consumer() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-            <Badge className=" text-sm">Features</Badge>
-          </motion.div>
-
-          <motion.div
-            className=" text-center py-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-8">
-              <div className="lg:w-1/2">
-                <h1 className="text-4xl lg:text-6xl text-left bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent">
-                  Unify knowledge across tools and teams
-                </h1>
-              </div>
-              <div className="mt-6 lg:mt-0 lg:w-1/2">
-                <p className="text-left text-xl text-white">
-                  Limelight makes business knowledge instantly searchable for fast-moving teams. No more digging through files, chats, and drives find what you need, when and where you need it.
-                </p>
-              </div>
+            <div className="text-center max-w-3xl mx-auto px-6 pt-8 z-20">
+              <h1 className="text-3xl md:text-4xl font-bold">
+                Features so good, they feel illegal
+              </h1>
+              <h2 className="pt-4 text-white/70 text-lg md:text-lg lg:text-xl">
+                Find buried files, recall old chats, and organize your chaos without lifting a finger. Limelight handles the remembering so you can handle the living.
+              </h2>
             </div>
           </motion.div>
         </div>
@@ -411,38 +391,10 @@ export default function Consumer() {
       </section>
 
       {/* see how it works section here */}
-      <section className=" z-10 py-12">
-        <div>
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.4 }}
-          >
-            <Badge className=" text-sm">See it in action</Badge>
-          </motion.div>
-
-          <motion.div
-            className=" rounded-4xl my-12"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            <VideoPlayer src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4" />
-          </motion.div>
-
-          {/* text which wont leak + image */}
-          <div className="max-w-5xl mx-auto px-6">
-
-          </div>
-        </div>
-      </section>
-      {/* See how it actually works */}
-
+      
+      
       {/* Supported databases */}
-      <section className=" z-10 py-12">
+      <section className="z-10 py-12 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             className="text-center"
@@ -451,22 +403,28 @@ export default function Consumer() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-            <Badge className=" text-sm">Supported databases</Badge>
+            <div className="text-center max-w-3xl mx-auto px-6 pt-8 z-20">
+              <h1 className="text-3xl md:text-4xl font-bold">
+                Connect your digital world
+              </h1>
+              <h2 className="pt-4 text-white/70 text-lg md:text-lg lg:text-xl">
+                Link your apps to search, recall, and organize your life with Limelight.
+              </h2>
+            </div>
           </motion.div>
-
-          <motion.div
+        </div>
+        <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <Integration />
+            <SupportedUser />
           </motion.div>
-        </div>
       </section>
 
       {/* FQA */}
-      <section className=" z-10 py-12">
+      <section className="z-10 py-12 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             className="text-center"
@@ -475,7 +433,11 @@ export default function Consumer() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-            <Badge className=" text-sm">Questions? Answers</Badge>
+            <div className="text-center max-w-3xl mx-auto px-6 z-20">
+              <h1 className="text-5xl md:text-6xl font-bold">
+                Questions? Answers
+              </h1>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -487,10 +449,6 @@ export default function Consumer() {
           </motion.div>
         </div>
       </section>
-
-      <div className="p-4 rounded-xl">
-        <CpuArchitecture />
-      </div>
 
     </>
   );

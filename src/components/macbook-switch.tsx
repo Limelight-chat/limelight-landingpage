@@ -54,14 +54,14 @@ export default function SpaceSwitch() {
             onMouseEnter={() => setActiveTab(features[0])}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024" className={`inline-block transition-colors duration-300 ${
-              activeTab.id === "travel" ? "text-[#FF792C]" : "text-white/60 group-hover:text-[#FF792C]"
+              activeTab.id === "travel" ? "text-[#E84848]" : "text-white/60 group-hover:text-[#E84848]"
             }`}>
               <path fill="currentColor" d="M896 1024H128q-53 0-90.5-37.5T0 896V384q0-53 37.5-90.5T128 256h128v-96q0-68 51-114T416 0h192q58 0 109 46t51 114v96h128q53 0 90.5 37.5T1024 384v512q0 53-37.5 90.5T896 1024zM288 448q-40 0-68 28t-28 68t28 68t68 28t68-28t28-68t-28-68t-68-28zm352-256q0-27-18.5-45.5T576 128H448q-26 0-45 18.5T384 192v64h256v-64zm192 448l-256 64l64 192l256-64z"/>
             </svg>
             <span className={`transition-colors duration-300 font-bold ${
               activeTab.id === "travel"
-                ? "text-[#FF792C]"
-                : "text-white/60 group-hover:text-[#FF792C]"
+                ? "text-[#E84848]"
+                : "text-white/60 group-hover:text-[#E84848]"
             }`}>
               travel plans
             </span>
@@ -74,15 +74,15 @@ export default function SpaceSwitch() {
             onMouseEnter={() => setActiveTab(features[1])}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" className={`inline-block transition-colors duration-300 ${
-              activeTab.id === "notes" ? "text-[#FF6A3F]" : "text-white/60 group-hover:text-[#FF6A3F]"
+              activeTab.id === "notes" ? "text-[#32C96A]" : "text-white/60 group-hover:text-[#32C96A]"
             }`}>
               <path fill="currentColor" d="M256 368a16 16 0 0 1-7.94-2.11L108 285.84a8 8 0 0 0-12 6.94V368a16 16 0 0 0 8.23 14l144 80a16 16 0 0 0 15.54 0l144-80a16 16 0 0 0 8.23-14v-75.22a8 8 0 0 0-12-6.94l-140.06 80.05A16 16 0 0 1 256 368Z"/>
               <path fill="currentColor" d="M495.92 190.5v-.11a16 16 0 0 0-8-12.28l-224-128a16 16 0 0 0-15.88 0l-224 128a16 16 0 0 0 0 27.78l224 128a16 16 0 0 0 15.88 0L461 221.28a2 2 0 0 1 3 1.74v144.53c0 8.61 6.62 16 15.23 16.43A16 16 0 0 0 496 368V192a14.76 14.76 0 0 0-.08-1.5Z"/>
             </svg>
             <span className={`transition-colors duration-300 font-bold ${
               activeTab.id === "notes"
-                ? "text-[#FF6A3F]"
-                : "text-white/60 group-hover:text-[#FF6A3F]"
+                ? "text-[#32C96A]"
+                : "text-white/60 group-hover:text-[#32C96A]"
             }`}>
               class notes
             </span>
@@ -95,14 +95,14 @@ export default function SpaceSwitch() {
             onMouseEnter={() => setActiveTab(features[2])}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 26 26" className={`inline-block transition-colors duration-300 ${
-              activeTab.id === "screenshots" ? "text-[#F9554C]" : "text-white/60 group-hover:text-[#F9554C]"
+              activeTab.id === "screenshots" ? "text-[#3E9BFF]" : "text-white/60 group-hover:text-[#3E9BFF]"
             }`}>
               <path fill="currentColor" d="M1 0C.449 0 0 .449 0 1v16c0 .551.449 1 1 1h16c.551 0 1-.449 1-1V1c0-.551-.449-1-1-1H1zm1 2h14v12H2V2zm17 .906v2.031l1.813.313L19 15.75V17c0 1.104-.897 2-2 2H6.406l12.688 2.188a1 1 0 0 0 1.156-.813l2.688-15.781a.999.999 0 0 0-.813-1.157L19 2.907zM9 3.937c-1.151 0-2.125.792-2.125 2.282c0 .974.434 1.952 1.031 2.562c.234.61-.164.842-.25.875c-1.206.436-2.625 1.245-2.625 2.031v1.282h7.938v-1.281c0-.81-1.422-1.614-2.688-2.032c-.058-.019-.417-.18-.187-.875c.595-.61 1.062-1.593 1.062-2.562c0-1.49-1.005-2.282-2.156-2.282zm14.406 3.97l-.343 1.968l.718.156l-2.75 11.688l-.406-.094a1.954 1.954 0 0 1-1.719.531L5.063 19.781L4.78 20.97a1.023 1.023 0 0 0 .75 1.218l15.563 3.657a1.023 1.023 0 0 0 1.218-.75L25.938 9.53c.127-.536-.18-1.091-.718-1.219l-1.813-.406z"/>
             </svg>
             <span className={`transition-colors duration-300 font-bold ${
               activeTab.id === "screenshots"
-                ? "text-[#F9554C]"
-                : "text-white/60 group-hover:text-[#F9554C]"
+                ? "text-[#3E9BFF]"
+                : "text-white/60 group-hover:text-[#3E9BFF]"
             }`}>
               screenshots
             </span>

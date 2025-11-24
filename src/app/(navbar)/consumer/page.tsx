@@ -294,8 +294,6 @@ export default function Consumer() {
 
       <section className="z-10 py-20 font-manrope">
         <div className="max-w-5xl mx-auto px-6">
-
-
           <SpaceSwitch />
         </div>
       </section>

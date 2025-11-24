@@ -10,9 +10,9 @@ import card5 from "@/assets/cards/card 5.jpg";
 import card6 from "@/assets/cards/card 6.jpg";
 import card7 from "@/assets/cards/card 7.jpg";
 
-import business from "@/assets/spotlight/business.png"
-import founder from "@/assets/spotlight/founder.png"
-import teams from "@/assets/spotlight/team.png"
+import study from "@/assets/spotlight/study.png"
+import freelance from "@/assets/spotlight/freelancer.png"
+import work from "@/assets/spotlight/work.png"
 
 // Animation images for sticky scroll
 import imgOneFirst from "@/assets/animation_c/imgone-first.svg";
@@ -54,6 +54,16 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Link from "next/link";
 import SupportedUser from "@/components/supported-user";
 import SpaceSwitch from "@/components/macbook-switch";
+
+import {
+  Discussion,
+  DiscussionBody,
+  DiscussionContent,
+  DiscussionExpand,
+  DiscussionItem,
+  DiscussionReplies,
+  DiscussionTitle,
+} from "@/components/ui/discussion"
 
 
 export default function Consumer() {
@@ -325,9 +335,9 @@ export default function Consumer() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <CardSpotlight
-                title="For Business Owners"
-                content="Limelight finds numbers, reports, and insights buried across your tools in seconds."
-                imageSrc={business}
+                title="For Students"
+                content="Search, summarise lecture notes, PDFs, and group chats instantly."
+                imageSrc={study}
               />
             </motion.div>
             <motion.div
@@ -337,9 +347,9 @@ export default function Consumer() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <CardSpotlight
-                title="For Founders"
-                content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
-                imageSrc={founder}
+                title="For Freelancers"
+                content="Track clients and deliverables across every app you use."
+                imageSrc={freelance}
               />
             </motion.div>
             <motion.div
@@ -349,9 +359,9 @@ export default function Consumer() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <CardSpotlight
-                title="For Teams"
-                content="Work smarter together. Find answers and context instantly, across every app you use every day."
-                imageSrc={teams}
+                title="For Professionals"
+                content="Turn scattered emails and files into unified timelines."
+                imageSrc={work}
               />
             </motion.div>
           </div>
@@ -422,6 +432,139 @@ export default function Consumer() {
         >
           <SupportedUser />
         </motion.div>
+      </section>
+
+      {/* discussion */}
+      <section className="z-10 py-20 font-manrope">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            className="text-center py-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <div className="text-center max-w-3xl mx-auto px-6 pt-8 z-20">
+              <h1 className="text-3xl md:text-4xl font-bold">
+                Limelight in the wild
+              </h1>
+              <h2 className="pt-4 text-white/70 text-lg md:text-lg lg:text-xl">
+                Okay, these reviews are placeholders… but the experience is real.
+              </h2>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Discussion
+              defaultValue={["item-1", "item-1.1", "item-1.1.1", "item-1.2"]}
+              type="multiple"
+              className="w-full"
+            >
+              <DiscussionItem value="item-1">
+                <DiscussionContent className="gap-2">
+
+                  <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
+                      <DiscussionTitle className="flex gap-2 items-center">
+                        <div>Arjun Sharma</div>
+                        <div className="text-muted-foreground text-xs ">
+                          @heyarjun
+                        </div>
+                        <span className="text-muted-foreground text-xs">•</span>
+                        <div className="text-muted-foreground text-xs ">
+                          1 hour ago
+                        </div>
+                      </DiscussionTitle>
+                      <DiscussionBody>
+                        bro i actually found that pdf from 3rd semester in like 2 seconds. limelight just saved my thesis. 😭
+                      </DiscussionBody>
+                    </div>
+                    <DiscussionExpand />
+                  </div>
+                </DiscussionContent>
+                <DiscussionReplies>
+                  <DiscussionItem value="item-1.1">
+                    <DiscussionContent className="gap-2">
+
+                      <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-1">
+                          <DiscussionTitle className="flex gap-2 items-center">
+                            <div>Ojas</div>
+                            <div className="text-muted-foreground text-xs ">
+                              @ojas_builds
+                            </div>
+                            <span className="text-muted-foreground text-xs">•</span>
+                            <div className="text-muted-foreground text-xs ">
+                              34 minutes ago
+                            </div>
+                          </DiscussionTitle>
+                          <DiscussionBody>
+                            100%. Just onboarded the new dev. Being able to search the entire project history instantly is insane. Why didn't we have this sooner?
+                          </DiscussionBody>
+                        </div>
+                        <DiscussionExpand />
+                      </div>
+                    </DiscussionContent>
+                    <DiscussionReplies>
+                      <DiscussionItem value="item-1.1.1">
+                        <DiscussionContent className="gap-2">
+
+                          <div className="flex flex-col gap-2">
+                            <div className="flex flex-col gap-1">
+                              <DiscussionTitle className="flex gap-2 items-center">
+                                <div>Alex Chen</div>
+                                <div className="text-muted-foreground text-xs ">
+                                  @alexchen
+                                </div>
+                                <span className="text-muted-foreground text-xs">
+                                  •
+                                </span>
+                                <div className="text-muted-foreground text-xs ">
+                                  26 minutes ago
+                                </div>
+                              </DiscussionTitle>
+                              <DiscussionBody>
+                                Same vibe here. Finally stopped drowning in client revisions. Having all the slack threads and drive links in one timeline is a cheat code.
+                              </DiscussionBody>
+                            </div>
+                          </div>
+                        </DiscussionContent>
+                      </DiscussionItem>
+                    </DiscussionReplies>
+                  </DiscussionItem>
+                  <DiscussionItem value="item-1.2">
+                    <DiscussionContent className="gap-2">
+
+                      <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-1">
+                          <DiscussionTitle className="flex gap-2 items-center">
+                            <div>Sarah Wilson</div>
+                            <div className="text-muted-foreground text-xs ">
+                              @sarahworks
+                            </div>
+                            <span className="text-muted-foreground text-xs">•</span>
+                            <div className="text-muted-foreground text-xs ">
+                              14 minutes ago
+                            </div>
+                          </DiscussionTitle>
+                          <DiscussionBody>
+                            Legit feels like I have a second brain now. The context search is scary good.
+                          </DiscussionBody>
+                        </div>
+                      </div>
+                    </DiscussionContent>
+                  </DiscussionItem>
+                </DiscussionReplies>
+              </DiscussionItem>
+            </Discussion>
+          </motion.div>
+        </div>
       </section>
 
       {/* FQA */}

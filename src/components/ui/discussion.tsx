@@ -1,6 +1,7 @@
 import React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import { ArrowBigDown, ArrowBigUp, MessageSquare, Share2, Flag, MoreHorizontal, MinusCircle, PlusCircle } from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import { cn } from "@/lib/utils"
 
@@ -11,7 +12,7 @@ export function DiscussionItem({
   return (
     <AccordionPrimitive.Item
       className={cn(
-        "relative pl-4 mt-2 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-border before:via-border/60 before:to-border/40",
+        "relative",
         className,
       )}
       {...props}
@@ -25,37 +26,37 @@ export function DiscussionContent({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Header>) {
   return (
-    <AccordionPrimitive.Header className={cn("flex", className)} {...props}>
+    <AccordionPrimitive.Header className={cn("flex gap-2", className)} {...props}>
       {children}
     </AccordionPrimitive.Header>
   )
 }
 
-export function DiscussionExpand({
+export function DiscussionAvatar({
   className,
+  src,
+  fallback,
+  alt,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+}: React.ComponentProps<typeof Avatar> & { src?: string, fallback?: string, alt?: string }) {
   return (
-    <AccordionPrimitive.Trigger
-      className={cn(
-        "flex flex-1 items-center gap-1 text-muted-foreground text-xs font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180",
-        className,
-      )}
-      {...props}
-    >
-      Show Replies
-      <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
-    </AccordionPrimitive.Trigger>
+    <div className="flex flex-col items-center">
+      <Avatar className={cn("h-8 w-8 z-10", className)} {...props}>
+        <AvatarImage src={src} alt={alt} />
+        <AvatarFallback>{fallback}</AvatarFallback>
+      </Avatar>
+      {/* Thread line placeholder - will be handled by parent/siblings */}
+    </div>
   )
 }
 
-export function DiscussionTitle({
-  children,
+export function DiscussionAuthor({
   className,
+  children,
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("font-semibold text-sm", className)} {...props}>
+    <div className={cn("flex items-center gap-2 text-xs text-muted-foreground mb-1", className)} {...props}>
       {children}
     </div>
   )
@@ -67,11 +68,45 @@ export function DiscussionBody({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("text-sm leading-relaxed", className)} {...props}>
+    <div className={cn("text-sm leading-relaxed text-foreground/90 mt-0.5", className)} {...props}>
       {children}
     </div>
   )
 }
+
+export function DiscussionActions({
+  className,
+  votes = 0,
+  ...props
+}: React.ComponentProps<"div"> & { votes?: number | string }) {
+  return (
+    <div className={cn("flex items-center gap-2 mt-2", className)} {...props}>
+      {/* Vote Buttons */}
+      <div className="flex items-center gap-1 bg-muted/30 rounded-full px-1.5 py-0.5 mr-2">
+        <button className="text-muted-foreground hover:text-orange-500 hover:bg-orange-500/10 rounded-full p-0.5 transition-colors">
+          <ArrowBigUp className="h-5 w-5" />
+        </button>
+        <span className="text-xs font-bold text-muted-foreground min-w-[1.5ch] text-center">{votes}</span>
+        <button className="text-muted-foreground hover:text-blue-500 hover:bg-blue-500/10 rounded-full p-0.5 transition-colors">
+          <ArrowBigDown className="h-5 w-5" />
+        </button>
+      </div>
+
+      <button className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:bg-muted/50 px-2 py-1 rounded-full transition-colors">
+        <MessageSquare className="h-4 w-4" />
+        Reply
+      </button>
+      <button className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:bg-muted/50 px-2 py-1 rounded-full transition-colors">
+        <Share2 className="h-4 w-4" />
+        Share
+      </button>
+      <button className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:bg-muted/50 px-2 py-1 rounded-full transition-colors">
+        <MoreHorizontal className="h-4 w-4" />
+      </button>
+    </div>
+  )
+}
+
 
 export function DiscussionReplies({
   children,
@@ -81,18 +116,21 @@ export function DiscussionReplies({
   return (
     <AccordionPrimitive.Content
       className={cn(
-        "pl-10 overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        "pl-4 ml-4 border-l-2 border-border/40 mt-1 overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
         className,
       )}
       {...props}
     >
-      {children}
+      <div className="pt-2 flex flex-col gap-3">
+        {children}
+      </div>
     </AccordionPrimitive.Content>
   )
 }
 
 export function Discussion({
+  className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
-  return <AccordionPrimitive.Root data-slot="accordion" {...props} />
+  return <AccordionPrimitive.Root data-slot="accordion" className={cn("flex flex-col gap-4", className)} {...props} />
 }

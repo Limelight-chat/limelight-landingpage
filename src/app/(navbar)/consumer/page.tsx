@@ -28,6 +28,11 @@ import imgThreeSecond from "@/assets/animation_c/imgthree-second.svg";
 import imgThreeThird from "@/assets/animation_c/imgthree-third.svg";
 import imgThreeFourth from "@/assets/animation_c/imgthree-fourth.svg";
 
+import pfp1 from "@/assets/redditpfp/pfp1.png";
+import pfp2 from "@/assets/redditpfp/pfp2.png";
+import pfp3 from "@/assets/redditpfp/pfp3.png";
+import pfp4 from "@/assets/redditpfp/pfp4.webp";
+
 // Emojis, Logos
 import gmailIcon from "@/assets/icons/gmail.png";
 import notesIcon from "@/assets/icons/notes.png";
@@ -45,8 +50,7 @@ import brainIcon from "@/assets/brain.svg";
 import { Badge } from "@/components/ui/badge";
 import CardSpotlight from "@/components/card-spotlight";
 import { Carousel, Card } from "@/components/ui/consumer-card";
-import { Integration } from "@/components/integration";
-import { Faq } from "@/components/faq";
+import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
 
 import StickyScrollReveal from "@/components/ui/sticky-scroll-reveal";
 import { WavyBackground } from "@/components/ui/wavy-background";
@@ -57,12 +61,13 @@ import SpaceSwitch from "@/components/macbook-switch";
 
 import {
   Discussion,
+  DiscussionActions,
+  DiscussionAuthor,
+  DiscussionAvatar,
   DiscussionBody,
   DiscussionContent,
-  DiscussionExpand,
   DiscussionItem,
   DiscussionReplies,
-  DiscussionTitle,
 } from "@/components/ui/discussion"
 
 
@@ -138,6 +143,44 @@ export default function Consumer() {
           Your data stays encrypted with zero-trust access controls.
         </p>
       ),
+    },
+  ];
+
+  const defaultData = [
+    {
+      answer: "Limelight is your personal AI assistant that organizes your files, notes, screenshots, chats, and documents into one smart search bar—so you can find anything instantly.",
+      icon: "💡",
+      iconPosition: "right",
+      id: 1,
+      question: "What is Limelight?",
+    },
+    {
+      answer: "No, It automatically sorts your digital mess and answers questions from your files, saving you time every day. don't need a license to browse this website.",
+      id: 2,
+      icon: "⭐",
+      iconPosition: "left",
+      question: "How does Limelight help me in daily life?",
+    },
+    {
+      answer: "Our No. Limelight is built for everyday users—just ask your questions in plain English. are digital, not edible. They're used for website functionality.",
+      id: 3,
+      icon: "⁉️",
+      iconPosition: "right",
+      question: "What Do I need technical skills to use Limelight?",
+    },
+    {
+      answer: "Not exactly. Google searches the internet; Limelight searches your digital life.",
+      icon: "⭐",
+      iconPosition: "left",
+      id: 4,
+      question: "Does Limelight replace Google search?",
+    },
+    {
+      answer: "Absolutely. You can access Limelight from any device—mobile, tablet, or laptop.",
+      id: 5,
+      icon: "📱",
+      iconPosition: "right",
+      question: "Will Limelight work on my phone?",
     },
   ];
 
@@ -464,99 +507,72 @@ export default function Consumer() {
             <Discussion
               defaultValue={["item-1", "item-1.1", "item-1.1.1", "item-1.2"]}
               type="multiple"
-              className="w-full"
+              className="w-full max-w-3xl mx-auto"
             >
               <DiscussionItem value="item-1">
-                <DiscussionContent className="gap-2">
-
-                  <div className="flex flex-col gap-2">
-                    <div className="flex flex-col gap-1">
-                      <DiscussionTitle className="flex gap-2 items-center">
-                        <div>Arjun Sharma</div>
-                        <div className="text-muted-foreground text-xs ">
-                          @heyarjun
-                        </div>
-                        <span className="text-muted-foreground text-xs">•</span>
-                        <div className="text-muted-foreground text-xs ">
-                          1 hour ago
-                        </div>
-                      </DiscussionTitle>
-                      <DiscussionBody>
-                        bro i actually found that pdf from 3rd semester in like 2 seconds. limelight just saved my thesis. 😭
-                      </DiscussionBody>
-                    </div>
-                    <DiscussionExpand />
+                <DiscussionContent>
+                  <DiscussionAvatar src={pfp1.src} fallback="AG" className="bg-orange-500" />
+                  <div className="flex-1">
+                    <DiscussionAuthor>
+                      <span className="font-semibold text-foreground hover:underline cursor-pointer">Arnav Gautam</span>
+                      <span className="text-blue-500 font-medium text-[10px] bg-blue-500/10 px-1.5 py-0.5 rounded-full">OP</span>
+                      <span>•</span>
+                      <span>1 hour ago</span>
+                    </DiscussionAuthor>
+                    <DiscussionBody>
+                      bro i actually found that pdf from 3rd semester in like 2 seconds. limelight just saved my thesis. 😭
+                    </DiscussionBody>
+                    <DiscussionActions votes="4.2k" />
                   </div>
                 </DiscussionContent>
                 <DiscussionReplies>
                   <DiscussionItem value="item-1.1">
-                    <DiscussionContent className="gap-2">
-
-                      <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-1">
-                          <DiscussionTitle className="flex gap-2 items-center">
-                            <div>Ojas</div>
-                            <div className="text-muted-foreground text-xs ">
-                              @ojas_builds
-                            </div>
-                            <span className="text-muted-foreground text-xs">•</span>
-                            <div className="text-muted-foreground text-xs ">
-                              34 minutes ago
-                            </div>
-                          </DiscussionTitle>
-                          <DiscussionBody>
-                            100%. Just onboarded the new dev. Being able to search the entire project history instantly is insane. Why didn't we have this sooner?
-                          </DiscussionBody>
-                        </div>
-                        <DiscussionExpand />
+                    <DiscussionContent>
+                      <DiscussionAvatar src={pfp2.src} fallback="OJ" className="bg-orange-500" />
+                      <div className="flex-1">
+                        <DiscussionAuthor>
+                          <span className="font-semibold text-foreground hover:underline cursor-pointer">Ojas</span>
+                          <span>•</span>
+                          <span>34 minutes ago</span>
+                        </DiscussionAuthor>
+                        <DiscussionBody>
+                          100%. Just onboarded the new dev. Being able to search the entire project history instantly is insane. Why didn't we have this sooner?
+                        </DiscussionBody>
+                        <DiscussionActions votes="856" />
                       </div>
                     </DiscussionContent>
                     <DiscussionReplies>
                       <DiscussionItem value="item-1.1.1">
-                        <DiscussionContent className="gap-2">
-
-                          <div className="flex flex-col gap-2">
-                            <div className="flex flex-col gap-1">
-                              <DiscussionTitle className="flex gap-2 items-center">
-                                <div>Alex Chen</div>
-                                <div className="text-muted-foreground text-xs ">
-                                  @alexchen
-                                </div>
-                                <span className="text-muted-foreground text-xs">
-                                  •
-                                </span>
-                                <div className="text-muted-foreground text-xs ">
-                                  26 minutes ago
-                                </div>
-                              </DiscussionTitle>
-                              <DiscussionBody>
-                                Same vibe here. Finally stopped drowning in client revisions. Having all the slack threads and drive links in one timeline is a cheat code.
-                              </DiscussionBody>
-                            </div>
+                        <DiscussionContent>
+                          <DiscussionAvatar src={pfp3.src} fallback="DS" />
+                          <div className="flex-1">
+                            <DiscussionAuthor>
+                              <span className="font-semibold text-foreground hover:underline cursor-pointer">Devesh Sharma</span>
+                              <span>•</span>
+                              <span>26 minutes ago</span>
+                            </DiscussionAuthor>
+                            <DiscussionBody>
+                              Same vibe here. Finally stopped drowning in client revisions. Having all the slack threads and drive links in one timeline is a cheat code.
+                            </DiscussionBody>
+                            <DiscussionActions votes="234" />
                           </div>
                         </DiscussionContent>
                       </DiscussionItem>
                     </DiscussionReplies>
                   </DiscussionItem>
                   <DiscussionItem value="item-1.2">
-                    <DiscussionContent className="gap-2">
-
-                      <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-1">
-                          <DiscussionTitle className="flex gap-2 items-center">
-                            <div>Sarah Wilson</div>
-                            <div className="text-muted-foreground text-xs ">
-                              @sarahworks
-                            </div>
-                            <span className="text-muted-foreground text-xs">•</span>
-                            <div className="text-muted-foreground text-xs ">
-                              14 minutes ago
-                            </div>
-                          </DiscussionTitle>
-                          <DiscussionBody>
-                            Legit feels like I have a second brain now. The context search is scary good.
-                          </DiscussionBody>
-                        </div>
+                    <DiscussionContent>
+                      <DiscussionAvatar src={pfp4.src} fallback="SW" className="bg-orange-500" />
+                      <div className="flex-1">
+                        <DiscussionAuthor>
+                          <span className="font-semibold text-foreground hover:underline cursor-pointer">Sarah Wilson</span>
+                          <span>•</span>
+                          <span>14 minutes ago</span>
+                        </DiscussionAuthor>
+                        <DiscussionBody>
+                          Legit feels like I have a second brain now. The context search is scary good.
+                        </DiscussionBody>
+                        <DiscussionActions votes="1.1k" />
                       </div>
                     </DiscussionContent>
                   </DiscussionItem>
@@ -588,8 +604,13 @@ export default function Consumer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-12"
           >
-            <Faq />
+            <FaqAccordion
+              data={defaultData as any}
+              className="max-w-[700px]"
+              timestamp=""
+            />
           </motion.div>
         </div>
       </section>

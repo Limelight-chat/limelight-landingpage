@@ -101,8 +101,7 @@ export default function SupportedUser() {
     <div ref={containerRef} className="relative w-full overflow-hidden py-8 sm:py-12 md:py-16">
       <div className="relative w-full">
         <div
-          className="relative w-full"
-          style={{ aspectRatio: "16/3" }}
+          className="relative w-full aspect-[16/5] sm:aspect-[16/3]"
         >
           <Image
             src={borderGradient}
@@ -125,7 +124,7 @@ export default function SupportedUser() {
                 {duplicatedIcons.map((icon, index) => (
                   <div
                     key={`icon-${index}`}
-                    className="shrink-0 w-6 h-6 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 relative"
+                    className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 relative"
                   >
                     <Image
                       src={icon.src}

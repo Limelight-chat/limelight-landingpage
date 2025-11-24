@@ -41,7 +41,7 @@ export function DiscussionAvatar({
 }: React.ComponentProps<typeof Avatar> & { src?: string, fallback?: string, alt?: string }) {
   return (
     <div className="flex flex-col items-center">
-      <Avatar className={cn("h-8 w-8 z-10", className)} {...props}>
+      <Avatar className={cn("h-6 w-6 md:h-8 md:w-8 z-10", className)} {...props}>
         <AvatarImage src={src} alt={alt} />
         <AvatarFallback>{fallback}</AvatarFallback>
       </Avatar>
@@ -94,11 +94,11 @@ export function DiscussionActions({
 
       <button className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:bg-muted/50 px-2 py-1 rounded-full transition-colors">
         <MessageSquare className="h-4 w-4" />
-        Reply
+        <span className="hidden sm:inline">Reply</span>
       </button>
       <button className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:bg-muted/50 px-2 py-1 rounded-full transition-colors">
         <Share2 className="h-4 w-4" />
-        Share
+        <span className="hidden sm:inline">Share</span>
       </button>
       <button className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:bg-muted/50 px-2 py-1 rounded-full transition-colors">
         <MoreHorizontal className="h-4 w-4" />
@@ -116,7 +116,7 @@ export function DiscussionReplies({
   return (
     <AccordionPrimitive.Content
       className={cn(
-        "pl-4 ml-4 border-l-2 border-border/40 mt-1 overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        "pl-2 ml-2 md:pl-4 md:ml-4 border-l-2 border-border/40 mt-1 overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
         className,
       )}
       {...props}

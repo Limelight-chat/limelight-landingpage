@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
-import emailjs from "@emailjs/browser";
 
 interface FormData {
   name: string;
@@ -54,27 +53,20 @@ export default function ContactForm() {
     }
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      // Build the email body with company name and message
+      const emailBody = `${formData.company ? `${formData.company}\n\n` : ''}${formData.message}`;
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS configuration is missing.");
-      }
+      // Create mailto link
+      const mailtoLink = `mailto:team@limelight.chat?subject=${encodeURIComponent(
+        formData.subject || "General Inquiry"
+      )}&body=${encodeURIComponent(emailBody)}`;
 
-      const templateParams = {
-        subject: formData.subject || "General Inquiry",
-        from_name: formData.name,
-        company: formData.company || "Not specified",
-        from_email: formData.email,
-        message: formData.message,
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // Open the user's default email client
+      window.location.href = mailtoLink;
 
       setSubmitStatus({
         type: "success",
-        message: "🎉 Message sent! We'll get back to you within 24 hours.",
+        message: "🎉 Opening your email client...",
       });
 
       setTimeout(() => {
@@ -85,6 +77,7 @@ export default function ContactForm() {
           subject: "",
           message: "",
         });
+        setSubmitStatus({ type: null, message: "" });
       }, 2000);
     } catch (error) {
       setSubmitStatus({

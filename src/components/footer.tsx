@@ -1,4 +1,9 @@
+"use client";
+
+import ReportIssueDialog from "@/components/report-issue-dialog";
+
 export default function Footer() {
+
   return (
     <footer className="w-full bg-[#0A0A0A] border-t border-white/10 mt-20">
       <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col items-center">
@@ -41,13 +46,21 @@ export default function Footer() {
       <div className="border-t border-white/10 py-4 px-6 flex flex-col md:flex-row items-center justify-between text-xs text-white/40 gap-4">
         
         {/* Navigation */}
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
           <a href="#" className="hover:text-white transition">Home</a>
           <a href="#" className="hover:text-white transition">Photos</a>
           <a href="#" className="hover:text-white transition">Videos</a>
           <a href="#" className="hover:text-white transition">About</a>
           <a href="#" className="hover:text-white transition">Contact</a>
           <a href="#" className="hover:text-white transition">Privacy</a>
+          
+          <ReportIssueDialog
+            trigger={
+              <button className="hover:text-white transition font-bold">
+                Report an Issue
+              </button>
+            }
+          />
         </div>
 
         {/* Made in India */}

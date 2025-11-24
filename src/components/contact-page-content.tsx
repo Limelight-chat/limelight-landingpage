@@ -33,18 +33,21 @@ export default function ContactPageContent() {
 
               {/* Contact Info – redesigned to match new UI */}
               <div className="mt-10 space-y-6 text-[14px] text-white/80">
-                <div className="flex items-start gap-3">
-                  <span className="text-white/60">Email:</span>
-                  <span className="text-white">{`team@limelight.chat`}</span>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+                  <span className="text-white/60 shrink-0">Email:</span>
+                  <div className="flex flex-col text-white">
+                    <span>contact.limelight.chat@gmail.com</span>
+                    <span>team@limelight.chat</span>
+                  </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <span className="text-white/60">Phone:</span>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+                  <span className="text-white/60 shrink-0">Phone:</span>
                   <span className="text-white">+91 62397 22401</span>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <span className="text-white/60">Office:</span>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+                  <span className="text-white/60 shrink-0">Office:</span>
                   <span className="text-white">
                     Limelight HQ <br /> Ludhiana, India
                   </span>
@@ -67,7 +70,7 @@ export default function ContactPageContent() {
                 <ReportIssueDialog
                   trigger={
                     <button
-                      className="hover:text-white transition underline underline-offset-2 font-medium"
+                      className="hover:text-white transition underline underline-offset-2 font-medium cursor-pointer"
                       style={{ color: accent }}
                     >
                       Report an Issue

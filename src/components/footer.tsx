@@ -56,7 +56,7 @@ export default function Footer() {
           
           <ReportIssueDialog
             trigger={
-              <button className="hover:text-white transition font-bold">
+              <button className="hover:text-white transition font-bold cursor-pointer">
                 Report an Issue
               </button>
             }

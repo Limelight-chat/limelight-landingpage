@@ -71,7 +71,6 @@ import {
 } from "@/components/ui/discussion"
 
 
-
 export default function Consumer() {
 
   const cards = [

@@ -34,7 +34,7 @@ export function FaqAccordion({
   return (
     <div className={cn("p-4 w-full mx-auto", className)}>
       {timestamp && (
-        <div className="mb-6 text-sm text-muted-foreground/60 font-medium">{timestamp}</div>
+        <div className="mb-6 text-sm text-muted-foreground/60 font-bold">{timestamp}</div>
       )}
 
       <Accordion.Root
@@ -51,11 +51,11 @@ export function FaqAccordion({
             className="w-full"
           >
             <Accordion.Header className="flex">
-              <Accordion.Trigger className="flex w-full items-center justify-start gap-4 group">
+              <Accordion.Trigger className="flex w-full items-center justify-start gap-4 group cursor-pointer">
                 <div
                   className={cn(
                     "relative flex items-center rounded-2xl px-5 py-3 transition-all text-left max-w-[85%] sm:max-w-[70%]",
-                    "bg-[#1a1a1a] text-white/90 border border-white/5",
+                    "bg-[#1a1a1a] text-white border border-white/5",
                     questionClassName
                   )}
                 >
@@ -104,7 +104,7 @@ export function FaqAccordion({
               >
                 <div
                   className={cn(
-                    "relative max-w-[85%] sm:max-w-[70%] rounded-2xl bg-white px-5 py-3 text-black text-[15px] leading-relaxed shadow-sm",
+                    "relative max-w-[85%] sm:max-w-[70%] rounded-2xl bg-[#278EFF] px-5 py-3 text-white font-bold text-[15px] leading-relaxed shadow-sm",
                     answerClassName
                   )}
                 >

@@ -1,6 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import logo from "@/assets/oLogo.svg";
 
 import ReportIssueDialog from "@/components/report-issue-dialog";
 
@@ -14,10 +16,17 @@ export default function Footer() {
     <footer className="w-full bg-[#0A0A0A] border-t border-white/10 mt-20">
       <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col items-center">
 
-        {/* Big Title */}
-        <h1 className="font-bold text-center bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent tracking-tight text-[clamp(3rem,12vw,12rem)] leading-none">
-          LIMELIGHT
-        </h1>
+        {/* Big Title with Logo */}
+        <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
+          <Image
+            src={logo}
+            alt="Limelight Logo"
+            className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain"
+          />
+          <h1 className="font-bold text-center bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent tracking-tight text-[clamp(3rem,12vw,12rem)] leading-none">
+            LIMELIGHT
+          </h1>
+        </div>
 
         <div className="w-full h-px bg-white/10 my-12" />
 

@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import card1 from "@/assets/cards/card 1.jpg";
-import card2 from "@/assets/cards/card 2.jpg";
-import card3 from "@/assets/cards/card 3.jpg";
-import card4 from "@/assets/cards/card 4.jpg";
-import card5 from "@/assets/cards/card 5.jpg";
-import card6 from "@/assets/cards/card 6.jpg";
-import card7 from "@/assets/cards/card 7.jpg";
 
 import study from "@/assets/spotlight/study.png"
 import freelance from "@/assets/spotlight/freelancer.png"
 import work from "@/assets/spotlight/work.png"
+
+// consumer cards
+import card1 from "@/assets/consumer/card1.svg"
+import card2 from "@/assets/consumer/card2.svg"
+import card3 from "@/assets/consumer/card3.svg"
+import card4 from "@/assets/consumer/card4.svg"
+import card5 from "@/assets/consumer/card5.svg"
+import card6 from "@/assets/consumer/card6.svg"
 
 // Animation images for sticky scroll
 import imgOneFirst from "@/assets/animation_c/imgone-first.svg";
@@ -48,6 +49,8 @@ import Image from "next/image";
 import aiIcon from "@/assets/ai.svg";
 import brainIcon from "@/assets/brain.svg";
 import CardSpotlight from "@/components/card-spotlight";
+import measure from "@/assets/measure.png"
+
 import { Carousel, Card } from "@/components/ui/consumer-card";
 import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
 
@@ -85,28 +88,28 @@ export default function Consumer() {
       ),
     },
     {
-      category: "Search",
-      title: "Lightning fast AI search",
+      category: "Lightning-Fast Search",
+      title: "Find anything across apps, chats, screenshots, PDFs—instantly.",
       src: card2.src,
       content: (
         <p>
-          Get instant answers from documents, chats, and PDFs with context-aware AI.
+          Find anything across apps, chats, PDFs - instantly.
         </p>
       ),
     },
     {
-      category: "Chat",
-      title: "Talk naturally with your data",
+      category: "Your Personal Command Center",
+      title: "Switch between study, work, and life with one simple dashboard.",
       src: card3.src,
       content: (
         <p>
-          Your data stays encrypted with zero-trust access controls.
+          Plug in Google Drive, Slack, Notion & more — unify scattered knowledge in one place.
         </p>
       ),
     },
     {
-      category: "Search",
-      title: "Company-Wide Search",
+      category: "AI Answers, Not Just Results",
+      title: "Ask anything, Limelight reads your files and gives you clear answers, summaries, and explanations",
       src: card4.src,
       content: (
         <p>
@@ -115,9 +118,9 @@ export default function Consumer() {
       ),
     },
     {
-      category: "Access",
-      title: "Use Anywhere, Instantly",
-      src: card5.src,
+      category: "Find Anything",
+      title: "Search by context, even when you don't know the file name",
+      src: card6.src,
       content: (
         <p>
           Use Limelight directly from WhatsApp or Slack no downloads, no setup, just start chatting.
@@ -125,19 +128,9 @@ export default function Consumer() {
       ),
     },
     {
-      category: "Security",
-      title: "Enterprise-grade privacy",
-      src: card6.src,
-      content: (
-        <p>
-          Your data stays encrypted with zero-trust access controls.
-        </p>
-      ),
-    },
-    {
-      category: "Security",
-      title: "Bring your own Cloud",
-      src: card7.src,
+      category: "Connect in Seconds",
+      title: "Link WhatsApp, Drive, Slack, and more with a single step.",
+      src: card5.src,
       content: (
         <p>
           Your data stays encrypted with zero-trust access controls.

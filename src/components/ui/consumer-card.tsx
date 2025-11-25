@@ -183,24 +183,26 @@ export const Card = ({
   const bgColor = poppyColors[index % poppyColors.length];
   
   return (
-    <div className="relative z-10 flex w-56 flex-col overflow-hidden rounded-3xl bg-[#171616] select-none md:w-80">
+    <div className="relative z-10 flex w-56 flex-col overflow-hidden rounded-2xl bg-[#171616] select-none md:w-80">
       {/* Image container with 1.15:1 aspect ratio and colored background */}
       <div 
-        className="relative flex items-center justify-center w-full p-3 md:p-3.5" 
+        className="relative w-full rounded-2xl" 
         style={{ aspectRatio: '1.15 / 1', backgroundColor: bgColor }}
       >
-        <div className="relative w-[88%] h-[88%]">
-          <BlurImage
-            src={card.src}
-            alt={card.title}
-            fill
-            className="object-cover rounded-lg pointer-events-none"
-          />
+        <div className="absolute inset-2 rounded-2xl flex items-center justify-center">
+          <div className="relative w-[70%] h-[70%]">
+            <BlurImage
+              src={card.src}
+              alt={card.title}
+              fill
+              className="object-contain pointer-events-none"
+            />
+          </div>
         </div>
       </div>
       
       {/* Text content below */}
-      <div className="relative z-40 bg-[#171616] px-3 py-2 md:px-3.5 md:py-2.5">
+      <div className="relative z-40 bg-[#171616] px-3 py-2 md:px-3.5 md:py-2.5 rounded-b-2xl">
         <p className="text-left font-sans text-sm font-semibold text-white md:text-base">
           {card.category}
         </p>

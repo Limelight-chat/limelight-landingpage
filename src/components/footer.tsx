@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#0A0A0A] border-t border-white/10 mt-20">
       <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col items-center">
-        
+
         {/* Big Title */}
         <h1 className="font-bold text-center bg-[linear-gradient(to_right,#fb923c_0%,#ED3558_60%,#ED3558_100%)] bg-clip-text text-transparent tracking-tight text-[clamp(3rem,12vw,12rem)] leading-none">
           LIMELIGHT
@@ -16,15 +16,18 @@ export default function Footer() {
         <div className="w-full h-px bg-white/10 my-12" />
 
         {/* Top Section: Email / Socials / Phone */}
-        <div className="w-full flex flex-col md:flex-row items-center justify-between text-sm text-white/70 gap-10">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-white/70">
           <div className="flex flex-col items-center md:items-start gap-1">
             <span className="text-xs uppercase text-white/50">Email</span>
             <a href="mailto:example@limelight.ai" className="hover:text-white transition">
               team@limelight.chat
             </a>
+            <a href="mailto:example@limelight.ai" className="hover:text-white transition">
+              contact.limelight.chat@gmail.com
+            </a>
           </div>
 
-          <div className="flex flex-col items-center gap-1">
+          <div className="flex flex-col items-center justify-center gap-1">
             <span className="text-xs uppercase text-white/50">Follow Us</span>
             <div className="flex gap-4">
               <a href="#" className="hover:text-white transition">X</a>
@@ -44,7 +47,7 @@ export default function Footer() {
 
       {/* Bottom Navigation + Made in India */}
       <div className="border-t border-white/10 py-4 px-6 flex flex-col md:flex-row items-center justify-between text-xs text-white/40 gap-4">
-        
+
         {/* Navigation */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
           <a href="#" className="hover:text-white transition">Home</a>
@@ -53,7 +56,7 @@ export default function Footer() {
           <a href="#" className="hover:text-white transition">About</a>
           <a href="#" className="hover:text-white transition">Contact</a>
           <a href="#" className="hover:text-white transition">Privacy</a>
-          
+
           <ReportIssueDialog
             trigger={
               <button className="hover:text-white transition font-bold cursor-pointer">

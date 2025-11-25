@@ -157,7 +157,7 @@ export default function Consumer() {
     {
       answer: "No, It automatically sorts your digital mess and answers questions from your files, saving you time every day. don't need a license to browse this website.",
       id: 2,
-      icon: "⭐",
+      icon: "❤️",
       iconPosition: "left",
       question: "How does Limelight help me in daily life?",
     },
@@ -594,7 +594,7 @@ export default function Consumer() {
             transition={{ duration: 0.4 }}
           >
             <div className="text-center max-w-3xl mx-auto px-6 z-20">
-              <h1 className="text-5xl md:text-6xl font-bold">
+              <h1 className="text-3xl md:text-4xl font-bold">
                 Questions? Answers
               </h1>
             </div>

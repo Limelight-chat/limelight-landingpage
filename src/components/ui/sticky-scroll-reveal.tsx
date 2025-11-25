@@ -10,6 +10,8 @@ import {
 import { cn } from "@/lib/utils";
 import { StaticImageData } from "next/image";
 import Prism from "@/components/Prism";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
 
 function PrismResponsive() {
   const [dimensions, setDimensions] = React.useState({
@@ -112,6 +114,23 @@ export default function StickyCrossfadeWithEmojis({
   const gapRatio = 0.05;
   const totalSlides = slides.length;
   const totalSections = totalSlides + 1; // last one is reveal section
+
+  const handleSkipIntro = () => {
+    if (ref.current) {
+      const sectionHeight = ref.current.offsetHeight;
+      window.scrollTo({
+        top: ref.current.offsetTop + sectionHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Show button only when in the sticky scroll section
+  const showButton = useTransform(
+    scrollYProgress,
+    [0, 0.95],
+    [1, 0]
+  );
 
   return (
     <section
@@ -409,6 +428,48 @@ export default function StickyCrossfadeWithEmojis({
             </motion.div>
           );
         })()}
+
+        {/* Skip Intro Button */}
+        <motion.div
+          style={{ opacity: showButton }}
+          className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 pointer-events-auto"
+        >
+          <div className="border p-0.5 rounded-full border-dotted border-primary">
+            <Button
+              onClick={handleSkipIntro}
+              className="relative w-[55px] h-[55px] sm:w-[70px] sm:h-[70px] rounded-full overflow-hidden p-0 grid place-content-center bg-primary hover:bg-primary/90"
+            >
+              <p
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                }}
+              >
+                {Array.from("SKIP INTRO").map((char, i) => (
+                  <span
+                    key={i}
+                    className="sm:text-[10px] text-[8px]"
+                    style={{
+                      position: "absolute",
+                      inset: "3px",
+                      transform: `rotate(${32 * i}deg)`,
+                      transformOrigin: "50% 50%",
+                      userSelect: "none",
+                      display: "inline-block",
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </p>
+
+              <div className="relative w-[22px] h-[22px] sm:w-[28px] sm:h-[28px] rounded-full text-primary bg-white flex items-center justify-center">
+                <ArrowDown className="w-3 h-3 sm:w-4 sm:h-4" />
+              </div>
+            </Button>
+          </div>
+        </motion.div>
       </div>
       
     </section>

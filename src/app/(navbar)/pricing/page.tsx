@@ -19,7 +19,7 @@ export default function Pricing() {
   const plans: Plan[] = [
     {
       name: "Starter",
-      price: "$0",
+      price: "$8",
       period: "/month",
       description: "Perfect for individuals getting started",
       features: [

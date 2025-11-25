@@ -1,8 +1,14 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import ReportIssueDialog from "@/components/report-issue-dialog";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === "/consumer") return null;
+
 
   return (
     <footer className="w-full bg-[#0A0A0A] border-t border-white/10 mt-20">
@@ -20,10 +26,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-1">
             <span className="text-xs uppercase text-white/50">Email</span>
             <a href="mailto:example@limelight.ai" className="hover:text-white transition">
-              team@limelight.chat
-            </a>
-            <a href="mailto:example@limelight.ai" className="hover:text-white transition">
-              contact.limelight.chat@gmail.com
+              hello@limelight.chat
             </a>
           </div>
 
@@ -39,7 +42,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-end gap-1">
             <span className="text-xs uppercase text-white/50">Phone</span>
             <a href="tel:+911234567890" className="hover:text-white transition">
-              +91 12345 67890
+              +91 
             </a>
           </div>
         </div>

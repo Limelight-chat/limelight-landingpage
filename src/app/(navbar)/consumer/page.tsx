@@ -47,7 +47,6 @@ import waveEmoji from "@/assets/animation/icons/wave.png"
 import Image from "next/image";
 import aiIcon from "@/assets/ai.svg";
 import brainIcon from "@/assets/brain.svg";
-import { Badge } from "@/components/ui/badge";
 import CardSpotlight from "@/components/card-spotlight";
 import { Carousel, Card } from "@/components/ui/consumer-card";
 import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
@@ -58,6 +57,7 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Link from "next/link";
 import SupportedUser from "@/components/supported-user";
 import SpaceSwitch from "@/components/macbook-switch";
+import FooterAlt from "@/components/footer-alt";
 
 import {
   Discussion,
@@ -69,6 +69,7 @@ import {
   DiscussionItem,
   DiscussionReplies,
 } from "@/components/ui/discussion"
+
 
 
 export default function Consumer() {
@@ -272,14 +273,13 @@ export default function Consumer() {
 
               {/* Button */}
               <div className="mt-8 sm:mt-10 flex justify-center w-full">
-                <Link href="/pricing">
+                <Link href="#waitlist-form">
                   <HoverBorderGradient
                     containerClassName="rounded-2xl"
                     as="button"
-                    disabled
                     className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
                   >
-                    <span>Coming Soon</span>
+                    <span>Join the Waitlist</span>
                   </HoverBorderGradient>
                 </Link>
               </div>
@@ -613,6 +613,11 @@ export default function Consumer() {
             />
           </motion.div>
         </div>
+      </section>
+
+
+      <section className="pt-24 justify-center items-center flex flex-col">
+        <FooterAlt />
       </section>
 
     </>

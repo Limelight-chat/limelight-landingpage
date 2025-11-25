@@ -8,30 +8,65 @@ import travelImg from "@/assets/macbook/travel.svg";
 import workImg from "@/assets/macbook/work.svg";
 import studyImg from "@/assets/macbook/study.svg";
 
+import japBg from "@/assets/macbook/background/jap.webp";
+import workBg from "@/assets/macbook/background/work.webp";
+import classBg from "@/assets/macbook/background/class.webp";
+
 const features = [
   {
     id: "travel",
     triggerText: "travel plans",
-    image: travelImg, // Placeholder 1
+    image: travelImg,
+    background: japBg,
     caption: "Finds flight PDFs + Hotel emails instantly.",
   },
   {
     id: "notes",
     triggerText: "class notes",
-    image: studyImg, // Placeholder 1 again
+    image: studyImg,
+    background: classBg,
     caption: "Connects PDFs to handwritten notes.",
   },
   {
     id: "work",
     triggerText: "work",
-    image: workImg, // Placeholder 2
+    image: workImg,
+    background: workBg,
     caption: "Reads text inside your images using AI.",
   },
 ];
 
 export default function SpaceSwitch() {
-  // Set the default active tab to the first feature
-  const [activeTab, setActiveTab] = useState(features[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const changeTab = (index: number) => {
+    if (index === currentIndex) return;
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  const activeTab = features[currentIndex];
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 200 : -200,
+      opacity: 0,
+      filter: "blur(4px)",
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 200 : -200,
+      opacity: 0,
+      filter: "blur(4px)",
+    }),
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -44,7 +79,7 @@ export default function SpaceSwitch() {
           {/* Travel Plans with SVG */}
           <span
             className="inline-flex items-center px-1 gap-2 cursor-pointer group py-1"
-            onMouseEnter={() => setActiveTab(features[0])}
+            onMouseEnter={() => changeTab(0)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024" className={`inline-block transition-colors duration-300 ${activeTab.id === "travel" ? "text-[#E84848]" : "text-white/40 group-hover:text-[#E84848]"
               }`}>
@@ -62,7 +97,7 @@ export default function SpaceSwitch() {
           {/* Class Notes with SVG */}
           <span
             className="inline-flex items-center gap-2 cursor-pointer group py-1"
-            onMouseEnter={() => setActiveTab(features[1])}
+            onMouseEnter={() => changeTab(1)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" className={`inline-block transition-colors duration-300 ${activeTab.id === "notes" ? "text-[#32C96A]" : "text-white/40 group-hover:text-[#32C96A]"
               }`}>
@@ -80,7 +115,7 @@ export default function SpaceSwitch() {
 
           <span
             className="inline-flex items-center gap-2 cursor-pointer group py-1"
-            onMouseEnter={() => setActiveTab(features[2])}
+            onMouseEnter={() => changeTab(2)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 26 26" className={`inline-block transition-colors duration-300 ${activeTab.id === "work" ? "text-[#3E9BFF]" : "text-white/40 group-hover:text-[#3E9BFF]"
               }`}>
@@ -106,22 +141,36 @@ export default function SpaceSwitch() {
         <div className="absolute inset-0 bg-white/40 backdrop-blur-xl border border-white/50 shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5">
 
           {/* Mac Window Controls */}
-          <div className="h-6 bg-white/60 border-b border-white/20 flex items-center px-3 space-x-1.5">
+          <div className="h-6 bg-white/60 border-b border-white/20 flex items-center px-3 space-x-1.5 z-20 relative">
             <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] shadow-sm"></div>
             <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] shadow-sm"></div>
             <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shadow-sm"></div>
           </div>
 
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={activeTab.background}
+              alt="Background"
+              fill
+              className="object-cover opacity-60 blur-sm scale-110"
+            />
+          </div>
+
           {/* The Changing Content Area */}
-          <div className="relative w-full h-full px-4 flex flex-col items-center justify-center bg-red-400">
-            <AnimatePresence mode="wait">
+          <div className="relative w-full h-full px-4 flex flex-col items-center justify-center z-10">
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
                 key={activeTab.id}
-                // Animation: Fade up and blur in
-                initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -30, filter: "blur(12px)" }}
-                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }} // Smooth custom easing
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
                 className="relative w-full h-full flex flex-col items-center justify-center"
               >
                 {/* The Image */}

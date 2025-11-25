@@ -36,14 +36,13 @@ export default function ContactPageContent() {
                 <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
                   <span className="text-white/60 shrink-0">Email:</span>
                   <div className="flex flex-col text-white">
-                    <span>contact.limelight.chat@gmail.com</span>
-                    <span>team@limelight.chat</span>
+                    <span>hello@limelight.chat</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
                   <span className="text-white/60 shrink-0">Phone:</span>
-                  <span className="text-white">+91 62397 22401</span>
+                  <span className="text-white">+91 </span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">

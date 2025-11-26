@@ -32,6 +32,21 @@ import {
 } from "@/components/ui/sheet";
 
 const Navbar5 = () => {
+
+  const features = [
+    {
+      title: "Blogs",
+      description: "Latest news and product updates",
+      href: "/blog",
+    },
+    {
+      title: "Docs",
+      description: "Learn how to use Limelight.",
+      href: "/docs",
+    },
+  ];
+
+
   const pathname = usePathname();
 
   // Dynamically change the label based on route
@@ -40,7 +55,7 @@ const Navbar5 = () => {
   const consumerHref = isConsumerPage ? "/" : "/consumer";
 
   return (
-    <section className="py-4 relative z-10">
+    <section className="py-4 relative z-50">
       <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <nav className="flex items-center justify-between relative">
           <Link href="/" className="flex items-center gap-1">
@@ -81,21 +96,27 @@ const Navbar5 = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/blog"
-                  className={navigationMenuTriggerStyle()}
-                >
-                  Blog
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="/docs"
-                  className={navigationMenuTriggerStyle()}
-                >
-                  Docs
-                </NavigationMenuLink>
+                <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-background/95 backdrop-blur-sm">
+                  <div className="grid w-[600px] grid-cols-2 p-3">
+                    {features.map((feature, index) => (
+                      <NavigationMenuLink
+                        href={feature.href}
+                        key={index}
+                        className="hover:bg-muted/70 rounded-md p-3 transition-colors"
+                      >
+                        <div key={feature.title}>
+                          <p className="text-foreground mb-1 font-semibold">
+                            {feature.title}
+                          </p>
+                          <p className="text-muted-foreground text-sm">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </NavigationMenuLink>
+                    ))}
+                  </div>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -151,16 +172,37 @@ const Navbar5 = () => {
                   <a href="/pricing" className="font-medium">
                     Pricing
                   </a>
-                  <a href="/blog" className="font-medium">
-                    Blog
-                  </a>
-                  <a href="/docs" className="font-medium">
-                    Docs
-                  </a>
                   <a href="/contact" className="font-medium">
                     Contact Us
                   </a>
                 </div>
+                <Accordion type="single" collapsible className="mb-2 mt-4">
+                  <AccordionItem value="solutions" className="border-none">
+                    <AccordionTrigger className="text-base hover:no-underline">
+                      Resources
+                    </AccordionTrigger>
+                    <AccordionContent className="bg-muted/30 rounded-md p-2 mt-2">
+                      <div className="grid md:grid-cols-2">
+                        {features.map((feature, index) => (
+                          <a
+                            href={feature.href}
+                            key={index}
+                            className="hover:bg-muted/70 rounded-md p-3 transition-colors"
+                          >
+                            <div key={feature.title}>
+                              <p className="text-foreground mb-1 font-semibold">
+                                {feature.title}
+                              </p>
+                              <p className="text-muted-foreground text-sm">
+                                {feature.description}
+                              </p>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
 
                 <div className="mt-6 flex flex-col gap-4">
                   <Button variant="outline">Log In</Button>

@@ -1,0 +1,42 @@
+---
+title: Search API
+description: Documentation for the Search endpoint.
+---
+
+# Search API
+
+The Search API is the core of Limelight. It allows you to query your indexed data.
+
+## Endpoint
+
+`POST /search`
+
+## Request Body
+
+```json
+{
+  "query": "What is the Q3 revenue?",
+  "limit": 10,
+  "filters": {
+    "source": ["google_drive", "slack"]
+  }
+}
+```
+
+## Response
+
+```json
+{
+  "results": [
+    {
+      "id": "doc_123",
+      "content": "The Q3 revenue was $1.5M...",
+      "score": 0.95,
+      "metadata": {
+        "source": "google_drive",
+        "title": "Q3 Financial Report"
+      }
+    }
+  ]
+}
+```

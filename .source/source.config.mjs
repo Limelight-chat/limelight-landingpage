@@ -12,7 +12,9 @@ var blogPosts = defineCollections({
   dir: "content/blog",
   schema: frontmatterSchema.extend({
     author: z.string(),
-    date: z.string().date().or(z.date())
+    date: z.string().date().or(z.date()),
+    tags: z.array(z.string()).optional(),
+    image: z.string().optional()
   })
 });
 var source_config_default = defineConfig();

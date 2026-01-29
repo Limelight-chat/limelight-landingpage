@@ -4,6 +4,7 @@ import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import Logo from "@/assets/logo.png";
 
@@ -32,6 +33,13 @@ import {
 } from "@/components/ui/sheet";
 
 const Navbar5 = () => {
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const features = [
     {
@@ -46,11 +54,8 @@ const Navbar5 = () => {
     },
   ];
 
-
-  const pathname = usePathname();
-
-  // Dynamically change the label based on route
-  const isConsumerPage = pathname.startsWith("/consumer");
+  // Default values to prevent hydration mismatch
+  const isConsumerPage = mounted ? pathname.startsWith("/consumer") : false;
   const consumerLabel = isConsumerPage ? "Business" : "Consumer";
   const consumerHref = isConsumerPage ? "/" : "/consumer";
 

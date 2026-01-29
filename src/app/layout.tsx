@@ -86,6 +86,23 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark" style={{ background: "#171616" }} suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Prevent FOUC by hiding content until CSS loads */
+            body { visibility: hidden; opacity: 0; }
+            body.loaded { visibility: visible; opacity: 1; transition: opacity 0.1s; }
+          `
+        }} />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Show content once DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+              document.body.classList.add('loaded');
+            });
+          `
+        }} />
+      </head>
       <body className={`${inter.variable} ${syne.variable} ${manrope.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}

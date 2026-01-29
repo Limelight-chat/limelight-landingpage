@@ -155,7 +155,7 @@ export default function Consumer() {
       question: "How does Limelight help me in daily life?",
     },
     {
-      answer: "Our No. Limelight is built for everyday users—just ask your questions in plain English. are digital, not edible. They're used for website functionality.",
+      answer: "No. Limelight is built for everyday users—just ask your questions in plain English. are digital, not edible. They're used for website functionality.",
       id: 3,
       icon: "⁉️",
       iconPosition: "right",

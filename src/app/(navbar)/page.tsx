@@ -59,81 +59,94 @@ import VideoPlayer from "@/components/ui/video-player";
 export default function Home() {
 
   const cards = [
-  {
-    category: "Integrations",
-    title: "Connect all your knowledge sources",
-    src: card1.src,
-    content: (
-      <p>
-        Plug in Google Drive, Slack, Notion & more — unify scattered knowledge in one place.
-      </p>
-    ),
-  },
-  {
-    category: "Search",
-    title: "Lightning fast AI search",
-    src: card2.src,
-    content: (
-      <p>
-        Get instant answers from documents, chats, and PDFs with context-aware AI.
-      </p>
-    ),
-  },
-  {
-    category: "Chat",
-    title: "Talk naturally with your data",
-    src: card3.src,
-    content: (
-      <p>
-        Your data stays encrypted with zero-trust access controls.
-      </p>
-    ),
-  },
-  {
-    category: "Search",
-    title: "Company-Wide Search",
-    src: card4.src,
-    content: (
-      <p>
-        Your data stays encrypted with zero-trust access controls.
-      </p>
-    ),
-  },
-  {
-    category: "Access",
-    title: "Use Anywhere, Instantly",
-    src: card5.src,
-    content: (
-      <p>
-        Use Limelight directly from WhatsApp or Slack no downloads, no setup, just start chatting.
-      </p>
-    ),
-  },
-  {
-    category: "Security",
-    title: "Enterprise-grade privacy",
-    src: card6.src,
-    content: (
-      <p>
-        Your data stays encrypted with zero-trust access controls.
-      </p>
-    ),
-  },
-  {
-    category: "Security",
-    title: "Bring your own Cloud",
-    src: card7.src,
-    content: (
-      <p>
-        Your data stays encrypted with zero-trust access controls.
-      </p>
-    ),
-  },
-];
+    {
+      category: "Integrations",
+      title: "Connect all your knowledge sources",
+      src: card1.src,
+      content: (
+        <p>
+          Plug in Google Drive, Slack, Notion & more — unify scattered knowledge in one place.
+        </p>
+      ),
+    },
+    {
+      category: "Search",
+      title: "Lightning fast AI search",
+      src: card2.src,
+      content: (
+        <p>
+          Get instant answers from documents, chats, and PDFs with context-aware AI.
+        </p>
+      ),
+    },
+    {
+      category: "Chat",
+      title: "Talk naturally with your data",
+      src: card3.src,
+      content: (
+        <p>
+          Your data stays encrypted with zero-trust access controls.
+        </p>
+      ),
+    },
+    {
+      category: "Search",
+      title: "Company-Wide Search",
+      src: card4.src,
+      content: (
+        <p>
+          Your data stays encrypted with zero-trust access controls.
+        </p>
+      ),
+    },
+    {
+      category: "Access",
+      title: "Use Anywhere, Instantly",
+      src: card5.src,
+      content: (
+        <p>
+          Use Limelight directly from WhatsApp or Slack no downloads, no setup, just start chatting.
+        </p>
+      ),
+    },
+    {
+      category: "Security",
+      title: "Enterprise-grade privacy",
+      src: card6.src,
+      content: (
+        <p>
+          Your data stays encrypted with zero-trust access controls.
+        </p>
+      ),
+    },
+    {
+      category: "Security",
+      title: "Bring your own Cloud",
+      src: card7.src,
+      content: (
+        <p>
+          Your data stays encrypted with zero-trust access controls.
+        </p>
+      ),
+    },
+  ];
 
-const items = cards.map((card, index) => (
-  <Card key={index} card={card} index={index} />
-));
+  const items = cards.map((card, index) => (
+    <Card key={index} card={card} index={index} />
+  ));
+
+  const videoCarouselItems = [
+    <div key="video1" className="w-[90vw] md:w-[800px] flex items-center justify-center snap-center">
+      <VideoPlayer
+        src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4?q_auto,f_auto"
+      />
+    </div>,
+    <div key="video2" className="w-[90vw] md:w-[700px] flex items-center justify-center snap-center">
+      <VideoPlayer
+        src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770726853/Analytical-Demo-1_b3ibnx.mp4"
+      />
+    </div>,
+  ];
 
 
   return (
@@ -141,127 +154,127 @@ const items = cards.map((card, index) => (
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <WavyBackground
-            colors={["#E67820", "#ED3658"]}
-            speed="fast"
-            backgroundFill="#171616"
-            blur={25}
-            className="flex items-center justify-center"
-          >
-        <div className="relative w-full h-full flex items-center justify-center z-10 -mt-12 sm:-mt-8 md:mt-0">
-          
-          <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6 w-full max-w-7xl mx-auto">
-            {/* Main Headline */}
-            <h1 className="font-light tracking-tight leading-[1.05] text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
-              The future <br />
-              of business is <br />
+          colors={["#E67820", "#ED3658"]}
+          speed="fast"
+          backgroundFill="#171616"
+          blur={25}
+          className="flex items-center justify-center"
+        >
+          <div className="relative w-full h-full flex items-center justify-center z-10 -mt-12 sm:-mt-8 md:mt-0">
 
-              {/* Human + AI Row */}
-              <span className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 mt-2 sm:mt-3">
-                <Image
-                  src={fingerprint}
-                  alt="fingerprint"
-                  width={80}
-                  height={80}
-                  className="inline-block opacity-90 w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
-                />
-                <span className="text-white">human</span>
-                <span className="text-white">+</span>
-                <Image
-                  src={aiIcon}
-                  alt="ai"
-                  width={80}
-                  height={80}
-                  className="inline-block opacity-90 w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
-                />
-                <span className="text-white">AI</span>
-              </span>
-            </h1>
+            <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6 w-full max-w-7xl mx-auto">
+              {/* Main Headline */}
+              <h1 className="font-light tracking-tight leading-[1.05] text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl bg-linear-to-b from-[#6f6f6f] to-white bg-clip-text text-transparent">
+                The future <br />
+                of business is <br />
 
-            {/* Subtext */}
-            <p className="text-white/60 text-base sm:text-lg md:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl px-2">
-              Limelight is <span className="text-white">an AI search engine</span> for your business data. <br className="hidden sm:block" />
-              Instant, accurate answers from your company’s files, documents, and knowledge.
-            </p>
+                {/* Human + AI Row */}
+                <span className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 mt-2 sm:mt-3">
+                  <Image
+                    src={fingerprint}
+                    alt="fingerprint"
+                    width={80}
+                    height={80}
+                    className="inline-block opacity-90 w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
+                  />
+                  <span className="text-white">human</span>
+                  <span className="text-white">+</span>
+                  <Image
+                    src={aiIcon}
+                    alt="ai"
+                    width={80}
+                    height={80}
+                    className="inline-block opacity-90 w-12 h-12 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
+                  />
+                  <span className="text-white">AI</span>
+                </span>
+              </h1>
 
-            {/* Button */}
-            <div className="mt-8 sm:mt-10 flex justify-center w-full">
-              <Link href="/pricing">
-                <HoverBorderGradient
-                  containerClassName="rounded-2xl"
-                  as="button"
-                  className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
-                >
-                  <span>Try Limelight</span>
-                </HoverBorderGradient>
-              </Link>
+              {/* Subtext */}
+              <p className="text-white/60 text-base sm:text-lg md:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl px-2">
+                Limelight is <span className="text-white">an AI search engine</span> for your business data. <br className="hidden sm:block" />
+                Instant, accurate answers from your company’s files, documents, and knowledge.
+              </p>
+
+              {/* Button */}
+              <div className="mt-8 sm:mt-10 flex justify-center w-full">
+                <Link href="/pricing">
+                  <HoverBorderGradient
+                    containerClassName="rounded-2xl"
+                    as="button"
+                    className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
+                  >
+                    <span>Try Limelight</span>
+                  </HoverBorderGradient>
+                </Link>
+              </div>
+
             </div>
-            
           </div>
-        </div>
         </WavyBackground>
       </section>
 
       {/* After Hero Section */}
       <StickyScrollReveal
-            slides={[
-            {
-                title: "Your company knows everything, yet no one can find anything",
-                images: [
-                  { src: imgOneFirst, position: "right" },
-                  { src: imgOneSecond, position: "left" },
-                  { src: imgOneThird, position: "left" },
-                  { src: imgOneFourth, position: "left" },
-                  { src: imgOneFifth, position: "right" },
-                ],
-                emojis: [
-                  { src: slackIcon, alt: "slack", x: -400, y: -200, size: 120, anger: true, angle: 10  },
-                  { src: notionIcon, alt: "notion", x: 440, y: -250, size: 160, anger: true, angle: 20 },
-                  { src: gmailIcon, alt: "gmail", x: -430, y: 240, size: 160, anger: true, angle: -20 },
-                  { src: whatsappIcon, alt: "whatsapp", x: 450, y: 180, size: 120, anger: true, angle: 10 },
-                ],
-            },
-            {
-                title: "Half your day goes into searching, not working",
-                images: [
-                  { src: imgTwoFirst, position: "right" },
-                  { src: imgTwoSecond, position: "left" },
-                  { src: imgTwoThird, position: "right" },
-                  { src: imgTwoFourth, position: "left" },
-                ],
-                emojis: [
-                  { src: angryEmoji, alt: "angry", x: -400, y: -150,  size: 250, anger: true, angle: -42  },
-                  { src: angryEmoji, alt: "angry", x: 400, y: -300, size: 170, anger: true, angle: 10  },
-                  { src: angryEmoji, alt: "angry", x: -400, y: 250, size: 190, anger: true, angle: -11  },
-                  { src: angryEmoji, alt: "angry", x: 400, y: 250, size: 270, anger: true, angle: 30 },
-                ],
-            },
-            {
-                title: "what if?",
-                images: [
-                  { src: imgThreeFirst, position: "right"  },
-                  { src: imgThreeSecond, position: "left"  },
-                  { src: imgThreeThird, position: "right"  },
-                  { src: imgThreeFourth, position: "left"  },
-                ],
-                emojis: [
-                  { src: meditateEmoji, alt: "meditate", x: -400, y: -150, size: 250, anger: false, angle: -12  },
-                  { src: coolEmoji, alt: "cool guy", x: 400, y: -300, size: 170, anger: false, angle: 11 },
-                  { src: relievedEmoji, alt: "relieved", x: -400, y: 250, size: 190, anger: false, angle: -18 },
-                  { src: waveEmoji, alt: "ocean wave", x: 400, y: 250, size: 200, anger: false, angle: 8 },
-                ],
-            },
-            ]}
-            revealSection={{
-                preTitle: "Introducing",
-                title: "LIMELIGHT",
-                subtitle: "AI search engine for your data"
-            }}
-        />
+        slides={[
+          {
+            title: "Your company knows everything, yet no one can find anything",
+            images: [
+              { src: imgOneFirst, position: "right" },
+              { src: imgOneSecond, position: "left" },
+              { src: imgOneThird, position: "left" },
+              { src: imgOneFourth, position: "left" },
+              { src: imgOneFifth, position: "right" },
+            ],
+            emojis: [
+              { src: slackIcon, alt: "slack", x: -400, y: -200, size: 120, anger: true, angle: 10 },
+              { src: notionIcon, alt: "notion", x: 440, y: -250, size: 160, anger: true, angle: 20 },
+              { src: gmailIcon, alt: "gmail", x: -430, y: 240, size: 160, anger: true, angle: -20 },
+              { src: whatsappIcon, alt: "whatsapp", x: 450, y: 180, size: 120, anger: true, angle: 10 },
+            ],
+          },
+          {
+            title: "Half your day goes into searching, not working",
+            images: [
+              { src: imgTwoFirst, position: "right" },
+              { src: imgTwoSecond, position: "left" },
+              { src: imgTwoThird, position: "right" },
+              { src: imgTwoFourth, position: "left" },
+            ],
+            emojis: [
+              { src: angryEmoji, alt: "angry", x: -400, y: -150, size: 250, anger: true, angle: -42 },
+              { src: angryEmoji, alt: "angry", x: 400, y: -300, size: 170, anger: true, angle: 10 },
+              { src: angryEmoji, alt: "angry", x: -400, y: 250, size: 190, anger: true, angle: -11 },
+              { src: angryEmoji, alt: "angry", x: 400, y: 250, size: 270, anger: true, angle: 30 },
+            ],
+          },
+          {
+            title: "what if?",
+            images: [
+              { src: imgThreeFirst, position: "right" },
+              { src: imgThreeSecond, position: "left" },
+              { src: imgThreeThird, position: "right" },
+              { src: imgThreeFourth, position: "left" },
+            ],
+            emojis: [
+              { src: meditateEmoji, alt: "meditate", x: -400, y: -150, size: 250, anger: false, angle: -12 },
+              { src: coolEmoji, alt: "cool guy", x: 400, y: -300, size: 170, anger: false, angle: 11 },
+              { src: relievedEmoji, alt: "relieved", x: -400, y: 250, size: 190, anger: false, angle: -18 },
+              { src: waveEmoji, alt: "ocean wave", x: 400, y: 250, size: 200, anger: false, angle: 8 },
+            ],
+          },
+        ]}
+        revealSection={{
+          preTitle: "Introducing",
+          title: "LIMELIGHT",
+          subtitle: "AI search engine for your data"
+        }}
+      />
 
       <section className=" z-10 py-12">
-    
+
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className=" text-center py-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -301,11 +314,11 @@ const items = cards.map((card, index) => (
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-            <CardSpotlight
-              title="For Founders"
-              content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
-              imageSrc={founder}
-            />
+              <CardSpotlight
+                title="For Founders"
+                content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
+                imageSrc={founder}
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -330,9 +343,9 @@ const items = cards.map((card, index) => (
 
       {/* Features */}
       <section className=" z-10 py-12 bg-background">
-        
+
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -342,7 +355,7 @@ const items = cards.map((card, index) => (
             <Badge className=" text-sm">Features</Badge>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className=" text-center py-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -378,26 +391,24 @@ const items = cards.map((card, index) => (
       {/* see how it works section here */}
       <section className=" z-10 py-12">
         <div>
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-              <Badge className=" text-sm">See it in action</Badge>
+            <Badge className=" text-sm">See it in action</Badge>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className=" rounded-4xl my-12"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <VideoPlayer 
-              src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4?q_auto,f_auto"
-            />
+            <Carousel items={videoCarouselItems} contentClassName="pl-[5vw] md:pl-[calc(50vw-300px)] mx-0 max-w-full" />
           </motion.div>
 
           {/* text which wont leak + image */}
@@ -411,16 +422,16 @@ const items = cards.map((card, index) => (
       {/* Supported databases */}
       <section className=" z-10 py-12">
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-              <Badge className=" text-sm">Supported databases</Badge>
+            <Badge className=" text-sm">Supported databases</Badge>
           </motion.div>
-         
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -435,16 +446,16 @@ const items = cards.map((card, index) => (
       {/* Testimonials */}
       <section className=" z-10 py-12">
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-              <Badge className=" text-sm">Client Testimonials</Badge>
+            <Badge className=" text-sm">Client Testimonials</Badge>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="text-center py-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -462,14 +473,14 @@ const items = cards.map((card, index) => (
       {/* FQA */}
       <section className=" z-10 py-12">
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
           >
-              <Badge className=" text-sm">Questions? Answers</Badge>
+            <Badge className=" text-sm">Questions? Answers</Badge>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}

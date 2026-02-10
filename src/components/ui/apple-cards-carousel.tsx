@@ -15,6 +15,7 @@ import Image, { ImageProps } from "next/image";
 interface CarouselProps {
   items: React.ReactNode[];
   initialScroll?: number;
+  contentClassName?: string;
 }
 
 type Card = {
@@ -27,10 +28,10 @@ type Card = {
 export const CarouselContext = createContext<{
   onCardClose: () => void;
 }>({
-  onCardClose: () => {},
+  onCardClose: () => { },
 });
 
-export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
+export const Carousel = ({ items, initialScroll = 0, contentClassName }: CarouselProps) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -70,21 +71,23 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   return (
     <CarouselContext.Provider value={{ onCardClose: handleCardClose }}>
       <div className="relative w-full">
+        {/* Left Fade Overlay */}
+        <div className="absolute left-0 top-0 bottom-0 w-[10%] z-20 pointer-events-none bg-linear-to-r from-[#171616] to-transparent" />
+
+        {/* Right Fade Overlay */}
+        <div className="absolute right-0 top-0 bottom-0 w-[10%] z-20 pointer-events-none bg-linear-to-l from-[#171616] to-transparent" />
+
         <div
           className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div
-            className={cn(
-              "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
-            )}
-          ></div>
 
           <div
             className={cn(
               "flex flex-row justify-start gap-4 pl-4",
               "mx-auto max-w-7xl",
+              contentClassName
             )}
           >
             {items.map((item, index) => (

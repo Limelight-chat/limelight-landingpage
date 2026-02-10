@@ -9,7 +9,9 @@ export default function BlogLayout({
 }) {
     return (
         <RootProvider search={{ options: { api: '/api/blog-search' } }}>
+            <BlogNavbar />
             <main className="min-h-screen">{children}</main>
+            <Footer />
         </RootProvider>
     );
 }

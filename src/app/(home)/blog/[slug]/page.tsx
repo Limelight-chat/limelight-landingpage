@@ -18,26 +18,75 @@ export default async function Page(props: {
 
   return (
     <DocsLayout tree={blog.pageTree} {...baseOptions()} sidebar={{ enabled: false }}>
-      <div className="container mt-8 rounded-xl border py-12 md:px-8">
-        <h1 className="mb-2 text-3xl font-bold">{page.data.title}</h1>
-        <p className="mb-4 text-fd-muted-foreground">{page.data.description}</p>
-        <Link href="/blog" className="text-primary hover:underline">Back to Blog</Link>
-      </div>
-      <article className="container flex flex-col px-4 py-8">
-        <div className="prose min-w-0">
-          <InlineTOC items={page.data.toc} />
-          <Mdx components={defaultMdxComponents} />
-        </div>
-        <div className="flex flex-col gap-4 text-sm mt-8 border-t pt-4">
-          <div>
-            <p className="mb-1 text-fd-muted-foreground">Written by</p>
-            <p className="font-medium">{page.data.author}</p>
+      <article className="flex flex-col gap-8 pb-20 pt-12">
+        {/* Header Section - Centered Column */}
+        <div className="container mx-auto max-w-3xl px-6 text-center">
+          <div className="flex flex-col items-center gap-4">
+            {/* Tags/Category (optional) */}
+            {page.data.tags && (
+              <div className="flex gap-2">
+                {page.data.tags.map((tag) => (
+                  <span key={tag} className="text-sm font-medium text-primary">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-balance">
+              {page.data.title}
+            </h1>
+
+            {page.data.description && (
+              <p className="text-xl text-muted-foreground text-balance">
+                {page.data.description}
+              </p>
+            )}
+
+            {/* Author & Date */}
+            <div className="mt-4 flex items-center justify-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                {/* Placeholder Avatar if needed */}
+                <span className="font-medium text-foreground">{page.data.author}</span>
+              </div>
+              <span>•</span>
+              <time dateTime={page.data.date?.toString()}>
+                {new Date(page.data.date ?? 0).toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+              </time>
+            </div>
           </div>
-          <div>
-            <p className="mb-1 text-sm text-fd-muted-foreground">At</p>
-            <p className="font-medium">
-              {new Date(page.data.date).toDateString()}
-            </p>
+        </div>
+
+        {/* Wide Image Section */}
+        {page.data.image && (
+          <div className="container mx-auto mt-8 max-w-5xl px-4 sm:px-6">
+            <div className="aspect-[21/9] overflow-hidden rounded-2xl border bg-muted">
+              {/* Note: Using standard img for now if next/image config is tricky with external URLs, 
+                  but ideally use next/image */}
+              <img
+                src={page.data.image}
+                alt={page.data.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Content Section - Narrow Column */}
+        <div className="container mx-auto max-w-3xl px-6">
+          <div className="prose prose-lg dark:prose-invert mx-auto mt-8 min-w-0">
+            <InlineTOC items={page.data.toc} />
+            <Mdx components={defaultMdxComponents} />
+          </div>
+
+          <div className="mt-16 flex justify-center border-t pt-8">
+            <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              ← Back to Blog
+            </Link>
           </div>
         </div>
       </article>

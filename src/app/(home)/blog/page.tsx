@@ -15,7 +15,6 @@ export default function BlogPage() {
 
   return (
     <>
-      <BlogNavbar />
       <main className="min-h-screen bg-background pt-24 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header Section */}
@@ -40,6 +39,7 @@ export default function BlogPage() {
                   day: 'numeric',
                   year: 'numeric'
                 }) : undefined}
+                image={featuredPost.data.image}
                 href={featuredPost.url}
                 tags={featuredPost.data.tags}
                 className="grid md:grid-cols-2 gap-8 border-none bg-transparent hover:border-none hover:shadow-none hover:bg-transparent"
@@ -59,6 +59,7 @@ export default function BlogPage() {
                   day: 'numeric',
                   year: 'numeric'
                 }) : undefined}
+                image={post.data.image}
                 href={post.url}
                 tags={post.data.tags}
               />
@@ -66,7 +67,6 @@ export default function BlogPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

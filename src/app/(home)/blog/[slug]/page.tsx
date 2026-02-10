@@ -78,7 +78,7 @@ export default async function Page(props: {
 
         {/* Content Section - Narrow Column */}
         <div className="container mx-auto max-w-3xl px-6">
-          <div className="prose prose-lg dark:prose-invert mx-auto mt-8 min-w-0">
+          <div className="prose prose-lg dark:prose-invert break-words mx-auto mt-8 min-w-0">
             <InlineTOC items={page.data.toc} />
             <Mdx components={defaultMdxComponents} />
           </div>

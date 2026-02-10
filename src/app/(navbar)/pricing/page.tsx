@@ -96,7 +96,7 @@ export default function Pricing() {
                 "hover:border-white/20 transition-colors",
                 plan.popular ? "ring-1 ring-accent" : "",
               ].join(" ")}
-              style={{ ["--accent" as any]: accent }}
+              style={{ "--accent": accent } as React.CSSProperties}
             >
               <div className="absolute left-3 top-3 text-[9px] tracking-[0.25em] text-white/60 uppercase select-none">
                 {String(idx + 1).padStart(2, "0")}{" "}
@@ -165,7 +165,7 @@ export default function Pricing() {
                       "text-[12px] sm:text-[13px] font-medium",
                       "bg-accent hover:bg-accent/90 text-black",
                     ].join(" ")}
-                    style={{ ["--accent" as any]: accent }}
+                    style={{ "--accent": accent } as React.CSSProperties}
                   >
                     {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"} →
                   </Button>

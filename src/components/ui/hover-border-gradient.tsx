@@ -68,6 +68,7 @@ export function HoverBorderGradient<T extends React.ElementType = "button">(
         "relative flex rounded-full border  content-center bg-[#171616]/20 hover:bg-[#171616]/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
         containerClassName
       )}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       {...(rest as any)}
     >
       <div

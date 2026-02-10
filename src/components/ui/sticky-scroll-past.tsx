@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { cn } from "@/lib/utils";
 
 type Step = {
@@ -46,39 +46,57 @@ export default function StickyScrollPast({
 
           {/* RIGHT — Changing Images */}
           <div className="relative flex items-center justify-center overflow-hidden">
-            {steps.map((step, i) => {
-              const total = steps.length;
-              const start = i / total;
-              const end = (i + 1) / total;
-              const mid = (start + end) / 2;
-
-              const opacity = useTransform(
-                scrollYProgress,
-                [start, mid, end],
-                i === 0 ? [1, 1, 0] : [0, 1, 0]
-              );
-
-              // slight zoom effect
-              const scale = useTransform(
-                scrollYProgress,
-                [start, mid, end],
-                [0.9, 1, 0.95]
-              );
-
-              return (
-                <motion.img
-                  key={i}
-                  src={step.image}
-                  alt={step.alt ?? step.heading ?? `Step ${i + 1}`}
-                  style={{ opacity, scale }}
-                  className="absolute h-[70%] w-auto object-contain"
-                  draggable={false}
-                />
-              );
-            })}
+            {steps.map((step, i) => (
+              <StickyScrollPastItem
+                key={i}
+                step={step}
+                index={i}
+                totalSteps={steps.length}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+const StickyScrollPastItem = ({
+  step,
+  index,
+  totalSteps,
+  scrollYProgress,
+}: {
+  step: Step;
+  index: number;
+  totalSteps: number;
+  scrollYProgress: MotionValue<number>;
+}) => {
+  const start = index / totalSteps;
+  const end = (index + 1) / totalSteps;
+  const mid = (start + end) / 2;
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, mid, end],
+    index === 0 ? [1, 1, 0] : [0, 1, 0]
+  );
+
+  // slight zoom effect
+  const scale = useTransform(
+    scrollYProgress,
+    [start, mid, end],
+    [0.9, 1, 0.95]
+  );
+
+  return (
+    <motion.img
+      src={step.image}
+      alt={step.alt ?? step.heading ?? `Step ${index + 1}`}
+      style={{ opacity, scale }}
+      className="absolute h-[70%] w-auto object-contain"
+      draggable={false}
+    />
+  );
+};

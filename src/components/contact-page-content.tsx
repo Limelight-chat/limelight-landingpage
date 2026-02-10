@@ -26,9 +26,9 @@ export default function ContactPageContent() {
 
               <p className="text-[14px] sm:text-[15px] text-white/65 max-w-[520px] leading-relaxed">
                 Limelight helps teams automate workflows, streamline operations,
-                and move faster with AI-powered assistants. Whether you're
+                and move faster with AI-powered assistants. Whether you&apos;re
                 exploring partnership opportunities, need product guidance, or
-                simply want to learn more — we'd love to connect.
+                simply want to learn more — we&apos;d love to connect.
               </p>
 
               {/* Contact Info – redesigned to match new UI */}

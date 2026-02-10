@@ -86,22 +86,22 @@ const BlogNavbar = () => {
                                 </div>
 
                                 <div className="flex flex-col gap-6">
-                                    <a href={consumerHref} className="font-medium">
+                                    <Link href={consumerHref} className="font-medium">
                                         {consumerLabel}
-                                    </a>
+                                    </Link>
 
-                                    <a href="/pricing" className="font-medium">
+                                    <Link href="/pricing" className="font-medium">
                                         Pricing
-                                    </a>
-                                    <a href="/blog" className="font-medium">
+                                    </Link>
+                                    <Link href="/blog" className="font-medium">
                                         Blog
-                                    </a>
-                                    <a href="/docs" className="font-medium">
+                                    </Link>
+                                    <Link href="/docs" className="font-medium">
                                         Docs
-                                    </a>
-                                    <a href="/contact" className="font-medium">
+                                    </Link>
+                                    <Link href="/contact" className="font-medium">
                                         Contact Us
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div className="mt-6 flex flex-col gap-4">

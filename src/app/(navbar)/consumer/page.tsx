@@ -528,7 +528,7 @@ export default function Consumer() {
                           <span>34 minutes ago</span>
                         </DiscussionAuthor>
                         <DiscussionBody>
-                          100%. Just onboarded the new dev. Being able to search the entire project history instantly is insane. Why didn't we have this sooner?
+                          100%. Just onboarded the new dev. Being able to search the entire project history instantly is insane. Why didn&apos;t we have this sooner?
                         </DiscussionBody>
                         <DiscussionActions votes="856" />
                       </div>
@@ -599,6 +599,7 @@ export default function Consumer() {
             className="mt-12"
           >
             <FaqAccordion
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               data={defaultData as any}
               className="max-w-[700px]"
               timestamp=""

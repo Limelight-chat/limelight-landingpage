@@ -52,7 +52,7 @@ export default function SupportedUser() {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
   }, []);
 
   useEffect(() => {

@@ -107,7 +107,7 @@ export const MultiStepLoader = ({
   // Loop animation when in view
   useEffect(() => {
     if (!inView) {
-      setCurrentState(0);
+      setTimeout(() => setCurrentState(0), 0);
       return;
     }
 

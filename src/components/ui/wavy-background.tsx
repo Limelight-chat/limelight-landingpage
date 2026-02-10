@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
 
 export const WavyBackground = ({
@@ -15,7 +15,7 @@ export const WavyBackground = ({
   waveOpacity = 0.5,
   ...props
 }: {
-  children?: any;
+  children?: React.ReactNode;
   className?: string;
   containerClassName?: string;
   colors?: string[];
@@ -24,7 +24,7 @@ export const WavyBackground = ({
   blur?: number;
   speed?: "slow" | "fast";
   waveOpacity?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   const noise = createNoise3D();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -42,10 +42,10 @@ export const WavyBackground = ({
     nt: 0,
     ctx: null,
   });
-  
+
   const fps = 30;
   const frameInterval = 1000 / fps;
-  
+
   const getSpeed = () => {
     switch (speed) {
       case "slow":
@@ -60,16 +60,16 @@ export const WavyBackground = ({
   const init = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    
+
     contextRef.current.ctx = ctx;
     contextRef.current.w = ctx.canvas.width = window.innerWidth;
     contextRef.current.h = ctx.canvas.height = window.innerHeight;
     contextRef.current.nt = 0;
     ctx.filter = `blur(${blur}px)`;
-    
+
     window.onresize = function () {
       if (contextRef.current.ctx) {
         contextRef.current.w = contextRef.current.ctx.canvas.width = window.innerWidth;
@@ -89,7 +89,7 @@ export const WavyBackground = ({
   const drawWave = (n: number) => {
     const { ctx, w, h } = contextRef.current;
     if (!ctx) return;
-    
+
     contextRef.current.nt += getSpeed();
     for (let i = 0; i < n; i++) {
       ctx.beginPath();
@@ -107,18 +107,18 @@ export const WavyBackground = ({
   const render = (currentTime: number) => {
     const { ctx, w, h } = contextRef.current;
     if (!ctx) return;
-    
+
     const elapsed = currentTime - lastFrameTimeRef.current;
-    
+
     if (elapsed >= frameInterval) {
       lastFrameTimeRef.current = currentTime - (elapsed % frameInterval);
-      
+
       ctx.fillStyle = backgroundFill || "black";
       ctx.globalAlpha = waveOpacity || 0.5;
       ctx.fillRect(0, 0, w, h);
       drawWave(5);
     }
-    
+
     if (isVisibleRef.current) {
       animationIdRef.current = requestAnimationFrame(render);
     }
@@ -126,14 +126,25 @@ export const WavyBackground = ({
 
   useEffect(() => {
     init();
-    
+
+    // Safari support for blur
+    if (
+      typeof window !== "undefined" &&
+      navigator.userAgent.includes("Safari") &&
+      !navigator.userAgent.includes("Chrome")
+    ) {
+      if (canvasRef.current) {
+        canvasRef.current.style.filter = `blur(${blur}px)`;
+      }
+    }
+
     // Set up IntersectionObserver for visibility-based pause
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const wasVisible = isVisibleRef.current;
           isVisibleRef.current = entry.isIntersecting;
-          
+
           // Only start render if becoming visible and not already animating
           if (entry.isIntersecting && (!wasVisible || !animationIdRef.current)) {
             lastFrameTimeRef.current = performance.now();
@@ -143,28 +154,18 @@ export const WavyBackground = ({
       },
       { threshold: 0 }
     );
-    
+
     if (canvasRef.current) {
       observer.observe(canvasRef.current);
     }
-    
+
     return () => {
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
       observer.disconnect();
     };
-  }, []);
-
-  const [isSafari, setIsSafari] = useState(false);
-  useEffect(() => {
-    // I'm sorry but i have got to support it on safari.
-    setIsSafari(
-      typeof window !== "undefined" &&
-      navigator.userAgent.includes("Safari") &&
-      !navigator.userAgent.includes("Chrome")
-    );
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
@@ -177,9 +178,6 @@ export const WavyBackground = ({
         className="absolute inset-0 z-0"
         ref={canvasRef}
         id="canvas"
-        style={{
-          ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
-        }}
       ></canvas>
       <div className={cn("relative z-10", className)} {...props}>
         {children}

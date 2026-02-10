@@ -140,16 +140,14 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
         }
         void main() {
             vec2 st = fragCoord.xy;
-            ${
-              center.includes("x")
-                ? "st.x -= abs(floor((mod(u_resolution.x, u_total_size) - u_dot_size) * 0.5));"
-                : ""
-            }
-            ${
-              center.includes("y")
-                ? "st.y -= abs(floor((mod(u_resolution.y, u_total_size) - u_dot_size) * 0.5));"
-                : ""
-            }
+            ${center.includes("x")
+          ? "st.x -= abs(floor((mod(u_resolution.x, u_total_size) - u_dot_size) * 0.5));"
+          : ""
+        }
+            ${center.includes("y")
+          ? "st.y -= abs(floor((mod(u_resolution.y, u_total_size) - u_dot_size) * 0.5));"
+          : ""
+        }
       float opacity = step(0.0, st.x);
       opacity *= step(0.0, st.y);
 
@@ -193,25 +191,28 @@ const ShaderMaterial = ({
 }) => {
   const { size } = useThree();
   const ref = useRef<THREE.Mesh | null>(null);
-  let lastFrameTime = 0;
+  const lastFrameTimeRef = useRef<number>(0);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const timestamp = clock.getElapsedTime();
-    if (timestamp - lastFrameTime < 1 / maxFps) {
+    if (timestamp - lastFrameTimeRef.current < 1 / maxFps) {
       return;
     }
-    lastFrameTime = timestamp;
+    lastFrameTimeRef.current = timestamp;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const material: any = ref.current.material;
     const timeLocation = material.uniforms.u_time;
     timeLocation.value = timestamp;
   });
 
-  const getUniforms = () => {
+  const getUniforms = React.useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const preparedUniforms: any = {};
 
     for (const uniformName in uniforms) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const uniform: any = uniforms[uniformName];
 
       switch (uniform.type) {
@@ -252,7 +253,7 @@ const ShaderMaterial = ({
       value: new THREE.Vector2(size.width * 2, size.height * 2),
     }; // Initialize u_resolution
     return preparedUniforms;
-  };
+  }, [size, uniforms]);
 
   // Shader material
   const material = useMemo(() => {
@@ -279,10 +280,13 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [size.width, size.height, source, getUniforms]);
 
   return (
-    <mesh ref={ref as any}>
+    <mesh
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+    >
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>

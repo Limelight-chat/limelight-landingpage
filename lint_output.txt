@@ -1,0 +1,275 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/.source/browser.ts
+  1:1   error  Do not use "@ts-nocheck" because it alters compilation errors                                                                                                                                                                                                                                                                                                                              @typescript-eslint/ban-ts-comment
+  6:12  error  The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/.source/dynamic.ts
+  1:1   error    Do not use "@ts-nocheck" because it alters compilation errors                                                                                                                                                                                                                                                                                                                              @typescript-eslint/ban-ts-comment
+  5:7   warning  'create' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+  6:12  error    The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/.source/server.ts
+   1:1   error  Do not use "@ts-nocheck" because it alters compilation errors                                                                                                                                                                                                                                                                                                                              @typescript-eslint/ban-ts-comment
+  20:12  error  The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/debug-source.js
+  2:33  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/app/(home)/blog/layout.tsx
+  1:10  warning  'BlogNavbar' is defined but never used  @typescript-eslint/no-unused-vars
+  2:8   warning  'Footer' is defined but never used      @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/app/(navbar)/consumer/page.tsx
+    3:10   warning  'useState' is defined but never used                             @typescript-eslint/no-unused-vars
+   52:8    warning  'measure' is defined but never used                              @typescript-eslint/no-unused-vars
+  181:9    warning  'slugs' is assigned a value but never used                       @typescript-eslint/no-unused-vars
+  531:138  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  602:36   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/app/(navbar)/pricing/page.tsx
+   99:39  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  168:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/app/layout.tsx
+  1:15  warning  'Metadata' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/blog-navbar.tsx
+  96:37  error  Do not use an `<a>` element to navigate to `/blog/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/contact-page-content.tsx
+  29:72  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  31:47  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/doc-navbar.tsx
+  14:9  warning  'searchCategory' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/macbook-switch.tsx
+  134:63  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  134:85  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/nav-main.tsx
+  8:3  warning  'SidebarGroupLabel' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/supported-user.tsx
+  55:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/supported-user.tsx:55:5
+  53 |
+  54 |   useEffect(() => {
+> 55 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  56 |   }, []);
+  57 |
+  58 |   useEffect(() => {  react-hooks/set-state-in-effect
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/apple-cards-carousel.tsx
+   42:7  error    Error: Cannot access variable before it is declared
+
+`checkScrollability` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/apple-cards-carousel.tsx:42:7
+  40 |     if (carouselRef.current) {
+  41 |       carouselRef.current.scrollLeft = initialScroll;
+> 42 |       checkScrollability();
+     |       ^^^^^^^^^^^^^^^^^^ `checkScrollability` accessed before it is declared
+  43 |     }
+  44 |   }, [initialScroll]);
+  45 |
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/apple-cards-carousel.tsx:46:3
+  44 |   }, [initialScroll]);
+  45 |
+> 46 |   const checkScrollability = () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |     if (carouselRef.current) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 49 |       setCanScrollLeft(scrollLeft > 0);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 50 |       setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 51 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 52 |   };
+     | ^^^^^ `checkScrollability` is declared here
+  53 |
+  54 |   const scrollLeft = () => {
+  55 |     if (carouselRef.current) {  react-hooks/immutability
+  133:3  warning  'index' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  134:3  warning  'layout' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/background-gradient-animation.tsx
+  59:6  warning  React Hook useEffect has missing dependencies: 'blendingValue', 'fifthColor', 'firstColor', 'fourthColor', 'gradientBackgroundEnd', 'gradientBackgroundStart', 'pointerColor', 'secondColor', 'size', and 'thirdColor'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/exhaustive-deps
+  74:6  warning  React Hook useEffect has missing dependencies: 'curX' and 'curY'. Either include them or remove the dependency array. You can also do a functional update 'setCurX(c => ...)' if you only need 'curX' in the 'setCurX' call                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/exhaustive-deps
+  86:5  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/background-gradient-animation.tsx:86:5
+  84 |   const [isSafari, setIsSafari] = useState(false);
+  85 |   useEffect(() => {
+> 86 |     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  87 |   }, []);
+  88 |
+  89 |   return (  react-hooks/set-state-in-effect
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/button-rotate.tsx
+  1:10  warning  'cn' is defined but never used        @typescript-eslint/no-unused-vars
+  2:10  warning  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/canvas-reveal-effect.tsx
+  204:5   error    Error: Cannot reassign variable after render completes
+
+Reassigning `lastFrameTime` after render has completed can cause inconsistent behavior on subsequent renders. Consider using state instead.
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/canvas-reveal-effect.tsx:204:5
+  202 |       return;
+  203 |     }
+> 204 |     lastFrameTime = timestamp;
+      |     ^^^^^^^^^^^^^ Cannot reassign `lastFrameTime` after render completes
+  205 |
+  206 |     const material: any = ref.current.material;
+  207 |     const timeLocation = material.uniforms.u_time;  react-hooks/immutability
+  206:21  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+  212:29  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+  215:22  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+  282:6   warning  React Hook useMemo has a missing dependency: 'getUniforms'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/exhaustive-deps
+  285:23  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-explicit-any
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/consumer-card.tsx
+  40:7  error  Error: Cannot access variable before it is declared
+
+`checkScrollability` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/consumer-card.tsx:40:7
+  38 |     if (carouselRef.current) {
+  39 |       carouselRef.current.scrollLeft = initialScroll;
+> 40 |       checkScrollability();
+     |       ^^^^^^^^^^^^^^^^^^ `checkScrollability` accessed before it is declared
+  41 |     }
+  42 |   }, [initialScroll]);
+  43 |
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/consumer-card.tsx:44:3
+  42 |   }, [initialScroll]);
+  43 |
+> 44 |   const checkScrollability = () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |     if (carouselRef.current) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 46 |       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |       setCanScrollLeft(scrollLeft > 0);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |       setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 49 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 50 |   };
+     | ^^^^^ `checkScrollability` is declared here
+  51 |
+  52 |   const scrollLeft = () => {
+  53 |     if (carouselRef.current) {  react-hooks/immutability
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/discussion.tsx
+  3:59  warning  'Flag' is defined but never used         @typescript-eslint/no-unused-vars
+  3:81  warning  'MinusCircle' is defined but never used  @typescript-eslint/no-unused-vars
+  3:94  warning  'PlusCircle' is defined but never used   @typescript-eslint/no-unused-vars
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/hover-border-gradient.tsx
+   2:38  warning  'useRef' is defined but never used                                                                                                   @typescript-eslint/no-unused-vars
+  61:6   warning  React Hook useEffect has missing dependencies: 'duration' and 'rotateDirection'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  71:20  error    Unexpected any. Specify a different type                                                                                             @typescript-eslint/no-explicit-any
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/interactive-icon-cloud.tsx
+  55:20  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  83:5   error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/logo-cloud-3.tsx
+  26:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/multi-step-loader.tsx
+  110:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/multi-step-loader.tsx:110:7
+  108 |   useEffect(() => {
+  109 |     if (!inView) {
+> 110 |       setCurrentState(0);
+      |       ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  111 |       return;
+  112 |     }
+  113 |  react-hooks/set-state-in-effect
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/sidebar.tsx
+  611:26  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/sidebar.tsx:611:26
+  609 |   // Random width between 50 to 90%.
+  610 |   const width = React.useMemo(() => {
+> 611 |     return `${Math.floor(Math.random() * 40) + 50}%`
+      |                          ^^^^^^^^^^^^^ Cannot call impure function
+  612 |   }, [])
+  613 |
+  614 |   return (  react-hooks/purity
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/sticky-scroll-past.tsx
+  55:31  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function  react-hooks/rules-of-hooks
+  62:29  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function  react-hooks/rules-of-hooks
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/sticky-scroll-reveal.tsx
+  154:27  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  160:25  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  196:29  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  201:38  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  206:29  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  243:38  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  248:36  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  253:32  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  259:45  error  React Hook "React.useState" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function     react-hooks/rules-of-hooks
+  260:49  error  React Hook "React.useState" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function     react-hooks/rules-of-hooks
+  263:55  error  React Hook "React.useState" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function     react-hooks/rules-of-hooks
+  264:61  error  React Hook "React.useState" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function     react-hooks/rules-of-hooks
+  266:17  error  React Hook "React.useEffect" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function    react-hooks/rules-of-hooks
+  293:17  error  React Hook "useAnimationFrame" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function  react-hooks/rules-of-hooks
+  345:32  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  399:35  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+  414:30  error  React Hook "useTransform" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function       react-hooks/rules-of-hooks
+
+/Users/arnavgautam/Documents/Limelight/code/limelight-landingpage/src/components/ui/stickytemp.tsx
+  106:7  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+✖ 72 problems (49 errors, 23 warnings)
+

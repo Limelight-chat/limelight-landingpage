@@ -131,7 +131,7 @@ export default function SpaceSwitch() {
           and everything else
         </h1>
         <h2 className="pt-4 text-white/70 text-lg md:text-lg lg:text-xl">
-          Give your mind infinite capacity. From last semester's notes to next month's itinerary, access your entire history as if you never forgot a thing.
+          Give your mind infinite capacity. From last semester&apos;s notes to next month&apos;s itinerary, access your entire history as if you never forgot a thing.
         </h2>
       </div>
 

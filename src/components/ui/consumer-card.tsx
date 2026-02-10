@@ -24,7 +24,7 @@ type Card = {
 export const CarouselContext = createContext<{
   onCardClose: () => void;
 }>({
-  onCardClose: () => {},
+  onCardClose: () => { },
 });
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
@@ -34,13 +34,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [showArrow, setShowArrow] = React.useState<'left' | 'right' | null>(null);
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = initialScroll;
-      checkScrollability();
-    }
-  }, [initialScroll]);
-
   const checkScrollability = () => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
@@ -48,6 +41,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
     }
   };
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft = initialScroll;
+      checkScrollability();
+    }
+  }, [initialScroll]);
 
   const scrollLeft = () => {
     if (carouselRef.current) {
@@ -65,10 +65,10 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const width = rect.width;
-    
+
     // Use viewport coordinates for positioning
     setMousePosition({ x: e.clientX, y: e.clientY });
-    
+
     if (x > width / 2 && canScrollRight) {
       setShowArrow('right');
     } else if (x <= width / 2 && canScrollLeft) {
@@ -86,7 +86,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const width = rect.width;
-    
+
     if (x > width / 2 && canScrollRight) {
       scrollRight();
     } else if (x <= width / 2 && canScrollLeft) {
@@ -181,12 +181,12 @@ export const Card = ({
   layout?: boolean;
 }) => {
   const bgColor = poppyColors[index % poppyColors.length];
-  
+
   return (
     <div className="relative z-10 flex w-56 flex-col overflow-hidden rounded-2xl bg-[#171616] select-none md:w-80">
       {/* Image container with 1.15:1 aspect ratio and colored background */}
-      <div 
-        className="relative w-full rounded-2xl" 
+      <div
+        className="relative w-full rounded-2xl"
         style={{ aspectRatio: '1.15 / 1', backgroundColor: bgColor }}
       >
         <div className="absolute inset-2 rounded-2xl flex items-center justify-center">
@@ -200,7 +200,7 @@ export const Card = ({
           </div>
         </div>
       </div>
-      
+
       {/* Text content below */}
       <div className="relative z-40 bg-[#171616] px-3 py-2 md:px-3.5 md:py-2.5 rounded-b-2xl">
         <p className="text-left font-sans text-sm font-semibold text-white md:text-base">

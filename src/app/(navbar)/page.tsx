@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from "motion/react";
-import card1 from "@/assets/cards/card 1.jpg";
-import card2 from "@/assets/cards/card 2.jpg";
-import card3 from "@/assets/cards/card 3.jpg";
-import card4 from "@/assets/cards/card 4.jpg";
-import card5 from "@/assets/cards/card 5.jpg";
-import card6 from "@/assets/cards/card 6.jpg";
-import card7 from "@/assets/cards/card 7.jpg";
+import card1 from "@/assets/cards/card-1.jpg";
+import card2 from "@/assets/cards/card-2.jpg";
+import card3 from "@/assets/cards/card-3.jpg";
+import card4 from "@/assets/cards/card-4.jpg";
+import card5 from "@/assets/cards/card-5.jpg";
+import card6 from "@/assets/cards/card-6.jpg";
+import card7 from "@/assets/cards/card-7.jpg";
 
 import business from "@/assets/spotlight/business.png"
 import founder from "@/assets/spotlight/founder.png"

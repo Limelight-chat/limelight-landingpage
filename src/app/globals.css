@@ -47,6 +47,8 @@
 }
 
 /* --- Dark Mode (Primary Brand Theme) --- */
+/* --- Dark Mode (Primary Brand Theme) --- */
+:root,
 .dark {
   --background: #171616;
   --foreground: #ffffff;

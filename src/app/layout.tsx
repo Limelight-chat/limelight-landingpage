@@ -85,9 +85,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark" style={{ background: "#171616" }} suppressHydrationWarning>
+    <html lang="en" style={{ background: "#171616" }} suppressHydrationWarning>
       <body className={`${inter.variable} ${syne.variable} ${manrope.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
         <Analytics />

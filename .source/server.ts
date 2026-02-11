@@ -12,7 +12,7 @@ import * as __fd_glob_4 from "../content/blog/limelight-launch.mdx?collection=bl
 import * as __fd_glob_3 from "../content/blog/getting-started.mdx?collection=blogPosts"
 import * as __fd_glob_2 from "../content/blog/design-philosophy.mdx?collection=blogPosts"
 import * as __fd_glob_1 from "../content/blog/Minimalist-UI.mdx?collection=blogPosts"
-import * as __fd_glob_0 from "../content/blog/Edge-AI.mdx?collection=blogPosts"
+import * as __fd_glob_0 from "../content/blog/AI-J-Curve.mdx?collection=blogPosts"
 import { server } from 'fumadocs-mdx/runtime/server';
 import type * as Config from '../source.config';
 
@@ -21,7 +21,7 @@ const create = server<typeof Config, import("fumadocs-mdx/runtime/types").Intern
   }
 }>({"doc":{"passthroughs":["extractedReferences"]}});
 
-export const blogPosts = await create.doc("blogPosts", "content/blog", {"Edge-AI.mdx": __fd_glob_0, "Minimalist-UI.mdx": __fd_glob_1, "design-philosophy.mdx": __fd_glob_2, "getting-started.mdx": __fd_glob_3, "limelight-launch.mdx": __fd_glob_4, });
+export const blogPosts = await create.doc("blogPosts", "content/blog", {"AI-J-Curve.mdx": __fd_glob_0, "Minimalist-UI.mdx": __fd_glob_1, "design-philosophy.mdx": __fd_glob_2, "getting-started.mdx": __fd_glob_3, "limelight-launch.mdx": __fd_glob_4, });
 
 export const developer = await create.docs("developer", "content/docs/developer", {}, {"api-overview.mdx": __fd_glob_5, "getting-started.mdx": __fd_glob_6, "index.mdx": __fd_glob_7, "search-api.mdx": __fd_glob_8, "test-doc.mdx": __fd_glob_9, });
 

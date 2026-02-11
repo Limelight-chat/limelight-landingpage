@@ -145,6 +145,9 @@ export default function Home() {
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770726853/Analytical-Demo-1_b3ibnx.mp4"
       />
+      <VideoPlayer
+        src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770835426/Analytical-Demo-3_oqg4wx.mp4"
+      />
     </div>,
   ];
 

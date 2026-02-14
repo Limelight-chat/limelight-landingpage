@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Volume2, Volume1, VolumeX, Maximize } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -55,6 +55,15 @@ const VideoPlayer = ({ src }: { src: string }) => {
   const [showControls, setShowControls] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  // Extract YouTube ID if present
+  const getYoutubeId = (url: string) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  const youtubeId = getYoutubeId(src);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -120,6 +129,25 @@ const VideoPlayer = ({ src }: { src: string }) => {
       }
     }
   };
+
+  if (youtubeId) {
+    return (
+      <motion.div
+        className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden bg-[#11111198] shadow-[0_0_20px_rgba(0,0,0,0.2)] backdrop-blur-sm aspect-video"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <iframe
+          className="w-full h-full"
+          src={`https://www.youtube.com/embed/${youtubeId}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div

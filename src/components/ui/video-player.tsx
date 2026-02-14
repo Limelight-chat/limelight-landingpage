@@ -45,7 +45,7 @@ const CustomSlider = ({
   );
 };
 
-const VideoPlayer = ({ src }: { src: string }) => {
+const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -163,6 +163,7 @@ const VideoPlayer = ({ src }: { src: string }) => {
         className="w-full"
         onTimeUpdate={handleTimeUpdate}
         src={src}
+        poster={poster}
         onClick={togglePlay}
       />
 

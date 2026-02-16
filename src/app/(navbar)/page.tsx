@@ -136,16 +136,16 @@ export default function Home() {
   ));
 
   const videoCarouselItems = [
-    <div key="video1" className="w-[90vw] md:w-[800px] flex items-center justify-center snap-center">
+    <div key="video1" className="w-[90vw] md:w-[810px] flex items-center justify-center snap-center">
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4?q_auto,f_auto"
         poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.jpg"
       />
     </div>,
-    <div key="video2" className="w-[90vw] md:w-[700px] flex items-center justify-center snap-center">
+    <div key="video2" className="w-[90vw] md:w-[780px] flex items-center justify-center snap-center">
       <VideoPlayer
-        src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770726853/Analytical-Demo-1_b3ibnx.mp4"
-        poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770726853/Analytical-Demo-1_b3ibnx.jpg"
+        src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1771236985/Charts-demo-2_ph479g.mp4"
+        poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1771236985/Charts-demo-2_ph479g.jpg"
       />
     </div>,
     <div key="video3" className="w-[90vw] md:w-[760px] flex items-center justify-center snap-center">
@@ -158,11 +158,6 @@ export default function Home() {
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770986535/Follow-up-1_dlzv51.mp4"
         poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770986535/Follow-up-1_dlzv51.jpg"
-      />
-    </div>,
-    <div key="video5" className="w-[90vw] md:w-[760px] flex items-center justify-center snap-center">
-      <VideoPlayer
-        src="https://www.youtube.com/watch?v=jBM98j8IJ-k"
       />
     </div>,
   ];

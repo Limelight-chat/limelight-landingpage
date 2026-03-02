@@ -16,5 +16,9 @@ export default function sitemap() {
       url: "https://limelight.ai/contact",
       lastModified: new Date(),
     },
+    {
+      url: "https://limelight.ai/deck",
+      lastModified: new Date(),
+    },
   ];
 }

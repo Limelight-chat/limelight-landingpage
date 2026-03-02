@@ -8,6 +8,7 @@ import card4 from "@/assets/cards/card-4.jpg";
 import card5 from "@/assets/cards/card-5.jpg";
 import card6 from "@/assets/cards/card-6.jpg";
 import card7 from "@/assets/cards/card-7.jpg";
+import cardDate from "@/assets/cards/card-date.jpg";
 
 import business from "@/assets/spotlight/business.png"
 import founder from "@/assets/spotlight/founder.png"
@@ -90,6 +91,16 @@ export default function Home() {
       ),
     },
     {
+      category: "Data",
+      title: "Turn messy data into clean intelligence",
+      src: cardDate.src,
+      content: (
+        <p>
+          Automate data cleaning and preparation to get reliable insights without the manual effort.
+        </p>
+      ),
+    },
+    {
       category: "Search",
       title: "Company-Wide Search",
       src: card4.src,
@@ -111,8 +122,8 @@ export default function Home() {
     },
     {
       category: "Security",
-      title: "Enterprise-grade privacy",
-      src: card6.src,
+      title: "Bring your own Cloud",
+      src: card7.src,
       content: (
         <p>
           Your data stays encrypted with zero-trust access controls.
@@ -121,8 +132,8 @@ export default function Home() {
     },
     {
       category: "Security",
-      title: "Bring your own Cloud",
-      src: card7.src,
+      title: "Enterprise-grade privacy",
+      src: card6.src,
       content: (
         <p>
           Your data stays encrypted with zero-trust access controls.
@@ -206,8 +217,8 @@ export default function Home() {
 
               {/* Subtext */}
               <p className="text-white/60 text-base sm:text-lg md:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl px-2">
-                Limelight is <span className="text-white">an AI search engine</span> for your business data. <br className="hidden sm:block" />
-                Instant, accurate answers from your company’s files, documents, and knowledge.
+                Limelight is an <span className="text-white">AI search engine</span> for your business data. <br className="hidden sm:block" />
+                Search, clean, summarize, analyze - all in one place.
               </p>
 
               {/* Button */}

@@ -44,6 +44,11 @@ const Navbar5 = () => {
       description: "Learn how to use Limelight.",
       href: "/docs",
     },
+    {
+      title: "Product Deck",
+      description: "View our product roadmap and vision.",
+      href: "/deck",
+    },
   ];
 
 
@@ -73,6 +78,7 @@ const Navbar5 = () => {
 
           {/* Desktop Navigation */}
           <NavigationMenu
+            id="main-nav"
             className="hidden lg:block absolute left-1/2 -translate-x-1/2"
             suppressHydrationWarning
           >
@@ -96,7 +102,7 @@ const Navbar5 = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+                <NavigationMenuTrigger id="resources-trigger">Resources</NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-background/95 backdrop-blur-sm">
                   <div className="grid w-[600px] grid-cols-2 p-3">
                     {features.map((feature, index) => (

@@ -117,8 +117,8 @@ export default function FooterAlt() {
             <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-white/70 px-6">
                 <div className="flex flex-col items-center md:items-start gap-1">
                     <span className="text-xs uppercase text-white/50">Email</span>
-                    <a href="mailto:hello@limelight.chat" className="hover:text-white transition">
-                        hello@limelight.chat
+                    <a href="mailto:team@limelight.chat" className="hover:text-white transition">
+                        team@limelight.chat
                     </a>
                 </div>
 

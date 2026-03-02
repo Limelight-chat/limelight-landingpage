@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-1">
             <span className="text-xs uppercase text-white/50">Email</span>
             <a href="mailto:example@limelight.ai" className="hover:text-white transition">
-              hello@limelight.chat
+              team@limelight.chat
             </a>
           </div>
 
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-end gap-1">
             <span className="text-xs uppercase text-white/50">Phone</span>
             <a href="tel:+911234567890" className="hover:text-white transition">
-              +91 
+              +91
             </a>
           </div>
         </div>

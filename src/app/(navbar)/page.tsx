@@ -147,6 +147,11 @@ export default function Home() {
   ));
 
   const videoCarouselItems = [
+    <div key="video0" className="w-[90vw] md:w-[810px] flex items-center justify-center snap-center">
+      <VideoPlayer
+        src="https://res.cloudinary.com/dhnhzsg2u/video/upload/v1772481730/Screen_Recording_2026-03-02_at_11.00.37_PM_tztbpa.mov"
+      />
+    </div>,
     <div key="video1" className="w-[90vw] md:w-[810px] flex items-center justify-center snap-center">
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4?q_auto,f_auto"

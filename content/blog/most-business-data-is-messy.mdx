@@ -33,6 +33,13 @@ To evaluate the system, we used a typical business dataset containing invoice re
 
 At a glance, the dataset appears structured and usable. Each row represents a transaction and each column represents a specific attribute of the invoice. However, Limelight isn't just built for small samples; the engine is designed to process hundreds of thousands of rows in seconds, ensuring your data pipelines never bottleneck. Once this dataset was processed by the Limelight engine, the system identified numerous structural inconsistencies.
 
+<figure style={{ width: '90%', margin: '0 auto' }}>
+  <img src="/images/blog/messy-data/how-data.png" alt="Dataset Overview" />
+  <figcaption style={{ textAlign: "center", fontSize: "0.9rem", color: "#666" }}>
+    The sample dataset contains typical business columns like transaction IDs, dates, and amounts.
+  </figcaption>
+</figure>
+
 ### Automatic Issue Detection
 
 After ingesting the CSV file, the system performs an initial profiling stage across every column. This stage analyzes value distributions, dominant formatting patterns, and statistical anomalies.
@@ -83,7 +90,16 @@ Instead of silently modifying the dataset—a massive risk for any enterprise—
   </figcaption>
 </figure>
 
-4.  **Duplicate Entity Detection**: The engine flagged repeated values like "Baker and Sons" to help users determine whether duplicates represent expected data or underlying data quality issues.
+5.  **Manual Overrides & Instant Export**: Automation is powerful, but control is essential. Limelight allows users to manually edit values directly within the interface to handle unique edge cases. Once the data is refined to perfection, you can instantly download the cleaned, machine-ready CSV, ready for your downstream production systems.
+
+<figure style={{ width: '80%', margin: '0 auto' }}>
+  <img src="/images/blog/messy-data/edit.png" alt="Manual Editing in Limelight" />
+  <figcaption style={{ textAlign: "center", fontSize: "0.9rem", color: "#666" }}>
+    Edit values directly in the grid for total control before exporting your cleaned data.
+  </figcaption>
+</figure>
+
+6.  **Duplicate Entity Detection**: The engine flagged repeated values like "Baker and Sons" to help users determine whether duplicates represent expected data or underlying data quality issues.
 
 <figure style={{ width: '60%', margin: '0 auto' }}>
   <img src="/images/blog/messy-data/repeated.png" alt="Duplicate Entity Detection" />

@@ -8,8 +8,8 @@ import * as __fd_glob_6 from "../content/docs/developer/search-api.mdx?collectio
 import * as __fd_glob_5 from "../content/docs/developer/index.mdx?collection=developer"
 import * as __fd_glob_4 from "../content/docs/developer/getting-started.mdx?collection=developer"
 import * as __fd_glob_3 from "../content/docs/developer/api-overview.mdx?collection=developer"
-import * as __fd_glob_2 from "../content/blog/limelight-launch.mdx?collection=blogPosts"
-import * as __fd_glob_1 from "../content/blog/Minimalist-UI.mdx?collection=blogPosts"
+import * as __fd_glob_2 from "../content/blog/most-business-data-is-messy.mdx?collection=blogPosts"
+import * as __fd_glob_1 from "../content/blog/limelight-launch.mdx?collection=blogPosts"
 import * as __fd_glob_0 from "../content/blog/AI-J-Curve.mdx?collection=blogPosts"
 import { server } from 'fumadocs-mdx/runtime/server';
 import type * as Config from '../source.config';
@@ -19,7 +19,7 @@ const create = server<typeof Config, import("fumadocs-mdx/runtime/types").Intern
   }
 }>({"doc":{"passthroughs":["extractedReferences"]}});
 
-export const blogPosts = await create.doc("blogPosts", "content/blog", {"AI-J-Curve.mdx": __fd_glob_0, "Minimalist-UI.mdx": __fd_glob_1, "limelight-launch.mdx": __fd_glob_2, });
+export const blogPosts = await create.doc("blogPosts", "content/blog", {"AI-J-Curve.mdx": __fd_glob_0, "limelight-launch.mdx": __fd_glob_1, "most-business-data-is-messy.mdx": __fd_glob_2, });
 
 export const developer = await create.docs("developer", "content/docs/developer", {}, {"api-overview.mdx": __fd_glob_3, "getting-started.mdx": __fd_glob_4, "index.mdx": __fd_glob_5, "search-api.mdx": __fd_glob_6, "test-doc.mdx": __fd_glob_7, });
 

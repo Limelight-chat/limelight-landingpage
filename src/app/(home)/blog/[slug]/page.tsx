@@ -4,6 +4,7 @@ import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { blog } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
+import VideoPlayer from '@/components/ui/video-player';
 
 import { baseOptions } from '@/lib/layout.shared';
 
@@ -80,7 +81,7 @@ export default async function Page(props: {
         <div className="container mx-auto max-w-3xl px-6">
           <div className="prose prose-lg dark:prose-invert break-words mx-auto mt-8 min-w-0">
             <InlineTOC items={page.data.toc} />
-            <Mdx components={defaultMdxComponents} />
+            <Mdx components={{ ...defaultMdxComponents, VideoPlayer }} />
           </div>
 
           <div className="mt-16 flex justify-center border-t pt-8">

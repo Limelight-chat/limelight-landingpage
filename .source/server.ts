@@ -1,14 +1,15 @@
 // @ts-nocheck
-import * as __fd_glob_12 from "../content/docs/helpbook/search-basics.mdx?collection=helpbook"
-import * as __fd_glob_11 from "../content/docs/helpbook/integrations.mdx?collection=helpbook"
-import * as __fd_glob_10 from "../content/docs/helpbook/index.mdx?collection=helpbook"
-import * as __fd_glob_9 from "../content/docs/helpbook/getting-started.mdx?collection=helpbook"
-import * as __fd_glob_8 from "../content/docs/developer/test-doc.mdx?collection=developer"
-import * as __fd_glob_7 from "../content/docs/developer/search-api.mdx?collection=developer"
-import * as __fd_glob_6 from "../content/docs/developer/index.mdx?collection=developer"
-import * as __fd_glob_5 from "../content/docs/developer/getting-started.mdx?collection=developer"
-import * as __fd_glob_4 from "../content/docs/developer/api-overview.mdx?collection=developer"
-import * as __fd_glob_3 from "../content/blog/what-analysts-actually-do-all-day.mdx?collection=blogPosts"
+import * as __fd_glob_13 from "../content/docs/helpbook/search-basics.mdx?collection=helpbook"
+import * as __fd_glob_12 from "../content/docs/helpbook/integrations.mdx?collection=helpbook"
+import * as __fd_glob_11 from "../content/docs/helpbook/index.mdx?collection=helpbook"
+import * as __fd_glob_10 from "../content/docs/helpbook/getting-started.mdx?collection=helpbook"
+import * as __fd_glob_9 from "../content/docs/developer/test-doc.mdx?collection=developer"
+import * as __fd_glob_8 from "../content/docs/developer/search-api.mdx?collection=developer"
+import * as __fd_glob_7 from "../content/docs/developer/index.mdx?collection=developer"
+import * as __fd_glob_6 from "../content/docs/developer/getting-started.mdx?collection=developer"
+import * as __fd_glob_5 from "../content/docs/developer/api-overview.mdx?collection=developer"
+import * as __fd_glob_4 from "../content/blog/what-analysts-actually-do-all-day.mdx?collection=blogPosts"
+import * as __fd_glob_3 from "../content/blog/the-47000-chart-problem.mdx?collection=blogPosts"
 import * as __fd_glob_2 from "../content/blog/most-business-data-is-messy.mdx?collection=blogPosts"
 import * as __fd_glob_1 from "../content/blog/limelight-launch.mdx?collection=blogPosts"
 import * as __fd_glob_0 from "../content/blog/AI-J-Curve.mdx?collection=blogPosts"
@@ -20,8 +21,8 @@ const create = server<typeof Config, import("fumadocs-mdx/runtime/types").Intern
   }
 }>({"doc":{"passthroughs":["extractedReferences"]}});
 
-export const blogPosts = await create.doc("blogPosts", "content/blog", {"AI-J-Curve.mdx": __fd_glob_0, "limelight-launch.mdx": __fd_glob_1, "most-business-data-is-messy.mdx": __fd_glob_2, "what-analysts-actually-do-all-day.mdx": __fd_glob_3, });
+export const blogPosts = await create.doc("blogPosts", "content/blog", {"AI-J-Curve.mdx": __fd_glob_0, "limelight-launch.mdx": __fd_glob_1, "most-business-data-is-messy.mdx": __fd_glob_2, "the-47000-chart-problem.mdx": __fd_glob_3, "what-analysts-actually-do-all-day.mdx": __fd_glob_4, });
 
-export const developer = await create.docs("developer", "content/docs/developer", {}, {"api-overview.mdx": __fd_glob_4, "getting-started.mdx": __fd_glob_5, "index.mdx": __fd_glob_6, "search-api.mdx": __fd_glob_7, "test-doc.mdx": __fd_glob_8, });
+export const developer = await create.docs("developer", "content/docs/developer", {}, {"api-overview.mdx": __fd_glob_5, "getting-started.mdx": __fd_glob_6, "index.mdx": __fd_glob_7, "search-api.mdx": __fd_glob_8, "test-doc.mdx": __fd_glob_9, });
 
-export const helpbook = await create.docs("helpbook", "content/docs/helpbook", {}, {"getting-started.mdx": __fd_glob_9, "index.mdx": __fd_glob_10, "integrations.mdx": __fd_glob_11, "search-basics.mdx": __fd_glob_12, });
+export const helpbook = await create.docs("helpbook", "content/docs/helpbook", {}, {"getting-started.mdx": __fd_glob_10, "index.mdx": __fd_glob_11, "integrations.mdx": __fd_glob_12, "search-basics.mdx": __fd_glob_13, });

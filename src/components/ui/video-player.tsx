@@ -156,7 +156,7 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
+      onMouseLeave={() => isPlaying && setShowControls(false)}
     >
       <video
         ref={videoRef}
@@ -166,6 +166,26 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
         poster={poster}
         onClick={togglePlay}
       />
+
+      <AnimatePresence>
+        {!isPlaying && (
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+            onClick={togglePlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div 
+              className="w-16 h-16 md:w-20 md:h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20"
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {showControls && (

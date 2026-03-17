@@ -19,7 +19,7 @@ export default function Pricing() {
   const plans: Plan[] = [
     {
       name: "Starter",
-      price: "$8",
+      price: "x",
       period: "/month",
       description: "Perfect for individuals getting started",
       features: [
@@ -30,7 +30,7 @@ export default function Pricing() {
     },
     {
       name: "Professional",
-      price: "$29",
+      price: "x",
       period: "/month",
       description: "Ideal for growing teams and businesses",
       features: [

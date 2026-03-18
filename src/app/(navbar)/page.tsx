@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useCallback } from "react";
 import { motion } from "motion/react";
 import card1 from "@/assets/cards/card-1.jpg";
 import card2 from "@/assets/cards/card-2.jpg";
@@ -55,9 +56,21 @@ import { WavyBackground } from "@/components/ui/wavy-background";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Link from "next/link";
 import VideoPlayer from "@/components/ui/video-player";
+import { FlipText } from "@/components/ui/flip-text";
+import card9 from "@/assets/cards/card 9.jpg";
 
 
 export default function Home() {
+  const [isRippling, setIsRippling] = useState(false);
+
+  const handleWordChange = useCallback((word: string) => {
+    if (word === "AI workspace") {
+      setIsRippling(true);
+      setTimeout(() => {
+        setIsRippling(false);
+      }, 2500);
+    }
+  }, []);
 
   const cards = [
     {
@@ -71,12 +84,12 @@ export default function Home() {
       ),
     },
     {
-      category: "Search",
-      title: "Lightning fast AI search",
-      src: card2.src,
+      category: "Analysis",
+      title: "Run what-if scenarios",
+      src: card9.src,
       content: (
         <p>
-          Get instant answers from documents, chats, and PDFs with context-aware AI.
+          Model pricing, demand, and strategy changes — and see impact on revenue and profit instantly.
         </p>
       ),
     },
@@ -97,6 +110,16 @@ export default function Home() {
       content: (
         <p>
           Automate data cleaning and preparation to get reliable insights without the manual effort.
+        </p>
+      ),
+    },
+    {
+      category: "Search",
+      title: "Lightning fast AI search",
+      src: card2.src,
+      content: (
+        <p>
+          Get instant answers from documents, chats, and PDFs with context-aware AI.
         </p>
       ),
     },
@@ -190,7 +213,7 @@ export default function Home() {
           blur={25}
           className="flex items-center justify-center"
         >
-          <div className="relative w-full h-full flex items-center justify-center z-10 -mt-12 sm:-mt-8 md:mt-0">
+          <div className="relative w-full h-full flex items-center justify-center z-10 -mt-18 sm:-mt-16 md:-mt-14">
 
             <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6 w-full max-w-7xl mx-auto">
               {/* Main Headline */}
@@ -221,20 +244,31 @@ export default function Home() {
               </h1>
 
               {/* Subtext */}
-              <p className="text-white/60 text-base sm:text-lg md:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl px-2">
-                Limelight is an <span className="text-white">AI search engine</span> for your business data. <br className="hidden sm:block" />
-                Search, clean, summarize, analyze - all in one place.
-              </p>
+              <div className="text-white/60 text-base sm:text-lg md:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl px-2">
+                <motion.span 
+                  className="inline-flex flex-wrap items-center justify-center gap-x-1"
+                  initial={false}
+                >
+                  <motion.span animate={{ color: isRippling ? "#fb923c" : "#ffffff" }} transition={{ duration: 0.5, delay: 0.0 }}>The</motion.span>
+                  <FlipText words={["AI workspace", "Cursor", "Copilot", "ChatGPT"]} className="text-[#fb923c]" onWordChange={handleWordChange} />
+                  <motion.span animate={{ color: isRippling ? "#fb923c" : "#ffffff" }} transition={{ duration: 0.5, delay: 0.2 }}>for</motion.span>
+                  <motion.span animate={{ color: isRippling ? "#fb923c" : "#ffffff" }} transition={{ duration: 0.5, delay: 0.3 }}>decision</motion.span>
+                  <motion.span animate={{ color: isRippling ? "#fb923c" : "#ffffff" }} transition={{ duration: 0.5, delay: 0.4 }}>makers.</motion.span>
+                </motion.span>
+                <div className="mt-0.5 opacity-60 text-sm sm:text-base md:text-lg">
+                  Search, clean, summarize, analyze - all in one place.
+                </div>
+              </div>
 
               {/* Button */}
               <div className="mt-8 sm:mt-10 flex justify-center w-full">
-                <Link href="/pricing">
+                <Link href="#see-it-in-action">
                   <HoverBorderGradient
                     containerClassName="rounded-2xl"
                     as="button"
                     className="backdrop-blur-sm hover:shadow-[0_0_25px_rgba(237,53,88,0.45)] transition-all duration-400 cursor-pointer"
                   >
-                    <span>Try Limelight</span>
+                    <span>See It in Action</span>
                   </HoverBorderGradient>
                 </Link>
               </div>
@@ -248,7 +282,7 @@ export default function Home() {
       <StickyScrollReveal
         slides={[
           {
-            title: "Your company knows everything, yet no one can find anything",
+            title: "Your company knows everything. But decisions still feel blind.",
             images: [
               { src: imgOneFirst, position: "right" },
               { src: imgOneSecond, position: "left" },
@@ -264,7 +298,7 @@ export default function Home() {
             ],
           },
           {
-            title: "Half your day goes into searching, not working",
+            title: "No one knows what’s true",
             images: [
               { src: imgTwoFirst, position: "right" },
               { src: imgTwoSecond, position: "left" },
@@ -297,7 +331,7 @@ export default function Home() {
         revealSection={{
           preTitle: "Introducing",
           title: "LIMELIGHT",
-          subtitle: "AI search engine for your data"
+          subtitle: "AI workspace for decision makers"
         }}
       />
 
@@ -319,7 +353,7 @@ export default function Home() {
               </div>
               <div className="mt-6 lg:mt-0 lg:w-1/2">
                 <p className="text-left text-xl text-white">
-                  Limelight makes business knowledge instantly searchable for fast-moving teams. No more digging through files, chats, and drives find what you need, when and where you need it.
+                  Limelight turns scattered business data into structured, queryable insights. Analyze metrics, uncover drivers, and get reliable answers across your data instantly.
                 </p>
               </div>
             </div>
@@ -333,8 +367,8 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <CardSpotlight
-                title="For Business Owners"
-                content="Limelight finds numbers, reports, and insights buried across your tools in seconds."
+                title="For Analysts"
+                content="Go beyond dashboards. Ask why metrics changed, what’s driving them, and what happens next."
                 imageSrc={business}
               />
             </motion.div>
@@ -345,8 +379,8 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <CardSpotlight
-                title="For Founders"
-                content="Know what’s happening, instantly. Get a pulse on every part of your business in seconds."
+                title="For Decision Makers"
+                content="Track what matters, understand tradeoffs, and confidently revisit every decision with full context."
                 imageSrc={founder}
               />
             </motion.div>
@@ -400,7 +434,7 @@ export default function Home() {
               </div>
               <div className="mt-6 lg:mt-0 lg:w-1/2">
                 <p className="text-left text-xl text-white">
-                  Limelight makes business knowledge instantly searchable for fast-moving teams. No more digging through files, chats, and drives find what you need, when and where you need it.
+                  Limelight turns scattered business data into structured, queryable insights. Analyze metrics, uncover drivers, and get reliable answers across your data instantly.
                 </p>
               </div>
             </div>
@@ -419,7 +453,7 @@ export default function Home() {
       </section>
 
       {/* see how it works section here */}
-      <section className=" z-10 py-12">
+      <section id="see-it-in-action" className=" z-10 py-12">
         <div>
           <motion.div
             className="text-center"

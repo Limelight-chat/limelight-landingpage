@@ -24,7 +24,7 @@ import {
       id: "faq-1",
       question: "What exactly is Limelight?",
       answer:
-        "Limelight is an AI-powered assistant that unifies all your business knowledge across apps, files, databases, and documents into one simple search bar. Instead of wasting hours searching, you just ask in plain English and get instant, cited answers.",
+        "Limelight is an AI workspace for decision-makers. It brings together your data from tools, documents, and databases, analyzes it in real time, and answers complex business questions with clear, source-backed insights so you can understand what’s happening, why it’s happening, and what to do next.",
     },
     {
       id: "faq-2",
@@ -54,7 +54,7 @@ import {
       id: "faq-6",
       question: "Who is Limelight best suited for?",
       answer:
-        "Limelight adapts to businesses of any size. Small teams get instant, affordable access with essential connectors. Mid-sized firms benefit from deeper integrations as they scale. Large enterprises can deploy with BYO cloud, self-hosting, and advanced security to fit strict compliance needs.",
+        "Limelight is built for project managers, analysts, operators, and decision-makers. Anyone who works with data, reports, or business metrics can use Limelight to understand what’s happening, why it’s happening, and what to do next — without relying on dashboards or manual analysis.",
     },
     {
       id: "faq-7",

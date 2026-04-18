@@ -8,6 +8,8 @@ import VideoPlayer from '@/components/ui/video-player';
 
 import { baseOptions } from '@/lib/layout.shared';
 
+export const dynamic = 'force-static';
+
 export default async function Page(props: {
   params: Promise<{ slug: string }>;
 }) {

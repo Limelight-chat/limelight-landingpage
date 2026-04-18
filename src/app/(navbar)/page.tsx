@@ -172,28 +172,33 @@ export default function Home() {
   const videoCarouselItems = [
     <div key="video0" className="w-[90vw] md:w-[810px] flex items-center justify-center snap-center">
       <VideoPlayer
-        src="https://res.cloudinary.com/dhnhzsg2u/video/upload/v1772481730/Screen_Recording_2026-03-02_at_11.00.37_PM_tztbpa.mov"
+        src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1776521585/linkedin-post_p4fphm.mov"
       />
     </div>,
     <div key="video1" className="w-[90vw] md:w-[810px] flex items-center justify-center snap-center">
+      <VideoPlayer
+        src="https://res.cloudinary.com/dhnhzsg2u/video/upload/v1772481730/Screen_Recording_2026-03-02_at_11.00.37_PM_tztbpa.mov"
+      />
+    </div>,
+    <div key="video2" className="w-[90vw] md:w-[810px] flex items-center justify-center snap-center">
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.mp4?q_auto,f_auto"
         poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1763752859/demo_d9havl.jpg"
       />
     </div>,
-    <div key="video2" className="w-[90vw] md:w-[780px] flex items-center justify-center snap-center">
+    <div key="video3" className="w-[90vw] md:w-[780px] flex items-center justify-center snap-center">
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1771236985/Charts-demo-2_ph479g.mp4"
         poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1771236985/Charts-demo-2_ph479g.jpg"
       />
     </div>,
-    <div key="video3" className="w-[90vw] md:w-[760px] flex items-center justify-center snap-center">
+    <div key="video4" className="w-[90vw] md:w-[760px] flex items-center justify-center snap-center">
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770835426/Analytical-Demo-3_oqg4wx.mp4"
         poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770835426/Analytical-Demo-3_oqg4wx.jpg"
       />
     </div>,
-    <div key="video4" className="w-[90vw] md:w-[760px] flex items-center justify-center snap-center">
+    <div key="video5" className="w-[90vw] md:w-[760px] flex items-center justify-center snap-center">
       <VideoPlayer
         src="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770986535/Follow-up-1_dlzv51.mp4"
         poster="https://res.cloudinary.com/dg4g3wdug/video/upload/v1770986535/Follow-up-1_dlzv51.jpg"
